@@ -8,7 +8,7 @@ cp -a config/. work/config/
 cd work
 lb config --mode debian --distribution trixie --architecture amd64 \
   --binary-images iso-hybrid --archive-areas 'main contrib non-free non-free-firmware' \
-  --bootloaders 'syslinux grub-efi' --iso-volume '44OS_ALPHA' \
+  --iso-volume '44OS_ALPHA' \
   --debian-installer none --apt-recommends true
 lb build
 ISO="$(find . -maxdepth 1 -type f -name '*.iso' -print -quit)"
