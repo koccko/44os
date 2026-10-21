@@ -14,3 +14,5 @@ lb build
 ISO="$(find . -maxdepth 1 -type f -name '*.iso' -print -quit)"
 if [[ -z "$ISO" ]]; then echo 'No ISO produced' >&2; exit 1; fi
 cp "$ISO" "$ROOT/dist/44OS-0.1-alpha-live-amd64.iso"
+--security true \
+--security-mirror-chroot "http://security.debian.org/debian-security/" \
