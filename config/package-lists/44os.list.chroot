@@ -8,3 +8,7 @@ kate
 sudo
 live-boot
 live-config
+
+# Installer (Debian-provided Calamares configuration)
+calamares
+calamares-settings-debian
