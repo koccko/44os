@@ -1,33 +1,49 @@
+
 name: Build 44OS Live ISO
+
 on:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container:
-  image: debian:trixie
-  options: --privileged
     timeout-minutes: 300
+
+    container:
+      image: debian:trixie
+      options: --privileged
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-      - name: Show build environment
+
+      - name: Install build tools
         run: |
+          apt-get update
+          apt-get install -y \
+            live-build debootstrap squashfs-tools \
+            xorriso isolinux syslinux-common \
+            grub-pc-bin grub-efi-amd64-bin \
+            mtools dosfstools ca-certificates file
+
+      - name: Verify environment
+        run: |
+          cat /etc/os-release
+          lb --version
           df -h
-          uname -a
-      - name: Install live-build tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y live-build debootstrap squashfs-tools xorriso isolinux syslinux-common grub-pc-bin grub-efi-amd64-bin mtools dosfstools ca-certificates
+
       - name: Build ISO
-        run: sudo bash ./build-44os.sh
+        run: bash ./build-44os.sh
+
       - name: Check ISO
         run: |
           ls -lh dist/*.iso
           file dist/*.iso
-          sha256sum dist/*.iso | tee dist/SHA256SUMS
+          sha256sum dist/*.iso > dist/SHA256SUMS
+
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
