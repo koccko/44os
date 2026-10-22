@@ -10,7 +10,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    timeout-minutes: 300
+    timeout-minutes: 120
 
     container:
       image: debian:trixie
@@ -20,31 +20,39 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: Install build tools
+      - name: Install build dependencies
         run: |
           apt-get update
           apt-get install -y \
-            live-build debootstrap squashfs-tools \
-            xorriso isolinux syslinux-common \
-            grub-pc-bin grub-efi-amd64-bin \
-            mtools dosfstools ca-certificates file
+            live-build \
+            debootstrap \
+            squashfs-tools \
+            xorriso \
+            isolinux \
+            syslinux-common \
+            grub-pc-bin \
+            grub-efi-amd64-bin \
+            mtools \
+            dosfstools \
+            ca-certificates \
+            file
 
-      - name: Verify environment
+      - name: Verify Debian environment
         run: |
           cat /etc/os-release
           lb --version
           df -h
 
-      - name: Build ISO
+      - name: Build 44OS ISO
         run: bash ./build-44os.sh
 
-      - name: Check ISO
+      - name: Verify ISO
         run: |
           ls -lh dist/*.iso
           file dist/*.iso
           sha256sum dist/*.iso > dist/SHA256SUMS
 
-      - name: Upload ISO
+      - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
         with:
           name: 44OS-0.1-alpha-live-amd64
