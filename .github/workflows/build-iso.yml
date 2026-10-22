@@ -6,6 +6,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    container:
+  image: debian:trixie
+  options: --privileged
     timeout-minutes: 300
     steps:
       - name: Checkout sources
