@@ -1,29 +1,17 @@
-# 44OS 0.1 Alpha — Live ISO build
+# 44OS 0.2 Alpha — installer integration test
 
-Experimental Debian 13 (trixie) based KDE Plasma live image. This is **not yet an installable release**: the Calamares installer and the final 44OS branding have not been integrated or tested. Do not erase a physical disk with this alpha.
+Based on the user-verified bootable 44OS 0.1 Alpha (Debian 13, KDE Plasma). This iteration adds the Debian-packaged Calamares installer and `calamares-settings-debian` to the live image. **The ISO build and installer have NOT yet been tested.** No custom Petrol/Copper branding is included in this iteration.
 
-## Build with GitHub Actions (no Debian installation needed)
+## Build
 
-1. Create a new GitHub repository named `44OS` (private is fine).
-2. Upload **all the contents** of this archive to the repository root, including `.github/workflows/build-iso.yml`. Preserve the directory structure. GitHub's browser upload may not reliably include hidden directories from some OS/file selectors; check that the workflow file appears in the repository.
-3. Open **Actions** > **Build 44OS Live ISO** > **Run workflow**.
-4. Wait for the build. If successful, download the `44OS-0.1-alpha-live-amd64` artifact and extract the ZIP to obtain the ISO and checksum.
-5. Test in a VM first. After a successful boot test, write the ISO to USB with Rufus (DD mode if prompted).
+Upload the **contents** of this folder to the root of the `koccko/44os` GitHub repository, preserving `.github/workflows/build-iso.yml`. Run the **Build 44OS Live ISO** workflow from Actions. Download the `44OS-0.2-alpha-live-amd64` artifact and extract its ZIP to obtain the ISO.
 
-## Notes
+## VM installation acceptance test (VirtualBox)
 
-- GitHub Actions runners use Ubuntu, while live-build targets Debian trixie. This configuration is a **starting point**, not a verified successful build. Cross-distribution bootstrap issues may require adjustments.
-- Hosted runners have storage, runtime, artifact size, and usage limitations. If the build fails, inspect its logs; do not assume an ISO exists.
-- UEFI boot is intended; firmware compatibility must be tested.
-- This alpha has no configured graphical installer and no final custom 44OS theme. A production installer must be added and validated before deployment.
-- Package selection, firmware, networking, and boot configuration may need iteration based on actual logs.
+1. Make a new disposable VM with 8 GB RAM, 4 vCPUs, 40 GB **new empty virtual disk**, EFI enabled, VMSVGA, and the ISO mounted. Disable unattended installation.
+2. Boot live desktop; check networking and find Calamares in the application launcher. If missing, open Konsole and run `which calamares` and `ls /etc/calamares` to diagnose before trying anything else.
+3. Open the installer and check that partitioning shows **only the disposable VM disk**. Do not test on a physical SSD.
+4. Complete installation, power off, remove the ISO from the virtual optical drive, and boot from the virtual disk.
+5. Confirm login, desktop, network, package updates, and boot persistence. Report errors/screenshots.
 
-## Local build on Debian 13
-
-```bash
-sudo apt-get update
-sudo apt-get install -y live-build debootstrap squashfs-tools xorriso isolinux syslinux-common grub-pc-bin grub-efi-amd64-bin mtools dosfstools
-sudo bash build-44os.sh
-```
-
-Output: `dist/44OS-0.1-alpha-live-amd64.iso` (if successful).
+**Warning:** The Debian Calamares configuration may require additional live-specific integration and bootloader settings. Package installation alone does not prove the installer works. Keep 44OS 0.1 artifact as fallback. Do not deploy 0.2 to physical disks until the full VM test passes.

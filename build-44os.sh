@@ -12,7 +12,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 echo "=================================="
-echo "       44OS 0.1 ALPHA BUILD"
+echo "       44OS 0.2 ALPHA BUILD"
 echo "=================================="
 
 rm -rf "$WORK"
@@ -52,7 +52,7 @@ if [[ -z "$ISO" ]]; then
   exit 1
 fi
 
-cp "$ISO" "$DIST/44OS-0.1-alpha-live-amd64.iso"
+cp "$ISO" "$DIST/44OS-0.2-alpha-live-amd64.iso"
 
 echo "=================================="
 echo "  44OS ISO BUILD COMPLETED"
