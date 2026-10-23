@@ -1,0 +1,23 @@
+#!/bin/sh
+# One-time per-user appearance setup. Never modifies existing layout twice.
+marker="$HOME/.config/44os-layout-v03.done"
+[ -f "$marker" ] && exit 0
+mkdir -p "$HOME/.config"
+if command -v plasma-apply-colorscheme >/dev/null 2>&1; then
+  plasma-apply-colorscheme 44OSPetrolCopper >/dev/null 2>&1 || true
+fi
+if command -v plasma-apply-wallpaperimage >/dev/null 2>&1; then
+  plasma-apply-wallpaperimage /usr/share/wallpapers/44OS/contents/images/1920x1080.svg >/dev/null 2>&1 || true
+fi
+# Wait for PlasmaShell DBus to become available.
+i=0
+while [ "$i" -lt 25 ]; do
+  if command -v qdbus6 >/dev/null 2>&1 && qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "$(cat /usr/share/44os/44os-layout.js)" >/dev/null 2>&1; then
+    touch "$marker"
+    exit 0
+  fi
+  i=$((i+1))
+  sleep 2
+done
+# Keep marker absent so next login can retry.
+exit 0

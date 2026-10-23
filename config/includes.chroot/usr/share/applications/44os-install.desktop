@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Install 44OS
+Comment=Install 44OS to your computer
+Exec=pkexec calamares
+Icon=drive-harddisk
+Categories=System;
+Terminal=false

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=44OS first login configuration
+Exec=/usr/local/bin/44os-first-login
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2
+NoDisplay=true

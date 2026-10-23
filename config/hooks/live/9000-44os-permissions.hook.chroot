@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+chmod 755 /usr/local/bin/44os-first-login
+chmod 755 /etc/skel/Desktop/'Install 44OS.desktop'

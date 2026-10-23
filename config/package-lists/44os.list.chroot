@@ -12,3 +12,6 @@ live-config
 # Installer (Debian-provided Calamares configuration)
 calamares
 calamares-settings-debian
+
+# 44OS Plasma scripting integration
+qdbus-qt6
