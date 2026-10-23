@@ -59,7 +59,17 @@ jobs:
           done
 
       - name: Build 44OS ISO
-        run: bash ./build-44os.sh
+        run: |
+          set -o pipefail
+          bash ./build-44os.sh 2>&1 | tee build.log
+
+      - name: Report build failure
+        if: failure()
+        run: |
+          grep -nE 'E:|ERROR|VERIFY|[Ff]ailed|fatal|Unable to|unknown option|not found' build.log | tail -n 80 > build-errors.txt || true
+          tail -n 150 build.log > build-tail.txt
+          .github/scripts/annotate.sh error "build errors" build-errors.txt 20000
+          .github/scripts/annotate.sh error "build log tail" build-tail.txt 30000
 
       - name: Verify ISO
         run: |
@@ -69,6 +79,7 @@ jobs:
           (cd dist && sha256sum *.iso > SHA256SUMS)
 
       - name: Upload ISO artifact
+        if: always() && hashFiles('dist/*.iso') != ''
         uses: actions/upload-artifact@v4
         with:
           name: 44OS-${{ env.VERSION }}-live-amd64
