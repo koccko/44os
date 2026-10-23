@@ -160,7 +160,9 @@ jobs:
           done
           .github/scripts/annotate-image.sh "grub-uefi" "$(ls out/uefi-dvd/shot-*.png 2>/dev/null | sed -n 2p)" 800
           .github/scripts/annotate-image.sh "desktop" "out/uefi-full/final.png" 1024
-          .github/scripts/annotate.sh notice "live session debug" out/uefi-full/debug.txt 40000
+      - name: Report live session debug output
+        if: always()
+        run: .github/scripts/annotate.sh notice "live session debug" out/uefi-full/debug.txt 60000
       - uses: actions/upload-artifact@v4
         if: always()
         with:
