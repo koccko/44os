@@ -16,3 +16,7 @@ for f in \
   /etc/calamares/branding/44os/show.qml; do
   [ -f "$f" ] || { echo "44OS branding missing: $f" >&2; exit 1; }
 done
+
+# KDE's first-run Welcome Center describes the system as plain Debian; keep it
+# available from the menu but do not pop it up on first login.
+rm -f /etc/xdg/autostart/org.kde.plasma-welcome.desktop

@@ -155,7 +155,7 @@ stage_grub=0; stage_kernel=0; stage_graphical=0
 check_stages() {
   if grep -qiE 'GNU GRUB|Live system|44OS Live|Start 44OS' "$OUT/ocr.txt" "$SERIAL" 2>/dev/null; then stage_grub=1; fi
   if grep -qaE 'Welcome to|Reached target|login:|Run /init|Freeing unused kernel' "$SERIAL"; then stage_kernel=1; stage_grub=1; fi
-  if grep -qaE 'Reached target graphical\.target|Graphical Interface' "$SERIAL"; then stage_graphical=1; fi
+  if grep -qaE 'Reached target graphical\.target|Graphical Interface|Started .*sddm\.service' "$SERIAL"; then stage_graphical=1; fi
 }
 for t in "${shot_times[@]}"; do
   (( t > DURATION )) && break
