@@ -1,0 +1,146 @@
+--- t=8s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+--- t=25s
+systemd[1]: Starting systemd-random-seed.service — Load/Save OS Random Seed...
+systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+systemd[1]: systemd-tpm2-setup.service —- TPM SRK Setup skipped, unmet condition check Condit ionSecurity=measured-uki
+systemd[1]: Started systemd-journald.service - Journal Service.
+Starting systemd- journal-flush.sergsh Journal to Persistent Storage...
+[ 6.135796] lpO: using parportO Cinterrupt-driven).
+lp0: using parportO Cinterrupt-driven).
+[ 6.160123] i2c_dev: i2c /dev entries driver
+i2c_dev: i2c /dev entries driver
+[ 6.168265] systemd- journald[405]: Received client request to flush runtime journal.
+systemd- journald[405]: Received client request to flush runtime journal.
+{ OK J Finished systemd-udeu-trigger.service - Coldplug All udev Devices.
+Starting ifupdown-pre.service - Hessynchronize boot up for ifupdown...
+{ OK J] Finished systemd- journal-flush.serslush Journal to Persistent Storage.
+C OK J Finished ifupdown-pre.service - He#o synchronize boot up for ifupdown.
+{ OK J Finished systemd-tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+{ OK J] Finished systemd-sysusers.service - Create System Users.
+Starting systemd—tmpfiles-setup-demeate Static Device Nodes in /dev...
+{ OK J Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+{C OK J] Reached target local-fs-pre.targetsPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+{ OK J Finished systemd-modules-load.service - Load Kernel Modules.
+t oun 4 FinrSnea systemd-moauiés-1o0ad.service’- Loaa Kefnei hdauies.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+C OK J] Started systemd-—udeud.service - Rum@anager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+{ OK J] Finished modprobe@efi_pstore.service - Load Kernel] Module efi_pstore.
+{ OK J] Finished systemd-sysctl.service - Apply Kernel Variables.
+C OK J Found device deuv-ttySO.device - /dev/ttyS0.
+{ OK J Started plymouth-start.service - Show Plymouth Boot Screen.
+{ OK J Started systemd—ask-password-plymomquests to Plymouth Directory Watch.
+[ 6.845559] input: PC Speaker as /devices/platform/pcspkr/ input/ input5S
+input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+Mounting tmp.mount — /tmp...
+Mounted tmp.mount - /tmp.
+Reached target local-fs.target - Local File Systems.
+Listening on systemd-sysext.socketa System Extension Image Management.
+Starting netuorking.service - Raise network interfaces...
+Starting plymouth-read-urite.servisymouth To Write Out Runtime Data...
+[ 6.950319] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[ 6.969667] sr 5:0:0:0: Attached scsi generic sgO type 5
+sr 5:0:0:0: Attached scsi generic sg@ type 5
+[ 6.988575] AES CTR mode by8 optimization enabled
+AES CTR mode by8 optimization enabled
+Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Starting systemd-tmpfiles-setup.semate System Files and Directories...
+{C OK 1 Finished plymouth-read-urite.servisPlymouth To Write Out Runtime Data.
+aoe
+ooo
+mez
+|
+systemd[1]: Starting systemd-random-seed.service — Load/Save OS Random Seed...
+systemd[1]: Starting systemd-tmpfiles-setup-devu-early.service - Create Static Device Nodes in /dev gracefully...
+systemd[1]: systemd-tpm2-setup.service - TPM SRK Setup skipped, unmet condition check Condit ionSecur ity=measured-uki
+systemd[1]: Started systemd-journald.service - Journal Service.
+Starting systemd- journal-flush.sergsh Journal to Persistent Storage...
+[ 6.135796] lpO: using parportO Cinterrupt-driven).
+lp0: using parportO Cinterrupt-driven).
+[ 6.160123] i2c_dev: i2c /dev entries driver
+i2c_dev: i2c /dev entries driver
+[ 6.168265] systemd- journald[405]: Received client request to flush runtime journal.
+systemd— journald[405]: Received client request to flush runtime journal.
+{ OK J Finished systemd-udeu-trigger.service - Coldplug All udev Devices.
+Starting ifupdown-pre.service - Hessynchronize boot up for ifupdown...
+{ OK J] Finished systemd- journal-flush.serslush Journal to Persistent Storage.
+{ OK J Finished ifupdown-pre.service - He#o synchronize boot up for ifupdown.
+{ OK J Finished systemd-tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+{ OK J Finished systemd-sysusers.service - Create System Users.
+Starting systemd—tmpfiles-setup-demeate Static Device Nodes in /dev...
+{ OK J Finished systemd-tmpfiles-setup-demCreate Static Device Nodes in /dev.
+C OK J] Reached target local-fs-pre.targetsPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+{ OK J] Finished systemd-modules-load.service - Load Kernel Modules.
+t oun 4 Finrsnea systemd-moauiés-10ad.service’—- Loaa Kefnei hdauies.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+{C OK J Started systemd-—udeud.service - Rumsanager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+{ OK J] Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+{ OK J Finished systemd-sysctl.service - Apply Kernel Variables.
+C OK J] Found device deu-ttyS0.device - /dev/ttyS0.
+{ OK J] Started plymouth-start.service - Show Plymouth Boot Screen.
+C OK J Started systemd—ask-passvord-plymomquests to Plymouth Directory Watch.
+[ 6.845559] input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+Mounting tmp.mount — /tmp...
+Mounted tmp.mount - /tmp.
+Reached target local-fs.target - Local File Systems.
+Listening on systemd-sysext.socketa System Extension Image Management.
+Starting netuorking.service - Raise network interfaces...
+Starting plymouth-read-urite.servisymouth To Write Out Runtime Data...
+[ 6.950319] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[ 6.969667] sr 5:0:0:0: Attached scsi generic sgO type 5
+sr 5:0:0:0: Attached scsi generic sg@ type 5
+[ 6.988575] AES CTR mode by8 optimization enabled
+AES CTR mode by8 optimization enabled
+Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Starting systemd—tmpfiles-setup.semate System Files and Directories...
+{C OK 1 Finished plymouth-read-uvrite.servisPlymouth To Write Out Runtime Data.
+oe
+ooo
+mz
+|
+--- final
+4 Fri 23 Oct | 6:08 PM R*# Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:08 PM R* Ee Ov
+Install 440S

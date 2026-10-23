@@ -1,0 +1,84 @@
+name=bios hv=qemu fw=bios media=cdrom serial_iso=0 elapsed=31s
+stage_grub=1 stage_kernel=0 stage_graphical=0
+--- serial (key lines)
+--- OCR
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+--- t=25s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+--- final
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13u1
+live-config: 11.0.5
+live-tools: 1:20240525
+Boot menu
+Live system (amd64 fail-safe mode)
+Utilities
+Press ENTER to boot or TAB to edit a menu entry
