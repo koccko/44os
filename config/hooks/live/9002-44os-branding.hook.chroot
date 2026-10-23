@@ -20,10 +20,12 @@ done
 # KDE's first-run Welcome Center describes the system as plain Debian; keep it
 # available from the menu but do not pop it up on first login. Plasma 6
 # starts it from a KDED module; divert that module so upgrades keep it off.
+echo "44OS: welcome-related files: $(find /usr/lib /usr/share/autostart /etc/xdg/autostart -name '*welcome*' 2>/dev/null | tr '\n' ' ')"
 for f in $(find /usr/lib -path '*/kded/*' -name '*welcome*.so' 2>/dev/null); do
   echo "44OS: disabling Welcome Center autostart module $f"
   dpkg-divert --local --rename --divert "$f.44os-disabled" --add "$f"
 done
 for f in /etc/xdg/autostart/*plasma-welcome*.desktop /usr/share/autostart/*plasma-welcome*.desktop; do
-  [ -e "$f" ] && rm -f "$f"
+  if [ -e "$f" ]; then rm -f "$f"; fi
 done
+exit 0

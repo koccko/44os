@@ -70,10 +70,16 @@ jobs:
           set -o pipefail
           bash ./build-44os.sh 2>&1 | tee build.log
 
+      - name: Report build notes
+        if: always()
+        run: |
+          grep -E '^44OS:' build.log > build-notes.txt || true
+          .github/scripts/annotate.sh notice "build notes" build-notes.txt 8000
+
       - name: Report build failure
         if: failure()
         run: |
-          grep -nE 'E:|ERROR|VERIFY|[Ff]ailed|fatal|Unable to|unknown option|not found' build.log | tail -n 80 > build-errors.txt || true
+          grep -nE '44OS:|E:|ERROR|VERIFY|[Ff]ailed|fatal|Unable to|unknown option|not found' build.log | tail -n 80 > build-errors.txt || true
           tail -n 150 build.log > build-tail.txt
           .github/scripts/annotate.sh error "build errors" build-errors.txt 20000
           .github/scripts/annotate.sh error "build log tail" build-tail.txt 30000
