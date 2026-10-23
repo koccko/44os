@@ -19,6 +19,9 @@
 #   DURATION    seconds to run                            (default: 300)
 #   REQUIRE     grub | kernel | graphical | none          (default: grub)
 #   SERIAL_ISO  1 = remaster a copy whose kernel/GRUB also log to ttyS0
+#   DEBUG_CMDS  newline-separated shell commands typed on the serial console
+#               (logged in as the live user) once the graphical stage is up;
+#               their output is saved to $OUT/debug.txt        (QEMU only)
 #   VGA         QEMU display adapter                     (default: std)
 #   OUT         output directory                          (default: boot-$NAME)
 set -Eeuo pipefail
@@ -114,7 +117,8 @@ start_qemu() {
   log "starting QEMU fw=$FW media=$MEDIA accel=${accel[*]}"
   qemu-system-x86_64 -machine "$machine" "${accel[@]}" -m 4096 -smp 2 \
     "${fw[@]}" "${media[@]}" \
-    -vga "$VGA" -display none -serial file:"$SERIAL" \
+    -vga "$VGA" -display none \
+    -chardev socket,id=ser0,path="$OUT/serial.sock",server=on,wait=off,logfile="$SERIAL" -serial chardev:ser0 \
     -monitor unix:"$OUT/mon.sock",server,nowait \
     -nic user,model=virtio-net-pci -device virtio-rng-pci \
     >"$OUT/qemu.log" 2>&1 &
@@ -124,6 +128,20 @@ shot_qemu() { # $1 = png path
   echo "screendump $OUT/.shot.ppm" | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1 || return 1
   sleep 1; convert "$OUT/.shot.ppm" "$1" 2>/dev/null; rm -f "$OUT/.shot.ppm"
 }
+ser_qemu() { # type one line on the serial console, then wait $2 seconds
+  printf '%s\r' "$1" | socat -u - UNIX-CONNECT:"$OUT/serial.sock" >/dev/null 2>&1 || true
+  sleep "${2:-2}"
+}
+debug_qemu() {
+  [[ -n "${DEBUG_CMDS:-}" ]] || return 0
+  log "running serial debug commands"
+  ser_qemu "" 2; ser_qemu user 3; ser_qemu live 6
+  ser_qemu "stty cols 200; export PAGER=cat SYSTEMD_PAGER=cat; echo 44OS-DEBUG-BEGIN" 2
+  while IFS= read -r line; do [[ -n "$line" ]] && ser_qemu "$line" 3; done <<<"$DEBUG_CMDS"
+  ser_qemu "echo 44OS-DEBUG-END" 3
+  sed -n '/^44OS-DEBUG-BEGIN/,/^44OS-DEBUG-END/p' "$SERIAL" | tr -d '\r' > "$OUT/debug.txt" || true
+}
+debug_vbox() { :; }
 key_qemu() { echo "sendkey ret" | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1; }
 alive_qemu() { kill -0 "$VM_PID" 2>/dev/null; }
 stop_qemu() { echo quit | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1 || kill "$VM_PID" 2>/dev/null || true; }
@@ -180,6 +198,7 @@ for t in "${shot_times[@]}"; do
   esac
 done
 # One last screenshot so the final state is always captured.
+(( stage_graphical )) && "alive_$HV" && "debug_$HV"
 "alive_$HV" && "shot_$HV" "$OUT/final.png" && { echo "--- final"; ocr "$OUT/final.png"; } >> "$OUT/ocr.txt" || true
 check_stages
 "stop_$HV"

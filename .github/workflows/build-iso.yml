@@ -141,6 +141,13 @@ jobs:
           ISO=$(ls dist/*.iso) NAME=bios FW=bios MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/bios \
             .github/scripts/boot-test.sh
       - name: "UEFI full boot: GRUB -> kernel -> live system -> graphical.target"
+        env:
+          DEBUG_CMDS: |
+            loginctl list-sessions --no-legend
+            grep -E '^\[|plugin=|location|lengthMode|floating|alignment|Image=|launchers' ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/plasmashellrc 2>&1 | head -n 120
+            journalctl --user -b --no-pager 2>/dev/null | grep -iE 'plasmashell|layout|script|panel|wallpaper|lookandfeel' | grep -viE 'kf\.svg|qml: binding' | tail -n 60
+            ls -la ~/Desktop /etc/xdg/autostart | head -n 40
+            grep -h '^branding' /etc/calamares/settings.conf
         run: |
           ISO=$(ls dist/*.iso) NAME=uefi-full VGA=virtio FW=uefi MEDIA=cdrom DURATION=600 REQUIRE=graphical SERIAL_ISO=1 OUT=out/uefi-full \
             .github/scripts/boot-test.sh
@@ -153,6 +160,7 @@ jobs:
           done
           .github/scripts/annotate-image.sh "grub-uefi" "$(ls out/uefi-dvd/shot-*.png 2>/dev/null | sed -n 2p)" 800
           .github/scripts/annotate-image.sh "desktop" "out/uefi-full/final.png" 1024
+          .github/scripts/annotate.sh notice "live session debug" out/uefi-full/debug.txt 40000
       - uses: actions/upload-artifact@v4
         if: always()
         with:
