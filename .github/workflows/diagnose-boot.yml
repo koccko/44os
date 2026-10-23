@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   qemu:
+    if: false
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     strategy:
@@ -98,14 +99,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y linux-headers-$(uname -r) tesseract-ocr imagemagick socat
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y virtualbox virtualbox-ext-pack || sudo DEBIAN_FRONTEND=noninteractive apt-get install -y virtualbox
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y virtualbox
           sudo modprobe -r kvm_intel kvm_amd kvm 2>/dev/null || true
           sudo modprobe vboxdrv; lsmod | grep vbox; VBoxManage --version
       - name: VirtualBox EFI boot 0.3 and 0.4
         continue-on-error: true
         run: |
           for v in 03 04; do
-            sudo -E env ISO=$(ls iso$v/*.iso) HV=vbox NAME=vbox$v FW=uefi DURATION=60 REQUIRE=none OUT=vb$v .github/scripts/boot-test.sh || true
+            sudo -E env ISO=$(ls iso$v/*.iso) HV=vbox NAME=vbox$v FW=uefi DURATION=90 REQUIRE=none OUT=vb$v .github/scripts/boot-test.sh || true
             sudo chown -R $USER vb$v || true
             .github/scripts/annotate.sh notice "v$v vbox efi" vb$v/result.txt
             grep -aiE 'efi|boot|error|VERR' vb$v/VBox-internal.log | tail -n 60 > vb$v/vboxlog.txt || true
