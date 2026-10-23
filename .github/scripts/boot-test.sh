@@ -167,7 +167,7 @@ for t in "${shot_times[@]}"; do
   case "$REQUIRE" in
     grub)      (( stage_grub )) && (( t >= 25 )) && break ;;
     kernel)    (( stage_kernel )) && break ;;
-    graphical) (( stage_graphical )) && (( t >= 120 )) && break ;;
+    graphical) (( stage_graphical )) && (( t >= 180 )) && break ;;  # let Plasma settle
   esac
 done
 # One last screenshot so the final state is always captured.

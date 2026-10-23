@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" width="620" height="200">
+  <!-- 44OS wordmark: the "44" mark followed by "OS" set in Inter. -->
+  <defs>
+    <linearGradient id="g" x1="40" y1="48" x2="216" y2="208" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7FE3FF"/><stop offset="0.55" stop-color="#5E9BFF"/><stop offset="1" stop-color="#8A6CFF"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0 -28)">
+    <path d="M104 52 L44 152 H212 M104 52 V204 M188 52 L128 152 M188 52 V204"
+          fill="none" stroke="url(#g)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="246" y="176" font-family="Inter, sans-serif" font-weight="300" font-size="206" letter-spacing="0" fill="#F4F7FF">OS</text>
+</svg>

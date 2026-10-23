@@ -1,11 +1,19 @@
-
 name: Build 44OS Live ISO
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
+
+concurrency:
+  group: build-iso-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERSION: 0.5-alpha
 
 jobs:
   build:
@@ -43,6 +51,13 @@ jobs:
           lb --version
           df -h
 
+      - name: Lint build scripts and hooks
+        run: |
+          bash -n build-44os.sh scripts/*.sh .github/scripts/*.sh
+          for h in config/hooks/live/*.hook.chroot config/includes.chroot/usr/libexec/44os/*; do
+            sh -n "$h"
+          done
+
       - name: Build 44OS ISO
         run: bash ./build-44os.sh
 
@@ -50,12 +65,106 @@ jobs:
         run: |
           ls -lh dist/*.iso
           file dist/*.iso
-          sha256sum dist/*.iso > dist/SHA256SUMS
+          scripts/verify-iso.sh dist/*.iso
+          (cd dist && sha256sum *.iso > SHA256SUMS)
 
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 44OS-0.4-alpha-live-amd64
+          name: 44OS-${{ env.VERSION }}-live-amd64
           path: dist/
           if-no-files-found: error
+          compression-level: 0
           retention-days: 7
+
+  boot-test:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: 44OS-${{ env.VERSION }}-live-amd64
+          path: dist
+
+      - name: Install QEMU, OVMF and OCR tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-system-x86 ovmf xorriso socat tesseract-ocr imagemagick
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
+      - name: "UEFI (OVMF), DVD: firmware -> GRUB menu (unmodified ISO)"
+        run: |
+          ISO=$(ls dist/*.iso) NAME=uefi-dvd FW=uefi MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/uefi-dvd \
+            .github/scripts/boot-test.sh
+      - name: "UEFI (OVMF), USB stick: firmware -> GRUB menu (unmodified ISO)"
+        run: |
+          ISO=$(ls dist/*.iso) NAME=uefi-usb FW=uefi MEDIA=usb DURATION=60 REQUIRE=grub OUT=out/uefi-usb \
+            .github/scripts/boot-test.sh
+      - name: "UEFI Secure Boot (OVMF, Microsoft keys): shim -> GRUB -> kernel"
+        run: |
+          ISO=$(ls dist/*.iso) NAME=uefi-sb FW=uefi-sb MEDIA=cdrom DURATION=240 REQUIRE=kernel SERIAL_ISO=1 OUT=out/uefi-sb \
+            .github/scripts/boot-test.sh
+      - name: "BIOS (SeaBIOS), DVD: isolinux menu"
+        run: |
+          ISO=$(ls dist/*.iso) NAME=bios FW=bios MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/bios \
+            .github/scripts/boot-test.sh
+      - name: "UEFI full boot: GRUB -> kernel -> live system -> graphical.target"
+        run: |
+          ISO=$(ls dist/*.iso) NAME=uefi-full FW=uefi MEDIA=cdrom DURATION=600 REQUIRE=graphical SERIAL_ISO=1 OUT=out/uefi-full \
+            .github/scripts/boot-test.sh
+      - name: Report results
+        if: always()
+        run: |
+          for d in out/*/; do
+            n=$(basename "$d")
+            .github/scripts/annotate.sh notice "boot $n" "$d/result.txt" 12000
+          done
+          .github/scripts/annotate-image.sh "grub-uefi" "$(ls out/uefi-dvd/shot-*.png 2>/dev/null | sed -n 2p)" 800
+          .github/scripts/annotate-image.sh "desktop" "out/uefi-full/final.png" 1024
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: boot-test-results
+          path: |
+            out/**/result.txt
+            out/**/serial.log
+            out/**/ocr.txt
+            out/**/*.png
+          retention-days: 7
+
+  boot-test-virtualbox:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    # VirtualBox needs a kernel module built for the runner kernel; treat
+    # infrastructure failures as non-blocking but report the result.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: 44OS-${{ env.VERSION }}-live-amd64
+          path: dist
+      - name: Install VirtualBox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y linux-headers-$(uname -r) tesseract-ocr imagemagick
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y virtualbox
+          sudo modprobe -r kvm_intel kvm_amd kvm 2>/dev/null || true
+          sudo modprobe vboxdrv
+          VBoxManage --version
+      - name: "VirtualBox EFI, DVD: firmware -> GRUB menu"
+        run: |
+          sudo -E env ISO=$(ls dist/*.iso) HV=vbox NAME=vbox-efi FW=uefi DURATION=90 REQUIRE=grub OUT=out/vbox-efi \
+            .github/scripts/boot-test.sh
+      - name: Report results
+        if: always()
+        run: |
+          sudo chown -R "$USER" out || true
+          .github/scripts/annotate.sh notice "boot vbox-efi" out/vbox-efi/result.txt 12000
+          .github/scripts/annotate-image.sh "vbox-efi" "$(ls out/vbox-efi/shot-*.png 2>/dev/null | tail -n 1)" 800

@@ -1,0 +1,21 @@
+#!/bin/sh
+# Calamares integration: 44OS branding and a single installer launcher.
+# Debian's Calamares configuration (modules, partitioning, bootloader) is
+# left untouched.
+set -e
+
+# Use the 44OS branding component.
+if [ -f /etc/calamares/settings.conf ] && [ -f /etc/calamares/branding/44os/branding.desc ]; then
+  sed -i 's/^branding:.*/branding: 44os/' /etc/calamares/settings.conf
+  grep -q '^branding: 44os$' /etc/calamares/settings.conf
+fi
+
+# Debian's autostart copies an "Install Debian" icon to the live desktop;
+# 44OS places its own "Install 44OS" icon instead (44os-live-installer-icon).
+rm -f /etc/xdg/autostart/calamares-desktop-icon.desktop
+
+# Hide Debian's generic menu entry; "Install 44OS" runs the same wrapper.
+f=/usr/share/applications/calamares-install-debian.desktop
+if [ -f "$f" ] && ! grep -q '^NoDisplay=true' "$f"; then
+  echo 'NoDisplay=true' >> "$f"
+fi

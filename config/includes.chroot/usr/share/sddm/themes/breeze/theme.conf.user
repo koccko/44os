@@ -1,2 +1,5 @@
 [General]
-background=/usr/share/wallpapers/44OS/contents/images/1920x1080.svg
+type=image
+background=/usr/share/wallpapers/44OS/contents/images/3840x2160.jpg
+showlogo=shown
+logo=/usr/share/44os/branding/44os-wordmark.png

@@ -1,0 +1,41 @@
+---
+# 44OS Calamares branding. Derived from Debian's calamares-settings-debian
+# branding; bootloaderEntryName stays "Debian" on purpose so the installed
+# system uses Debian's signed shim/GRUB layout (EFI/debian) unchanged.
+componentName:   44os
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 900px,620px
+windowPlacement: center
+
+strings:
+    productName:         44OS
+    shortProductName:    44OS
+    version:             0.5 Alpha
+    shortVersion:        0.5
+    versionedName:       44OS 0.5 Alpha
+    shortVersionedName:  44OS 0.5
+    bootloaderEntryName: Debian
+    productUrl:          https://github.com/koccko/44os
+    supportUrl:          https://github.com/koccko/44os/issues
+    knownIssuesUrl:      https://github.com/koccko/44os/issues
+    releaseNotesUrl:     https://github.com/koccko/44os
+    donateUrl:           https://github.com/koccko/44os
+
+sidebar: widget
+navigation: widget
+
+images:
+    productLogo:         "44os-logo.png"
+    productIcon:         "44os-logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+slideshowAPI: 2
+
+style:
+   SidebarBackground:        "#0B0E14"
+   SidebarText:              "#C9D1E3"
+   SidebarTextCurrent:       "#FFFFFF"
+   SidebarBackgroundCurrent: "#2B4B85"

@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Install 44OS
-Exec=pkexec calamares
-Icon=44os-logo
-Terminal=false

@@ -1,0 +1,18 @@
+#!/bin/sh
+# Refresh caches so the 44OS icons, fonts and look-and-feel are found.
+set -e
+command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -q -f /usr/share/icons/hicolor || true
+command -v fc-cache >/dev/null 2>&1 && fc-cache -s >/dev/null 2>&1 || true
+
+# Sanity checks: fail the build early if branding is incomplete.
+for f in \
+  /usr/share/plasma/look-and-feel/org.44os.desktop/metadata.json \
+  /usr/share/plasma/look-and-feel/org.44os.desktop/contents/layouts/org.kde.plasma.desktop-layout.js \
+  /usr/share/wallpapers/44OS/contents/images/1920x1080.jpg \
+  /usr/share/color-schemes/44OS.colors \
+  /usr/share/icons/hicolor/scalable/apps/44os-logo.svg \
+  /usr/share/icons/hicolor/scalable/apps/44os-start.svg \
+  /etc/calamares/branding/44os/branding.desc \
+  /etc/calamares/branding/44os/show.qml; do
+  [ -f "$f" ] || { echo "44OS branding missing: $f" >&2; exit 1; }
+done

@@ -1,0 +1,14 @@
+# 44OS window manager defaults.
+[org.kde.kdecoration2]
+library=org.kde.breeze
+theme=Breeze
+ButtonsOnLeft=XIA
+ButtonsOnRight=
+
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+
+[Effect-blur]
+BlurStrength=8
+NoiseStrength=2

@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "44OS"
+            }
+        ],
+        "Id": "44OS",
+        "License": "CC-BY-SA-4.0",
+        "Name": "44OS Horizon"
+    }
+}

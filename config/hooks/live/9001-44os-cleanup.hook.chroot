@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-# Do not remove the Calamares application itself. Only remove redundant launchers.
-for base in /etc/skel/Desktop /home/user/Desktop; do
-  [ -d "$base" ] || continue
-  find "$base" -maxdepth 1 -type f -name '*.desktop' -exec grep -l -E '^Name(\[[^]]+\])?=Install Debian$' {} + 2>/dev/null | while IFS= read -r file; do rm -f "$file"; done
- done

@@ -1,8 +1,14 @@
 [Desktop Entry]
 Type=Application
+Version=1.0
 Name=Install 44OS
-Comment=Install 44OS to your computer
-Exec=pkexec calamares
+GenericName=System Installer
+Comment=Install 44OS to this computer
+Keywords=calamares;system;install;installer;44os;
+Exec=calamares-install-debian
+TryExec=calamares-install-debian
 Icon=44os-logo
-Categories=System;
 Terminal=false
+Categories=Qt;System;
+StartupWMClass=calamares
+StartupNotify=true

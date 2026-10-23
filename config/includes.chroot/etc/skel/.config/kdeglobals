@@ -1,9 +1,0 @@
-[General]
-ColorScheme=44OSPetrolCopper
-Name=44OS Petrol Copper
-
-[KDE]
-LookAndFeelPackage=org.kde.breeze.desktop
-
-[Icons]
-Theme=breeze-dark

@@ -9,9 +9,13 @@ sudo
 live-boot
 live-config
 
-# Installer (Debian-provided Calamares configuration)
+# Installer (Debian-provided Calamares configuration, 44OS branding on top)
 calamares
 calamares-settings-debian
 
-# 44OS Plasma scripting integration
-qdbus-qt6
+# 44OS look: Inter UI font, Breeze theme/icons/cursors
+fonts-inter
+breeze
+breeze-cursor-theme
+breeze-icon-theme
+xdg-user-dirs

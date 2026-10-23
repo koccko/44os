@@ -1,0 +1,18 @@
+#!/bin/sh
+# Put a single "Install 44OS" shortcut on the desktop of the live session.
+# Replaces Debian's add-calamares-desktop-icon (disabled at build time) so
+# the live desktop never shows both "Install Debian" and "Install 44OS".
+# Does nothing on an installed system.
+grep -qw 'boot=live' /proc/cmdline 2>/dev/null || exit 0
+command -v calamares-install-debian >/dev/null 2>&1 || exit 0
+
+desktop="$(xdg-user-dir DESKTOP 2>/dev/null)"
+[ -n "$desktop" ] || desktop="$HOME/Desktop"
+mkdir -p "$desktop"
+
+rm -f "$desktop/calamares-install-debian.desktop" "$desktop/Install 44OS.desktop"
+install -m 755 /usr/share/applications/44os-install.desktop "$desktop/44os-install.desktop"
+
+# Preload Calamares with idle I/O so it opens quickly (as Debian's helper does).
+( ionice -c 3 cat /usr/bin/calamares >/dev/null 2>&1 & ) || true
+exit 0

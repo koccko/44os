@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="480" viewBox="0 0 800 480">
+  <defs><clipPath id="r"><rect width="800" height="480" rx="20"/></clipPath></defs>
+  <g clip-path="url(#r)">
+    <image href="wallpaper-1920.png" x="-260" y="-150" width="1320" height="742.5" preserveAspectRatio="none"/>
+  </g>
+  <image href="44os-wordmark.svg" x="270" y="150" width="260" height="83.9"/>
+  <text x="400" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-weight="400" font-size="22" fill="#DDE5F7">Installing 44OS</text>
+  <text x="400" y="332" text-anchor="middle" font-family="Inter, sans-serif" font-weight="300" font-size="16" fill="#9AA6C2">Debian 13 foundation · KDE Plasma 6</text>
+</svg>
