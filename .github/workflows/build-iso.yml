@@ -108,7 +108,7 @@ jobs:
     permissions:
       contents: write
       actions: read
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -121,8 +121,9 @@ jobs:
 
       - name: Install QEMU, OVMF and OCR tools
         run: |
+          sudo rm -f /var/lib/man-db/auto-update
           sudo apt-get update
-          sudo apt-get install -y qemu-system-x86 ovmf xorriso socat tesseract-ocr imagemagick
+          sudo apt-get install -y --no-install-recommends qemu-system-x86 qemu-utils ovmf xorriso socat tesseract-ocr tesseract-ocr-eng imagemagick
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
           sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
           ls -l /dev/kvm
@@ -194,7 +195,7 @@ jobs:
     needs: build
     if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     # VirtualBox needs a kernel module built for the runner kernel; treat
     # infrastructure failures as non-blocking but report the result.
     continue-on-error: true
@@ -208,8 +209,9 @@ jobs:
           github-token: ${{ github.token }}
       - name: Install VirtualBox
         run: |
+          sudo rm -f /var/lib/man-db/auto-update
           sudo apt-get update
-          sudo apt-get install -y linux-headers-$(uname -r) tesseract-ocr imagemagick
+          sudo apt-get install -y --no-install-recommends linux-headers-$(uname -r) tesseract-ocr tesseract-ocr-eng imagemagick
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y virtualbox
           sudo modprobe -r kvm_intel kvm_amd kvm 2>/dev/null || true
           sudo modprobe vboxdrv
