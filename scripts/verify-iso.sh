@@ -21,15 +21,20 @@ ok "BIOS El Torito entry"
 grep -Eq 'El Torito boot img :[[:space:]]+[0-9]+[[:space:]]+UEFI' "$tmp/report" || fail "no UEFI El Torito boot image"
 ok "UEFI El Torito entry"
 
-# Locate the EFI boot image (a FAT filesystem) and inspect it.
-uefi_idx=$(awk '/El Torito boot img :/ && $NF=="UEFI" {print $(NF-1); exit}' "$tmp/report")
-efi_path=$(awk -v i="$uefi_idx" '/El Torito img path :/ && $(NF-1)==i {print $NF; exit}' "$tmp/report")
-if [[ -n "$efi_path" && "$efi_path" != "-" ]]; then
+# Locate the EFI boot image (a FAT filesystem) and inspect it. Report lines:
+#   El Torito boot img :   2  UEFI  y   none  0x0000  0x00   6656         135
+#   El Torito img path :   2  /boot/grub/efi.img
+uefi_idx=$(awk '/^El Torito boot img :/ && $7=="UEFI" {print $6; exit}' "$tmp/report")
+uefi_lba=$(awk '/^El Torito boot img :/ && $7=="UEFI" {print $NF; exit}' "$tmp/report")
+uefi_blks=$(awk '/^El Torito boot img :/ && $7=="UEFI" {print $(NF-1); exit}' "$tmp/report")
+efi_path=$(awk -v i="$uefi_idx" '/^El Torito img path :/ && $6==i {print $7; exit}' "$tmp/report")
+if [[ -n "$efi_path" ]]; then
   osirrox -indev "$ISO" -extract "$efi_path" "$tmp/efi.img" >/dev/null 2>&1 || fail "cannot extract $efi_path"
 else
-  # Image not visible in the tree: carve it out by LBA and block count.
-  lba=$(awk -v i="$uefi_idx" '/El Torito img blks :/ && $(NF-1)==i {print}' "$tmp/report")
-  fail "EFI boot image not present as a file (${lba:-unknown})"
+  # Hidden or appended image: read it by LBA (2048-byte) and size (512-byte blocks).
+  [[ -n "$uefi_lba" && "$uefi_blks" -gt 0 ]] || fail "cannot locate the UEFI boot image"
+  dd if="$ISO" of="$tmp/efi.img" bs=512 skip=$((uefi_lba * 4)) count="$uefi_blks" status=none
+  efi_path="LBA $uefi_lba"
 fi
 ok "EFI boot image $efi_path ($(stat -c %s "$tmp/efi.img") bytes)"
 mdir -/ -b -i "$tmp/efi.img" :: >"$tmp/efi.list" 2>&1 || fail "EFI boot image is not a readable FAT filesystem"
