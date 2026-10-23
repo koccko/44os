@@ -3,7 +3,7 @@
 // desktop configuration (new users, the live session and fresh installs).
 // Existing user layouts are never touched.
 
-var wallpaper = "file:///usr/share/wallpapers/44OS/";
+var wallpaper = "file:///usr/share/wallpapers/44OS/contents/images/3840x2160.jpg";
 
 // Desktop: 44OS wallpaper on every screen.
 var desks = desktops();
