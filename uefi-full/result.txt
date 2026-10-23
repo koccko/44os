@@ -1,0 +1,109 @@
+name=uefi-full hv=qemu fw=uefi media=cdrom serial_iso=1 elapsed=224s
+stage_grub=1 stage_kernel=1 stage_graphical=1
+--- serial (key lines)
+[    0.000000] Linux version 6.12.113+deb13-amd64 (debian-kernel@lists.debian.org) (x86_64-linux-gnu-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15)
+Begin: Running /scripts/init-premount ... [0;21;32mLinux version 6.12.113+deb13-amd64 (debian-kernel@lists.debian.org) (x86_64-linux-gnu-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15)[0m
+[0;21;39msystemd[1]: Started systemd-ask-pa[    4.564288] systemd[1]: Reached target nss-user-lookup.target - User and Group Name Lookups.
+[0;21;39msystemd[1]: Set up automount proc-sys-fs-binfmt_misc.automo[    4.567887] systemd[1]: Reached target remote-fs.target - Remote File Systems.
+unt - Arbitrary Executable File Formats File Sys[    4.569750] systemd[1]: Reached target slices.target - Slice Units.
+[0;21;39[    4.572580] systemd[1]: Reached target swap.target - Swaps.
+msystemd[1]: Reached target nss-user-lookup.target - User and Group Name Lookups.[0m
+[0;21;39msystemd[1]: Reached target remote-fs.target - Remote File Systems.[0m
+[0;21;39msystemd[1]: Reached target slices.target - Slice Units.[0m
+[0;21;39msystemd[1]: Reached target swap.target - Swaps.[0m
+[[0;32m  OK  [0m] Reached target [0;1;39mnss-user-lookup.target[0m - User and Group Name Lookups.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mslices.target[0m - Slice Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mswap.target[0m - Swaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Started [0;1;39msddm.service[0m - Simple Desktop Display Manager.
+44os login: 
+44os login: user
+--- OCR
+1p0: using parportO Cinterrupt-driven).
+[ 5.046077] i2Zc_dev: i2Zc /dev entries driver
+{C OK J] Finished ifupdown-pre.service - Heo synchronize boot up for ifupdown.
+iZc_dev: iZc /dev entries driver
+{ OK J] Finished systemd-sysusers.service - Create System Users.
+{ OK J] Finished systemd-modules-load.service - Load Kernel Modules.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+Starting systemd—tmpfiles-setup-demseate Static Device Nodes in /dev...
+{ OK J] Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+C OK J] Reached target local-fs-pre.targetsPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+{ OK J Finished systemd-sysctl.service - Apply Kernel Variables.
+C OK J] Started systemd-udeud.service - Rumsanager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+C OK J Found device deuv-ttyS0O.device - /dev/ttyS0.
+{ OK J Started plymouth-start.service - Show Plymouth Boot Screen.
+{ OK J] Started systemd—ask-password-plymosquests to Plymouth Directory Watch.
+[ 5.331489] sr 5:0:0:0: Attached scsi generic sgO type 5
+sr 5:0:0:0: Attached scsi generic sg@ type 5
+[ 5.340972] input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+input: PC Speaker as /devices/platform/pcspkr/ input/ input5S
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+{ OK J Finished modprobe@efi_pstore.service -— Load Kernel Module efi_pstore.
+[ 5.499538] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[ 5.515304] AES CTR mode by8 optimization enabled
+AES CTR mode by8 optimization enabled
+Mounting tmp.mount - /tmp...
+C OK J Mounted tmp.mount - /tmp.
+{ OK J] Reached target local-fs.target - Local File Systems.
+{ OK J] Listening on systemd-sysext.sockets System Extension Image Management.
+Starting netuorking.service - Raise network interfaces...
+Starting plymouth-read-urite.servisymouth To Write Out Runtime Data...
+Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Starting systemd-tmpfiles-setup.semate System Files and Directories...
+{ OK J Finished plymouth-read-vrite.servisPlymouth To Write Out Runtime Data.
+Mounting proc-sys-fs-binfmt_misc.mmcutable File Formats File System...
+{ OK J] Finished systemd-tmpfiles-setup.semreate System Files and Directories.
+Starting ldconfig.service - Rebuild Dynamic Linker Cache...
+Starting live-config.service - livm#e boot process (late userspace)....
+Starting systemd- journal-catalog-uservice —- Rebuild Journal Catalog...
+{C OK J Mounted proc-sys-fs-binfmt_misc.momsxecutable File Formats File System.
+{ OK J Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+{ OK J Finished systemd- journal-catalog-us.service - Rebuild Journal Catalog.
+{ OK J] Finished networking.service - Raise network interfaces.
+--- t=40s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=60s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=90s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=120s
+4 Fri 23 Oct | 6:28 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:28 PM R*eE Ov
+Install 440S
+--- t=150s
+4 Fri 23 Oct | 6:28 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:28 PM R*eE Ov
+Install 440S
+--- t=180s
+4 Fri 23 Oct | 6:29 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:29 PM R* Ee Ov
+Install 440S
+--- final
+4 Fri 23 Oct | 6:30 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:30 PM R*eOv
+Install 440S

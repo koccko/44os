@@ -1,0 +1,166 @@
+--- t=8s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+--- t=25s
+C OK J] Finished systemd- journal-flush.serslush Journal to Persistent Storage.
+{ OK J] Finished systemd-tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+[ 5.030436] lp0: using parportO Cinterrupt-driven).
+1p0: using parportO Cinterrupt-driven).
+[ 5.046077] i2c_dev: i2Zc /dev entries driver
+{ OK J Finished ifupdown-pre.service - Heo synchronize boot up for ifupdown.
+iZc_dev: iZc /dev entries driver
+{ OK J] Finished systemd-sysusers.service - Create System Users.
+{ OK J Finished systemd-modules-load.service - Load Kernel Modules.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+Starting systemd—tmpfiles-setup-demeate Static Device Nodes in /dev...
+C OK 1] Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+C OK J] Reached target local-fs-pre.targetsPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+{ OK J] Finished systemd-sysctl.service - Apply Kernel Variables.
+C OK J] Started systemd-udeud.service - Rumsanager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+C OK J Found device deuv-ttyS0.device - /dev/ttyS0.
+{ OK J Started plymouth-start.service - Show Plymouth Boot Screen.
+C OK J Started systemd—ask-password-plymosquests to Plymouth Directory Watch.
+[ 5.331489] sr 5:0:0:0: Attached scsi generic sgO type 5
+sr 5:0:0:0: Attached scsi generic sg@ type 5
+[ 5.340972] input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+input: PC Speaker as /devices/platform/pcspkr/ input/ input5S
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+{ OK J] Finished modprobe@efi_pstore.service -— Load Kernel Module efi_pstore.
+[ 5.499538] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[ 5.515304] AES CTR mode by8 optimization enabled
+AES CTR mode by8 optimization enabled
+Mounting tmp.mount - /tmp...
+C OK J Mounted tmp.mount - /tmp.
+{ OK J] Reached target local-fs.target - Local File Systems.
+{ OK J] Listening on systemd-sysext.sockets System Extension Image Management.
+Starting netuorking.service - Raise network interfaces...
+Starting plymouth-read-urite.servisymouth To Write Out Runtime Data...
+Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Starting systemd-tmpfiles-setup.semate System Files and Directories...
+{ OK J] Finished plymouth-read-vrite.servisPlymouth To Write Out Runtime Data.
+Mounting proc-sys-fs-binfmt_misc.m@cutable File Formats File System...
+{C OK J] Finished systemd-tmpfiles-setup.semreate System Files and Directories.
+Starting ldconfig.service - Rebuild Dynamic Linker Cache...
+Starting live-config.service - livm#e boot process (late userspace)....
+Starting systemd- journal-catalog-uservice —- Rebuild Journal Catalog...
+{C OK J Mounted proc-sys-fs-binfmt_misc.momsxecutable File Formats File System.
+{ OK J Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+C OK J] Finished systemd- journal-catalog-us.service - Rebuild Journal Catalog.
+{ OK J] Finished networking.service - Raise network interfaces.
+{ OK J] Finished systemd-journal-flush.serslush Journal to Persistent Storage.
+{ OK J] Finished systemd-tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+[ 5.030436] lpO0: using parportO Cinterrupt-driven).
+1p0: using parportO Cinterrupt-driven).
+[ 5.046077] i2Zc_dev: i2Zc /dev entries driver
+{C OK J] Finished ifupdown-pre.service - Heo synchronize boot up for ifupdown.
+iZc_dev: iZc /dev entries driver
+{ OK J] Finished systemd-sysusers.service - Create System Users.
+{ OK J] Finished systemd-modules-load.service - Load Kernel Modules.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+Starting systemd—tmpfiles-setup-demseate Static Device Nodes in /dev...
+{ OK J] Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+C OK J] Reached target local-fs-pre.targetsPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+{ OK J Finished systemd-sysctl.service - Apply Kernel Variables.
+C OK J] Started systemd-udeud.service - Rumsanager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+C OK J Found device deuv-ttyS0O.device - /dev/ttyS0.
+{ OK J Started plymouth-start.service - Show Plymouth Boot Screen.
+{ OK J] Started systemd—ask-password-plymosquests to Plymouth Directory Watch.
+[ 5.331489] sr 5:0:0:0: Attached scsi generic sgO type 5
+sr 5:0:0:0: Attached scsi generic sg@ type 5
+[ 5.340972] input: PC Speaker as /devices/platform/pcspkr/ input/input5S
+input: PC Speaker as /devices/platform/pcspkr/ input/ input5S
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+{ OK J Finished modprobe@efi_pstore.service -— Load Kernel Module efi_pstore.
+[ 5.499538] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[ 5.515304] AES CTR mode by8 optimization enabled
+AES CTR mode by8 optimization enabled
+Mounting tmp.mount - /tmp...
+C OK J Mounted tmp.mount - /tmp.
+{ OK J] Reached target local-fs.target - Local File Systems.
+{ OK J] Listening on systemd-sysext.sockets System Extension Image Management.
+Starting netuorking.service - Raise network interfaces...
+Starting plymouth-read-urite.servisymouth To Write Out Runtime Data...
+Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+Starting systemd-tmpfiles-setup.semate System Files and Directories...
+{ OK J Finished plymouth-read-vrite.servisPlymouth To Write Out Runtime Data.
+Mounting proc-sys-fs-binfmt_misc.mmcutable File Formats File System...
+{ OK J] Finished systemd-tmpfiles-setup.semreate System Files and Directories.
+Starting ldconfig.service - Rebuild Dynamic Linker Cache...
+Starting live-config.service - livm#e boot process (late userspace)....
+Starting systemd- journal-catalog-uservice —- Rebuild Journal Catalog...
+{C OK J Mounted proc-sys-fs-binfmt_misc.momsxecutable File Formats File System.
+{ OK J Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+{ OK J Finished systemd- journal-catalog-us.service - Rebuild Journal Catalog.
+{ OK J] Finished networking.service - Raise network interfaces.
+--- t=40s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=60s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=90s
+4 Fri 23 Oct | 6:27 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:27 PM R*eEOv
+Install 440S
+--- t=120s
+4 Fri 23 Oct | 6:28 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:28 PM R*eE Ov
+Install 440S
+--- t=150s
+4 Fri 23 Oct | 6:28 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:28 PM R*eE Ov
+Install 440S
+--- t=180s
+4 Fri 23 Oct | 6:29 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:29 PM R* Ee Ov
+Install 440S
+--- final
+4 Fri 23 Oct | 6:30 PM R* Ge Ov
+Install 440S
+4 Fri 23 Oct | 6:30 PM R*eOv
+Install 440S

@@ -1,0 +1,84 @@
+name=uefi-usb hv=qemu fw=uefi media=usb serial_iso=0 elapsed=34s
+stage_grub=1 stage_kernel=0 stage_graphical=0
+--- serial (key lines)
+--- OCR
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=25s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- final
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line

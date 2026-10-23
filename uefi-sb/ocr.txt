@@ -1,0 +1,228 @@
+--- t=8s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-23 15:44:35 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+--- t=25s
+[
+[
+OK
+OK
+] Finished modprobe@fuse.service - Load Kernel Module fuse.
+] Finished systemd-remount-fs.servicamount Root and Kernel File Systems.
+systemd[1]: Mounted run-lock.mount -— Legacy Locks Directory /run/lock.
+ppdev: user-space parallel port driver
+systemd[1]: Started systemd-journald.service - Journal Service.
+parport_pc 00:02: reported by Plug and Play ACPI
+parportO: PC-style at 0x378, irg 7? [PCSPP, TRISTATE]
+SSS See
+[
+OK
+OK
+OK
+OK
+OK
+Mounting sys-fs-fuse-connections.mount — FUSE Control File System...
+Mounting sys-kernel-config.mount - Kernel Configuration File System...
+Starting systemd- journal-flush.sergsh Journal to Persistent Storage...
+Starting systemd-random-seed.service - Load/Save OS Random Seed...
+Starting systemd-tmpfiles-setup-dem Device Nodes in /dev gracefully...
+Finished systemd-udev-load-credents— Load udev Rules from Credentials.
+Finished systemd-udeu-trigger.service - Coldplug All udev Devices.
+Mounted sys-—fs—fuse-connections.mount - FUSE Control File System.
+Mounted sys-kernel-config.mount - Kernel Configuration File System.
+] Finished systemd-random-seed.service - Load/Save OS Random Seed.
+——
+4.645658] systemd- journald[404]: Received client request to flush runtime journal.
+4.649799] lpO: using parportO Cinterrupt-driven).
+OK
+] Finished systemd-tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+systemd— journald[4041]: Received client request to flush runtime journal.
+[
+[
+[
+OK
+OK
+] Finished ifupdown-pre.service - He#o synchronize boot up for ifupdown.
+4.668261] i2c_dev: i2c /dev entries driver
+] Finished systemd- journal-flush.serslush Journal to Persistent Storage.
+lp0: using parportO Cinterrupt-driven).
+i2c_dev: i2c /dev entries driver
+[
+[
+[
+[
+[
+[
+S
+[
+input:
+[
+[
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+4.
+r 5:0:
+4.
+OK
+_
+Finished systemd-sysusers.service - Create System Users.
+Starting systemd-tmpfiles-setup-demeate Static Device Nodes in /dev...
+Finished systemd-modules-load.service - Load Kernel Modules.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+Reached target local-fs-pre.targetaPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+Finished systemd-sysctl.service - Apply Kernel Variables.
+Started systemd-udeud.service - Ru@anager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+Found device dev-ttyS0.device - /dev/ttyS0.
+Started plymouth-start.service -— Show Plymouth Boot Screen.
+] Started systemd-ask—password—-plymomquests to Plymouth Directory Watch.
+8598571 sr 5:0:0:0: Attached scsi generic sgO type 5
+0:0: Attached scsi generic sgO type 5
+9155661 input: PC Speaker as /devices/platform/pcespkr/ input/ input5
+PC Speaker as /devices/platform/pcspkr/ input/ input5S
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+] Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+_
+—
+—
+—
+-084254] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+[
+[
+OK
+OK
+] Finished modprobe@fuse.service - Load Kernel Module fuse.
+] Finished systemd-remount-fs.servicamount Root and Kernel File Systems.
+systemd[1]: Mounted run-lock.mount -— Legacy Locks Directory /run/lock.
+ppdev: user-space parallel port driver
+systemd[1]: Started systemd-journald.service - Journal Service.
+parport_pc 00:02: reported by Plug and Play ACPI
+parportO: PC-style at 0x378, irg 7? [PCSPP, TRISTATE]
+SSS See
+[
+OK
+OK
+OK
+OK
+OK
+Mounting sys-fs-fuse-connections.mount — FUSE Control File System...
+Mounting sys-kernel-config.mount - Kernel Configuration File System...
+Starting systemd- journal-flush.sergsh Journal to Persistent Storage...
+Starting systemd-random-seed.service - Load/Save OS Random Seed...
+Starting systemd—tmpfiles-setup-des Device Nodes in /dev gracefully...
+Finished systemd-udev-load-credents— Load udev Rules from Credentials.
+Finished systemd-udeu-trigger.service - Coldplug All udev Devices.
+Mounted sys—fs—fuse-comections.mount - FUSE Control File System.
+Mounted sys-kernel-config.mount - Kernel Configuration File System.
+] Finished systemd-random-seed.service - Load/Save OS Random Seed.
+a
+4.645658] systemd- journald[404]: Received client request to flush runtime journal.
+4.649799] lpO: using parportO Cinterrupt-driven).
+OK
+] Finished systemd—tmpfiles-setup-desic Device Nodes in /dev gracefully.
+Starting systemd-sysusers.service - Create System Users...
+systemd— journald[4041]: Received client request to flush runtime journal.
+[
+[
+[
+OK
+OK
+] Finished ifupdown-pre.service - He#o synchronize boot up for ifupdown.
+4.668261] i2c_dev: i2c /dev entries driver
+] Finished systemd-journal-flush.serslush Journal to Persistent Storage.
+lp0: using parportO Cinterrupt-driven).
+i2c_dev: i2c /dev entries driver
+[
+[
+[
+[
+[
+[
+S
+[
+input:
+[
+[
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+4.
+r 5:0:
+4.
+OK
+_
+Finished systemd-sysusers.service - Create System Users.
+Starting systemd-tmpfiles-setup-demseate Static Device Nodes in /dev...
+Finished systemd-modules-load.service - Load Kernel Modules.
+Starting systemd-sysctl.service - Apply Kernel Variables...
+Finished systemd-tmpfiles-setup-desCreate Static Device Nodes in /dev.
+Reached target local-fs-pre.targetaPreparation for Local File Systems.
+Starting systemd-udeud.service - Rmager for Device Events and Files...
+Finished systemd-sysctl.service - Apply Kernel Variables.
+Started systemd-udeud.service - Ru@anager for Device Events and Files.
+Starting plymouth-start.service - Show Plymouth Boot Screen...
+Found device dev-ttyS0.device - /dev/ttyS0.
+Started plymouth-start.service - Show Plymouth Boot Screen.
+] Started systemd-ask—password—-plymosquests to Plymouth Directory Watch.
+8598571 sr 5:0:0:0: Attached scsi generic sgO type 5
+0:0: Attached scsi generic sgO type 5
+9155661 input: PC Speaker as /devices/platform/pcespkr/ input/ input5
+PC Speaker as /devices/platform/pcspkr/ input/ input5S
+Starting modprobe@efi_pstore.servis — Load Kernel Module efi_pstore...
+] Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+_
+ie
+ie
+ie
+-084254] cryptd: max_cpu_qlen set to 1000
+cryptd: max_cpu_qlen set to 1000
+--- final
+4 Fri 23 Oct | 6:25 PM R* Ee Ov
+Install 440S
+4 Fri 23 Oct | 6:25 PM R* Ge Ov
+Install 440S
