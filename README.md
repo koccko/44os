@@ -1,19 +1,59 @@
-# 44OS 0.4 Alpha
+# 44OS
 
-Built on Debian 13 + KDE Plasma 6 + Calamares. This is a **source bundle**, not an ISO.
+44OS is a Debian 13 "trixie" based live/installable Linux distribution with a
+minimal, dark KDE Plasma 6 desktop and the Calamares installer.
 
-## Changes
-- Replaced large medical-looking cross and wallpaper slogan with a minimal abstract dark wallpaper.
-- Added a compact geometric 44 symbol (SVG) and app icon.
-- Top system bar, attempted content-sized centered floating dock (subject to Plasma scripting API compatibility).
-- Kept Calamares; cleaned up duplicate Debian desktop installer launcher where its desktop entry uses `Name=Install Debian`.
-- Rebranded SDDM wallpaper and launcher; kept accurate Debian origin in About This System (OS-release was intentionally not spoofed).
+## Desktop
+
+- **Top bar**: 44OS launcher, global menu, centered clock, system tray.
+- **Dock**: floating, centered, sized to its content (Files, Firefox,
+  Konsole, Kate, System Settings).
+- **Look**: the 44OS dark palette, Inter UI font, Breeze/Breeze Dark icons,
+  centered window titles, macOS-style window buttons on the left.
+- **Same branding everywhere**: desktop, lock screen, SDDM login screen and the
+  Calamares installer share the 44OS mark and "Horizon" wallpaper.
+
+The layout ships as a Plasma look-and-feel package (`org.44os.desktop`). Plasma
+applies it only when a user has no desktop configuration yet, so it never
+touches an existing user's layout.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| `build-44os.sh` | live-build driver (run as root on Debian trixie) |
+| `config/package-lists/` | packages in the live image |
+| `config/includes.chroot/` | files copied into the image (branding, defaults) |
+| `config/hooks/live/` | chroot hooks (Calamares branding, launcher clean-up, checks) |
+| `branding/` | SVG sources plus `render.sh`/`colors.py` that regenerate the committed assets |
+| `scripts/verify-iso.sh` | static check of the ISO boot structures (BIOS + UEFI) |
+| `.github/scripts/boot-test.sh` | automated QEMU/VirtualBox boot test |
 
 ## Build
-Copy this source tree into your GitHub repo preserving folders. GitHub Actions creates `44OS-0.4-alpha-live-amd64.iso` in the artifact.
 
-## Test safely
-Boot the new ISO in **Live** mode in VirtualBox. Check wallpaper, panel positions, installer icon, and SDDM (log out). **Do not reinstall** to test appearance.
+GitHub Actions → **Build 44OS Live ISO** → *Run workflow*. The workflow:
 
-## Limitations
-This bundle is not yet boot-tested. KDE Plasma 6 scripting support for floating/fit panel properties varies; the dock may fall back to a full-width panel. `About this System` continues to identify Debian 13 accurately. Do not install over your existing working 44OS 0.2 until tested.
+1. builds the ISO in a `debian:trixie` container,
+2. runs `scripts/verify-iso.sh` (El Torito BIOS/UEFI entries, `EFI/BOOT/BOOTX64.EFI`
+   inside the EFI image, kernel/initrd/squashfs, GRUB live entry),
+3. boots the ISO headless: QEMU+OVMF UEFI (DVD and USB), UEFI Secure Boot,
+   BIOS, a full UEFI boot up to `graphical.target`, and VirtualBox EFI.
+
+The ISO is uploaded as the `44OS-<version>-live-amd64` artifact (a zip that
+contains the `.iso` and `SHA256SUMS`). Unzip it before attaching the `.iso` to a VM.
+
+Local build (Debian trixie, root): `sudo ./build-44os.sh` → `dist/`.
+
+## VirtualBox
+
+Create a *Linux / Debian (64-bit)* VM, 4 GB RAM or more, and tick
+*Enable EFI* if you want UEFI. Attach the extracted `.iso` to the optical drive,
+not the `.zip`. Select **Live system** in the boot menu; use **Install 44OS** on the
+desktop to install.
+
+## Regenerating branding
+
+```sh
+sudo apt install librsvg2-bin imagemagick fonts-inter python3
+branding/render.sh
+```
