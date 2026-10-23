@@ -19,6 +19,7 @@
 #   DURATION    seconds to run                            (default: 300)
 #   REQUIRE     grub | kernel | graphical | none          (default: grub)
 #   SERIAL_ISO  1 = remaster a copy whose kernel/GRUB also log to ttyS0
+#   VGA         QEMU display adapter                     (default: std)
 #   OUT         output directory                          (default: boot-$NAME)
 set -Eeuo pipefail
 
@@ -30,6 +31,7 @@ MEDIA="${MEDIA:-cdrom}"
 DURATION="${DURATION:-300}"
 REQUIRE="${REQUIRE:-grub}"
 SERIAL_ISO="${SERIAL_ISO:-0}"
+VGA="${VGA:-std}"
 OUT="${OUT:-$PWD/boot-$NAME}"
 mkdir -p "$OUT"
 OUT="$(cd "$OUT" && pwd)"
@@ -112,7 +114,7 @@ start_qemu() {
   log "starting QEMU fw=$FW media=$MEDIA accel=${accel[*]}"
   qemu-system-x86_64 -machine "$machine" "${accel[@]}" -m 4096 -smp 2 \
     "${fw[@]}" "${media[@]}" \
-    -vga std -display none -serial file:"$SERIAL" \
+    -vga "$VGA" -display none -serial file:"$SERIAL" \
     -monitor unix:"$OUT/mon.sock",server,nowait \
     -nic user,model=virtio-net-pci -device virtio-rng-pci \
     >"$OUT/qemu.log" 2>&1 &

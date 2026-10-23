@@ -136,7 +136,7 @@ jobs:
             .github/scripts/boot-test.sh
       - name: "UEFI full boot: GRUB -> kernel -> live system -> graphical.target"
         run: |
-          ISO=$(ls dist/*.iso) NAME=uefi-full FW=uefi MEDIA=cdrom DURATION=600 REQUIRE=graphical SERIAL_ISO=1 OUT=out/uefi-full \
+          ISO=$(ls dist/*.iso) NAME=uefi-full VGA=virtio FW=uefi MEDIA=cdrom DURATION=600 REQUIRE=graphical SERIAL_ISO=1 OUT=out/uefi-full \
             .github/scripts/boot-test.sh
       - name: Report results
         if: always()
