@@ -2,5 +2,5 @@
 Type=Application
 Name=Install 44OS
 Exec=pkexec calamares
-Icon=drive-harddisk
+Icon=44os-logo
 Terminal=false

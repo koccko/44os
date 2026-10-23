@@ -55,7 +55,7 @@ jobs:
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 44OS-0.3-alpha-live-amd64
+          name: 44OS-0.4-alpha-live-amd64
           path: dist/
           if-no-files-found: error
           retention-days: 7

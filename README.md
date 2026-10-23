@@ -1,31 +1,19 @@
-# 44OS 0.3 Alpha — Petrol Copper Edition
+# 44OS 0.4 Alpha
 
-Debian 13 / KDE Plasma 6 Live ISO with Calamares installer.
+Built on Debian 13 + KDE Plasma 6 + Calamares. This is a **source bundle**, not an ISO.
 
-## Changes from 0.2
-- 44OS SVG wallpaper and Petrol Copper KDE color scheme
-- One-time KDE Plasma panel setup: top system bar and bottom icon task manager (dock-like panel)
-- 44OS first-login autostart for Live and installed users
-- SDDM Breeze wallpaper override and GRUB distributor label
-- Additional Install 44OS launcher (the original Debian installer launcher may remain)
-- Same working Debian Calamares configuration as 0.2
+## Changes
+- Replaced large medical-looking cross and wallpaper slogan with a minimal abstract dark wallpaper.
+- Added a compact geometric 44 symbol (SVG) and app icon.
+- Top system bar, attempted content-sized centered floating dock (subject to Plasma scripting API compatibility).
+- Kept Calamares; cleaned up duplicate Debian desktop installer launcher where its desktop entry uses `Name=Install Debian`.
+- Rebranded SDDM wallpaper and launcher; kept accurate Debian origin in About This System (OS-release was intentionally not spoofed).
 
 ## Build
-Commit these files to the GitHub repository, then run the Build 44OS Live ISO workflow.
-Download the Actions artifact ZIP, extract the ISO, and boot it in VirtualBox.
+Copy this source tree into your GitHub repo preserving folders. GitHub Actions creates `44OS-0.4-alpha-live-amd64.iso` in the artifact.
 
-## Test checklist
-1. Boot ISO in VirtualBox, verify wallpaper, colors and panels. The one-time setup may take up to 50 seconds after login.
-2. Open Install 44OS and verify Calamares launches. If pkexec launch fails, use the original Install Debian icon.
-3. Install to an EMPTY VirtualBox virtual disk only.
-4. Shut down, eject ISO, boot from virtual disk.
-5. Verify wallpaper, colors, panels and installer boot behavior.
+## Test safely
+Boot the new ISO in **Live** mode in VirtualBox. Check wallpaper, panel positions, installer icon, and SDDM (log out). **Do not reinstall** to test appearance.
 
-## Known limitations
-- Not yet tested in CI for boot or Calamares execution; CI checks ISO generation only.
-- Panel layout uses Plasma DBus scripting; if the scripting API differs, appearance may need a follow-up fix.
-- The bottom panel is dock-like, not a fully floating macOS-style dock.
-- Login theme is Breeze with a 44OS wallpaper; not yet a fully custom QML SDDM theme.
-- The original Debian Calamares launcher/branding may remain; do not modify Calamares core until validated.
-- System remains Debian-based and /etc/os-release accurately reports Debian.
-- Do not deploy to a real disk before testing in a VM and taking backups.
+## Limitations
+This bundle is not yet boot-tested. KDE Plasma 6 scripting support for floating/fit panel properties varies; the dock may fall back to a full-width panel. `About this System` continues to identify Debian 13 accurately. Do not install over your existing working 44OS 0.2 until tested.

@@ -3,6 +3,6 @@ Type=Application
 Name=Install 44OS
 Comment=Install 44OS to your computer
 Exec=pkexec calamares
-Icon=drive-harddisk
+Icon=44os-logo
 Categories=System;
 Terminal=false
