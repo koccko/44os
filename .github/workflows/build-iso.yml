@@ -105,6 +105,9 @@ jobs:
     needs: build
     if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -160,9 +163,22 @@ jobs:
           done
           .github/scripts/annotate-image.sh "grub-uefi" "$(ls out/uefi-dvd/shot-*.png 2>/dev/null | sed -n 2p)" 800
           .github/scripts/annotate-image.sh "desktop" "out/uefi-full/final.png" 1024
-      - name: Report live session debug output
-        if: always()
-        run: .github/scripts/annotate.sh notice "live session debug" out/uefi-full/debug.txt 60000
+      - name: Publish results to a ci-results branch (manual runs only)
+        if: always() && github.event_name == 'workflow_dispatch'
+        run: |
+          mkdir -p pub
+          for d in out/*/; do
+            n=$(basename "$d"); mkdir -p "pub/$n"
+            cp "$d"/result.txt "$d"/debug.txt "$d"/ocr.txt "pub/$n/" 2>/dev/null || true
+            for p in "$d"/shot-*.png "$d"/final.png; do
+              [ -f "$p" ] && convert "$p" -resize 1280x -quality 80 "pub/$n/$(basename "${p%.png}").jpg"
+            done
+          done
+          cd pub
+          git init -q -b results
+          git config user.name "44os-ci"; git config user.email "44os-ci@users.noreply.github.com"
+          git add -A && git commit -qm "Boot test results for run ${{ github.run_id }}"
+          git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "results:refs/heads/ci-results/${{ github.run_id }}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
