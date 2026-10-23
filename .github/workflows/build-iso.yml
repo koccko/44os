@@ -2,11 +2,17 @@ name: Build 44OS Live ISO
 
 on:
   workflow_dispatch:
+    inputs:
+      iso_run_id:
+        description: "Skip the build and boot-test the ISO artifact of this run id"
+        required: false
+        default: ""
   pull_request:
     branches: [main]
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: build-iso-${{ github.ref }}
@@ -17,6 +23,7 @@ env:
 
 jobs:
   build:
+    if: ${{ !inputs.iso_run_id }}
     runs-on: ubuntu-24.04
     timeout-minutes: 120
 
@@ -90,6 +97,7 @@ jobs:
 
   boot-test:
     needs: build
+    if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -99,6 +107,8 @@ jobs:
         with:
           name: 44OS-${{ env.VERSION }}-live-amd64
           path: dist
+          run-id: ${{ inputs.iso_run_id || github.run_id }}
+          github-token: ${{ github.token }}
 
       - name: Install QEMU, OVMF and OCR tools
         run: |
@@ -150,6 +160,7 @@ jobs:
 
   boot-test-virtualbox:
     needs: build
+    if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     # VirtualBox needs a kernel module built for the runner kernel; treat
@@ -161,6 +172,8 @@ jobs:
         with:
           name: 44OS-${{ env.VERSION }}-live-amd64
           path: dist
+          run-id: ${{ inputs.iso_run_id || github.run_id }}
+          github-token: ${{ github.token }}
       - name: Install VirtualBox
         run: |
           sudo apt-get update

@@ -122,6 +122,7 @@ shot_qemu() { # $1 = png path
   echo "screendump $OUT/.shot.ppm" | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1 || return 1
   sleep 1; convert "$OUT/.shot.ppm" "$1" 2>/dev/null; rm -f "$OUT/.shot.ppm"
 }
+key_qemu() { echo "sendkey ret" | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1; }
 alive_qemu() { kill -0 "$VM_PID" 2>/dev/null; }
 stop_qemu() { echo quit | socat - UNIX-CONNECT:"$OUT/mon.sock" >/dev/null 2>&1 || kill "$VM_PID" 2>/dev/null || true; }
 
@@ -138,6 +139,7 @@ start_vbox() {
   VBoxManage startvm "$VM" --type headless >"$OUT/vbox.log" 2>&1
 }
 shot_vbox() { VBoxManage controlvm "$VM" screenshotpng "$1" >/dev/null 2>&1; }
+key_vbox() { VBoxManage controlvm "$VM" keyboardputscancode 1c 9c >/dev/null 2>&1; }
 alive_vbox() { VBoxManage showvminfo "$VM" --machinereadable 2>/dev/null | grep -q '^VMState="running"'; }
 stop_vbox() {
   VBoxManage controlvm "$VM" poweroff >/dev/null 2>&1 || true; sleep 3
@@ -164,6 +166,11 @@ for t in "${shot_times[@]}"; do
     { echo "--- t=${t}s"; ocr "$png"; } >> "$OUT/ocr.txt"
   fi
   check_stages
+  # The live GRUB menu has no timeout: select the default entry once the
+  # menu is visible when the test needs to go past GRUB.
+  if (( stage_grub )) && [[ "$REQUIRE" == kernel || "$REQUIRE" == graphical ]] && [[ -z "${pressed:-}" ]]; then
+    log "GRUB menu detected at ${t}s: pressing Enter"; "key_$HV" || true; pressed=1
+  fi
   case "$REQUIRE" in
     grub)      (( stage_grub )) && (( t >= 25 )) && break ;;
     kernel)    (( stage_kernel )) && break ;;
