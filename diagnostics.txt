@@ -1,0 +1,11 @@
+== 44osrc
+== kinfo
+== panels
+== plasmashell panel geometry
+== kwin decoration
+== plymouth
+== QML / plasmoid errors
+== autostart
+dock tooltip under pointer: none
+== processes after dock click
+

@@ -1,0 +1,23 @@
+PASS  GRUB menu (UEFI)
+PASS  Plasma session reaches graphical login (serial)
+FAIL  44Welcome opens automatically on first login
+PASS  serial login as live user
+FAIL  44Welcome completion persisted per user
+FAIL  44Dock plasmoid in panel config
+FAIL  Active-app plasmoid in panel config
+PASS  No QML errors from 44OS plasmoids
+FAIL  44NOVA window decoration configured
+WARN  Plymouth theme is 44nova
+FAIL  Top bar shows clock/date
+WARN  Top bar shows active-app title
+PASS  Dock icons magnify under the pointer
+WARN  Dock tooltip shows the application name
+FAIL  Clicking a dock icon launches an application
+FAIL  44Launcher (KRunner) opens and calculates
+FAIL  Super+Space opens 44Launcher
+FAIL  Dolphin window opens
+WARN  Global menu shows the app's menus in the top bar
+WARN  Active-app title follows the focused window
+FAIL  About this System shows 44OS branding
+FAIL  44Welcome system page opens
+WARN  44Welcome appearance page opens

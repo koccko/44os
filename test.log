@@ -1,0 +1,9 @@
+[09:59:44] QEMU start live fw=uefi cdrom=/home/runner/work/44os/44os/out/desktop/serial.iso disks=none
+[09:59:54] screen shows /Live system/
+[10:04:14] timeout waiting for /Welcome to 44OS NOVA/
+[10:11:32] timeout waiting for /144/
+[10:11:59] timeout waiting for /Konsole/
+[10:13:13] timeout waiting for /Home|Places|Dolphin/
+[10:15:22] timeout waiting for /44OS/
+[10:17:04] timeout waiting for /Processor|Memory/
+[10:18:06] timeout waiting for /Wallpaper/

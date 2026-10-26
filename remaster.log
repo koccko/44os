@@ -1,0 +1,55 @@
+xorriso 1.5.6 : RockRidge filesystem manipulator, libburnia project.
+
+xorriso : NOTE : ISO image bears MBR with  -boot_image any partition_offset=16
+xorriso : NOTE : Loading ISO image tree from LBA 0
+xorriso : UPDATE :     306 nodes read in 1 seconds
+xorriso : NOTE : Detected El-Torito boot information which currently is set to be discarded
+Drive current: -indev 'dist/44OS-0.6-alpha-live-amd64.iso'
+Media current: stdio file, overwriteable
+Media status : is written , is appendable
+Boot record  : El Torito , MBR isohybrid cyl-align-on GPT APM
+Media summary: 1 session, 1395360 data blocks, 2725m data, 82.6g free
+Volume id    : '44OS'
+Drive current: -outdev '/home/runner/work/44os/44os/out/desktop/serial.iso'
+Media current: stdio file, overwriteable
+Media status : is blank
+Media summary: 0 sessions, 0 data blocks, 0 data, 82.6g free
+xorriso : NOTE : Replayed 23 boot related commands
+xorriso : UPDATE :       1 files added in 1 seconds
+Added to ISO image: file '/boot/grub/grub.cfg'='/home/runner/work/44os/44os/out/desktop/.remaster/boot/grub/grub.cfg'
+xorriso : UPDATE :       1 files added in 1 seconds
+Added to ISO image: file '/isolinux/live.cfg'='/home/runner/work/44os/44os/out/desktop/.remaster/isolinux/live.cfg'
+xorriso : NOTE : Copying to System Area: 32768 bytes from file '--interval:imported_iso:0s-15s:zero_mbrpt,zero_gpt,zero_apm:dist/44OS-0.6-alpha-live-amd64.iso'
+libisofs: NOTE : Aligned image size to cylinder size by 669 blocks
+xorriso : UPDATE : Writing:      11338s    0.8%   fifo  99%  buf  50%
+xorriso : UPDATE : Writing:      98304s    7.0%   fifo 100%  buf  50%  128.5xD 
+xorriso : UPDATE : Writing:     188416s   13.5%   fifo 100%  buf  50%  133.1xD 
+xorriso : UPDATE : Writing:     278528s   20.0%   fifo 100%  buf  50%  133.1xD 
+xorriso : UPDATE : Writing:     368640s   26.4%   fifo 100%  buf  50%  133.1xD 
+xorriso : UPDATE : Writing:     417536s   29.9%   fifo 100%  buf  50%   72.2xD 
+xorriso : UPDATE : Writing:     507904s   36.4%   fifo 100%  buf  50%  133.5xD 
+xorriso : UPDATE : Writing:     590704s   42.3%   fifo  91%  buf  50%  122.3xD 
+xorriso : UPDATE : Writing:     679936s   48.7%   fifo 100%  buf  50%  131.8xD 
+xorriso : UPDATE : Writing:     772562s   55.4%   fifo  97%  buf  50%  136.1xD 
+xorriso : UPDATE : Writing:     860160s   61.6%   fifo 100%  buf  50%  129.4xD 
+xorriso : UPDATE : Writing:     950272s   68.1%   fifo 100%  buf  50%  133.1xD 
+xorriso : UPDATE : Writing:    1041535s   74.6%   fifo  98%  buf  50%  134.8xD 
+xorriso : UPDATE : Writing:    1133136s   81.2%   fifo  91%  buf  50%  135.3xD 
+xorriso : UPDATE : Writing:    1228800s   88.1%   fifo 100%  buf  50%  141.3xD 
+xorriso : UPDATE : Writing:    1318912s   94.5%   fifo 100%  buf  50%  133.1xD 
+xorriso : UPDATE : Writing:    1376256s   98.6%   fifo 100%  buf  50%   84.7xD 
+ISO image produced: 1395312 sectors
+Written to medium : 1395472 sectors at LBA 48
+Writing to '/home/runner/work/44os/44os/out/desktop/serial.iso' completed successfully.
+
+xorriso : NOTE : Re-assessing -outdev '/home/runner/work/44os/44os/out/desktop/serial.iso'
+xorriso : NOTE : ISO image bears MBR with  -boot_image any partition_offset=16
+xorriso : NOTE : Loading ISO image tree from LBA 0
+xorriso : UPDATE :     306 nodes read in 1 seconds
+xorriso : NOTE : Detected El-Torito boot information which currently is set to be discarded
+Drive current: -dev '/home/runner/work/44os/44os/out/desktop/serial.iso'
+Media current: stdio file, overwriteable
+Media status : is written , is appendable
+Boot record  : El Torito , MBR isohybrid cyl-align-on GPT APM
+Media summary: 1 session, 1395312 data blocks, 2725m data, 79.9g free
+Volume id    : '44OS'
