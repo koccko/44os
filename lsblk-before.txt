@@ -1,0 +1,5 @@
+NAME   SIZE TYPE FSTYPE   LABEL
+loop0  2.5G loop squashfs 
+sr0    2.7G rom  iso9660  44OS
+vda     24G disk          
+vdb    256M disk ext4     CANARY

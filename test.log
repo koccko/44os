@@ -1,0 +1,7 @@
+[10:24:05] QEMU start live fw=uefi cdrom=/home/runner/work/44os/44os/out/install/serial.iso disks=/home/runner/work/44os/44os/out/install/target.qcow2 /home/runner/work/44os/44os/out/install/canary.img
+[10:24:24] screen shows /Live system/
+[10:25:44] screen shows /Welcome to 44[0O]S|Your system|Install 44[0O]S/
+[10:30:39] timeout waiting for /Welcome to the|installer/
+[10:31:09] timeout: could not find /^Next$|Next/ to click
+[10:32:14] timeout waiting for /Location|Region|Zone|Time/
+[10:32:44] timeout: could not find /Next/ to click

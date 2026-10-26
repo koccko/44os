@@ -1,0 +1,7 @@
+PASS  Live ISO: GRUB menu
+PASS  Live ISO: session started
+PASS  Live ISO: serial login
+PASS  Live desktop has exactly one installer launcher
+FAIL  Calamares starts from the Install 44OS launcher
+FAIL  Calamares: welcome → location
+FAIL  Calamares: location → keyboard

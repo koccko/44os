@@ -1,0 +1,4 @@
+/home/user/Desktop/44os-install.desktop:Exec=calamares-install-debian
+/home/user/Desktop/44os-install.desktop:TryExec=calamares-install-debian
+/usr/share/applications/44os-install.desktop:Exec=calamares-install-debian
+/usr/share/applications/44os-insttall.desktop:TryExec=calamares-install-debian
