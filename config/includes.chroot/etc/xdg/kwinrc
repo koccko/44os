@@ -1,14 +1,34 @@
-# 44OS window manager defaults.
+# 44OS NOVA window manager defaults.
+# 44os-session-setup lowers effects automatically on software rendering.
 [org.kde.kdecoration2]
-library=org.kde.breeze
-theme=Breeze
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__44NOVA
 ButtonsOnLeft=XIA
 ButtonsOnRight=
+BorderSize=Normal
+BorderSizeAuto=false
 
 [Plugins]
 blurEnabled=true
 contrastEnabled=true
+magiclampEnabled=true
+squashEnabled=false
+overviewEnabled=true
+slideEnabled=true
 
 [Effect-blur]
 BlurStrength=8
 NoiseStrength=2
+
+[Effect-magiclamp]
+AnimationDuration=260
+
+[TabBox]
+LayoutName=thumbnail_grid
+
+[Desktops]
+Number=4
+Rows=1
+
+[Windows]
+BorderlessMaximizedWindows=false

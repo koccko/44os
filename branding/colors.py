@@ -1,86 +1,111 @@
 #!/usr/bin/env python3
-"""Generate the 44OS Plasma colour scheme and the system-wide kdeglobals.
+"""Generate the 44OS NOVA Plasma colour schemes and the system-wide kdeglobals.
 
-One palette feeds both files so desktop, apps and new users stay consistent:
-  config/includes.chroot/usr/share/color-schemes/44OS.colors
+One palette feeds every file so desktop, apps and new users stay consistent:
+  config/includes.chroot/usr/share/color-schemes/44OSNova.colors       (default, dark)
+  config/includes.chroot/usr/share/color-schemes/44OSNovaLight.colors  (light)
+  config/includes.chroot/usr/share/color-schemes/44OS.colors           (0.5 name, alias of NOVA dark)
   config/includes.chroot/etc/xdg/kdeglobals
 """
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "config" / "includes.chroot"
 
+# NOVA Glass design system
+NOVA = dict(
+    bg="#080D18", bg2="#111A2B", surface="#18243A", accent="#65A8FF", accent2="#8B7CFF",
+    text="#F1F5FF", text2="#A7B5CC", border="#344765", success="#49D9AD", warning="#FFBE70",
+    danger="#FF6B7A",
+)
+NOVA_LIGHT = dict(
+    bg="#F4F7FC", bg2="#E9EEF7", surface="#FFFFFF", accent="#2F7BEA", accent2="#6A5AE0",
+    text="#101828", text2="#4A5872", border="#C9D3E3", success="#159A74", warning="#B86E12",
+    danger="#D6324A",
+)
+
+
 def rgb(h):
     h = h.lstrip("#")
     return ",".join(str(int(h[i:i + 2], 16)) for i in (0, 2, 4))
 
-FG = dict(
-    ForegroundNormal="#E6EAF2", ForegroundInactive="#8C95A8", ForegroundActive="#7FE3FF",
-    ForegroundLink="#6FB1FF", ForegroundVisited="#A68CFF", ForegroundNegative="#FF6B7A",
-    ForegroundNeutral="#F5B861", ForegroundPositive="#4ED6A1",
-    DecorationFocus="#5E9BFF", DecorationHover="#7FB3FF",
-)
 
-def group(bg, alt, **over):
-    d = dict(BackgroundNormal=bg, BackgroundAlternate=alt, **FG)
-    d.update(over)
-    return d
+def groups(p):
+    fg = dict(
+        ForegroundNormal=p["text"], ForegroundInactive=p["text2"], ForegroundActive=p["accent"],
+        ForegroundLink=p["accent"], ForegroundVisited=p["accent2"], ForegroundNegative=p["danger"],
+        ForegroundNeutral=p["warning"], ForegroundPositive=p["success"],
+        DecorationFocus=p["accent"], DecorationHover=p["accent"],
+    )
 
-GROUPS = {
-    "Colors:Window": group("#12151C", "#171B24"),
-    "Colors:View": group("#0E1117", "#141821"),
-    "Colors:Button": group("#1E2330", "#232938"),
-    "Colors:Selection": group("#5E9BFF", "#4C86E6", ForegroundNormal="#FFFFFF",
-                              ForegroundInactive="#DCE6FF", ForegroundActive="#FFFFFF",
-                              ForegroundLink="#FFFFFF", ForegroundVisited="#EDE6FF"),
-    "Colors:Tooltip": group("#161A23", "#1B202B"),
-    "Colors:Complementary": group("#0B0E14", "#11151D"),
-    "Colors:Header": group("#151923", "#191E29"),
-    "Colors:Header][Inactive": group("#12151C", "#171B24"),
-}
+    def g(bg, alt, **over):
+        d = dict(BackgroundNormal=bg, BackgroundAlternate=alt, **fg)
+        d.update(over)
+        return d
 
-def scheme_text(wm_extra=()):
+    on_accent = "#FFFFFF"
+    return {
+        "Colors:Window": g(p["bg2"], p["surface"]),
+        "Colors:View": g(p["bg"], p["bg2"]),
+        "Colors:Button": g(p["surface"], p["bg2"]),
+        "Colors:Selection": g(p["accent"], p["accent2"], ForegroundNormal=on_accent,
+                              ForegroundInactive=on_accent, ForegroundActive=on_accent,
+                              ForegroundLink=on_accent, ForegroundVisited=on_accent),
+        "Colors:Tooltip": g(p["surface"], p["bg2"]),
+        "Colors:Complementary": g(p["bg"], p["bg2"]),
+        "Colors:Header": g(p["bg2"], p["surface"]),
+        "Colors:Header][Inactive": g(p["bg2"], p["surface"]),
+    }
+
+
+def scheme_body(p, wm_extra=()):
     out = [
-        "[ColorEffects:Disabled]", "Color=56,56,56",
-        "ColorAmount=0", "ColorEffect=0", "ContrastAmount=0.65", "ContrastEffect=1",
-        "IntensityAmount=0.1", "IntensityEffect=2", "",
+        "[ColorEffects:Disabled]", "Color=56,56,56", "ColorAmount=0", "ColorEffect=0",
+        "ContrastAmount=0.65", "ContrastEffect=1", "IntensityAmount=0.1", "IntensityEffect=2", "",
         "[ColorEffects:Inactive]", "ChangeSelectionColor=true", "Color=112,111,110",
         "ColorAmount=0.025", "ColorEffect=2", "ContrastAmount=0.1", "ContrastEffect=2",
         "Enable=false", "IntensityAmount=0", "IntensityEffect=0", "",
     ]
-    for name, values in GROUPS.items():
+    for name, values in groups(p).items():
         out.append(f"[{name}]")
         out += [f"{k}={rgb(v)}" for k, v in sorted(values.items())]
         out.append("")
     out += [
         "[WM]",
-        f"activeBackground={rgb('#151923')}", f"activeBlend={rgb('#E6EAF2')}",
-        f"activeForeground={rgb('#E6EAF2')}", f"inactiveBackground={rgb('#12151C')}",
-        f"inactiveBlend={rgb('#8C95A8')}", f"inactiveForeground={rgb('#8C95A8')}", *wm_extra, "",
+        f"activeBackground={rgb(p['bg2'])}", f"activeBlend={rgb(p['text'])}",
+        f"activeForeground={rgb(p['text'])}", f"inactiveBackground={rgb(p['bg2'])}",
+        f"inactiveBlend={rgb(p['text2'])}", f"inactiveForeground={rgb(p['text2'])}",
+        *wm_extra, "",
     ]
     return out
 
+
+def write_scheme(filename, scheme_id, name, p):
+    path = ROOT / "usr/share/color-schemes" / filename
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(
+        ["[General]", f"ColorScheme={scheme_id}", f"Name={name}", "shadeSortColumn=true", "",
+         "[KDE]", "contrast=4", ""] + scheme_body(p)))
+
+
 def main():
-    body = scheme_text()
-    scheme = ROOT / "usr/share/color-schemes/44OS.colors"
-    scheme.parent.mkdir(parents=True, exist_ok=True)
-    scheme.write_text("\n".join(
-        ["[General]", "ColorScheme=44OS", "Name=44OS", "shadeSortColumn=true", "",
-         "[KDE]", "contrast=4", ""] + body))
+    write_scheme("44OSNova.colors", "44OSNova", "44OS NOVA", NOVA)
+    write_scheme("44OSNovaLight.colors", "44OSNovaLight", "44OS NOVA Light", NOVA_LIGHT)
+    write_scheme("44OS.colors", "44OS", "44OS (NOVA)", NOVA)
 
     font = "Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
     small = "Inter,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
     xdg = ROOT / "etc/xdg/kdeglobals"
     xdg.parent.mkdir(parents=True, exist_ok=True)
     xdg.write_text("\n".join(
-        ["# 44OS system-wide KDE defaults (generated by branding/colors.py).",
+        ["# 44OS NOVA system-wide KDE defaults (generated by branding/colors.py).",
          "# Users can override everything in ~/.config/kdeglobals.",
-         "[General]", "ColorScheme=44OS", f"font={font}", f"menuFont={font}",
-         f"toolBarFont={font}", f"smallestReadableFont={small}",
-         "",
+         "[General]", "ColorScheme=44OSNova", f"font={font}", f"menuFont={font}",
+         f"toolBarFont={font}", f"smallestReadableFont={small}", "",
          "[KDE]", "LookAndFeelPackage=org.44os.desktop", "widgetStyle=Breeze",
          "AnimationDurationFactor=0.85", "",
          "[Icons]", "Theme=breeze-dark", ""]
-        + scheme_text(wm_extra=("activeFont=Inter,10,-1,5,600,0,0,0,0,0,0,0,0,0,0,1",))))
+        + scheme_body(NOVA, wm_extra=("activeFont=Inter,10,-1,5,600,0,0,0,0,0,0,0,0,0,0,1",))))
+
 
 if __name__ == "__main__":
     main()

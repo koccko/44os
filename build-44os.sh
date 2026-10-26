@@ -6,7 +6,7 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORK="$ROOT/work"
 DIST="$ROOT/dist"
-VERSION="${VERSION:-0.5-alpha}"
+VERSION="${VERSION:-0.6-alpha}"
 ISO_NAME="44OS-${VERSION}-live-amd64.iso"
 
 if [[ "$EUID" -ne 0 ]]; then

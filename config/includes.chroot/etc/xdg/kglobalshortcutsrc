@@ -1,0 +1,3 @@
+# 44Launcher: Super+Space opens KRunner (Alt+Space and Alt+F2 keep working).
+[services][org.kde.krunner.desktop]
+_launch=Meta+Space\tAlt+Space\tAlt+F2\tSearch

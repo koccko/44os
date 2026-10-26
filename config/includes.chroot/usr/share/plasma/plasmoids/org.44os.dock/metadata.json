@@ -1,0 +1,25 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "44OS"
+            }
+        ],
+        "Category": "Windows and Tasks",
+        "Description": "44Dock: pinned apps and running windows with hover magnification",
+        "FormFactors": [
+            "desktop"
+        ],
+        "Icon": "44os-logo",
+        "Id": "org.44os.dock",
+        "License": "GPL-2.0-or-later",
+        "Name": "44Dock",
+        "Version": "1.0",
+        "Website": "https://github.com/koccko/44os"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.multitasking"
+    ]
+}

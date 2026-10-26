@@ -1,0 +1,3 @@
+#!/bin/sh
+# 44Welcome launcher. With --autostart it only appears on a user's first login.
+exec /usr/bin/python3 /usr/share/44os/welcome/welcome.py "$@"

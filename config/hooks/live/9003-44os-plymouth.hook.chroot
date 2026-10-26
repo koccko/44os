@@ -1,0 +1,11 @@
+#!/bin/sh
+# 44OS NOVA boot splash: make 44nova the default Plymouth theme and rebuild
+# the initramfs so the live system and installed systems show it.
+set -e
+if command -v plymouth-set-default-theme >/dev/null 2>&1 \
+   && [ -f /usr/share/plymouth/themes/44nova/44nova.plymouth ]; then
+  plymouth-set-default-theme 44nova
+  echo "44OS: plymouth theme = $(plymouth-set-default-theme)"
+  update-initramfs -u -k all
+fi
+exit 0

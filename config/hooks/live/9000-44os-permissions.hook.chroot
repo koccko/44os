@@ -1,3 +1,4 @@
 #!/bin/sh
 set -e
-chmod 755 /usr/libexec/44os/live-installer-icon
+chmod 755 /usr/libexec/44os/live-installer-icon /usr/libexec/44os/session-setup \
+          /usr/bin/44welcome /usr/share/44os/welcome/welcome.py

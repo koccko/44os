@@ -1,0 +1,53 @@
+#!/bin/sh
+# 44OS per-session setup, started from /etc/xdg/autostart in Plasma sessions.
+#
+# Graphics: when KWin composites with a software renderer (llvmpipe, e.g.
+# VirtualBox without 3D acceleration) the expensive effects (blur, background
+# contrast, magic lamp) are switched off for this user; when real GPU
+# acceleration is detected later they are switched back on. Users can pin a
+# mode in ~/.config/44osrc ([Effects] Mode=auto|full|reduced), which
+# 44Welcome exposes as a setting.
+set -u
+
+read_cfg() { kreadconfig6 --file 44osrc --group "$1" --key "$2" --default "$3" 2>/dev/null || echo "$3"; }
+write_cfg() { kwriteconfig6 --file "$1" --group "$2" --key "$3" "$4"; }
+
+command -v kreadconfig6 >/dev/null 2>&1 || exit 0
+command -v kwriteconfig6 >/dev/null 2>&1 || exit 0
+
+renderer() {
+    # Ask KWin which OpenGL renderer it composites with.
+    info="$(dbus-send --session --print-reply --dest=org.kde.KWin /KWin org.kde.KWin.supportInformation 2>/dev/null)"
+    printf '%s\n' "$info" | sed -n 's/.*OpenGL renderer string: *//p' | head -n 1
+}
+
+mode="$(read_cfg Effects Mode auto)"
+case "$mode" in
+    full|reduced) target="$mode" ;;
+    *)
+        # KWin may still be starting; give it a few seconds.
+        r=""; i=0
+        while [ -z "$r" ] && [ "$i" -lt 10 ]; do r="$(renderer)"; [ -n "$r" ] || sleep 1; i=$((i + 1)); done
+        case "$r" in
+            "") exit 0 ;;                                   # unknown: leave settings alone
+            *llvmpipe*|*softpipe*|*"Software Rasterizer"*) target=reduced ;;
+            *) target=full ;;
+        esac
+        write_cfg 44osrc Effects LastRenderer "$r"
+        ;;
+esac
+
+applied="$(read_cfg Effects Applied full)"
+[ "$target" = "$applied" ] && exit 0
+
+if [ "$target" = reduced ]; then
+    on=false
+else
+    on=true
+fi
+write_cfg kwinrc Plugins blurEnabled "$on"
+write_cfg kwinrc Plugins contrastEnabled "$on"
+write_cfg kwinrc Plugins magiclampEnabled "$on"
+write_cfg 44osrc Effects Applied "$target"
+dbus-send --session --type=method_call --dest=org.kde.KWin /KWin org.kde.KWin.reconfigure >/dev/null 2>&1 || true
+exit 0

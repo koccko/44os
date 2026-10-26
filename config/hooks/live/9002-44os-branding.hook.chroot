@@ -8,14 +8,34 @@ command -v fc-cache >/dev/null 2>&1 && fc-cache -s >/dev/null 2>&1 || true
 for f in \
   /usr/share/plasma/look-and-feel/org.44os.desktop/metadata.json \
   /usr/share/plasma/look-and-feel/org.44os.desktop/contents/layouts/org.kde.plasma.desktop-layout.js \
+  /usr/share/plasma/look-and-feel/org.44os.desktop/contents/splash/Splash.qml \
   /usr/share/wallpapers/44OS/contents/images/1920x1080.jpg \
+  /usr/share/wallpapers/44OS-Nova/contents/images/3840x2160.jpg \
   /usr/share/color-schemes/44OS.colors \
+  /usr/share/color-schemes/44OSNova.colors \
+  /usr/share/color-schemes/44OSNovaLight.colors \
+  /usr/share/plasma/plasmoids/org.44os.dock/contents/ui/main.qml \
+  /usr/share/plasma/plasmoids/org.44os.activeapp/contents/ui/main.qml \
+  /usr/share/aurorae/themes/44NOVA/decoration.svg \
+  /usr/share/plymouth/themes/44nova/44nova.plymouth \
+  /usr/share/44os/welcome/qml/Main.qml \
+  /usr/share/44os/faces/.face.icon \
+  /usr/share/applications/org.44os.launcher.desktop \
   /usr/share/icons/hicolor/scalable/apps/44os-logo.svg \
   /usr/share/icons/hicolor/scalable/apps/44os-start.svg \
   /etc/calamares/branding/44os/branding.desc \
   /etc/calamares/branding/44os/show.qml; do
   [ -f "$f" ] || { echo "44OS branding missing: $f" >&2; exit 1; }
 done
+
+# 44Welcome must be able to start: Python syntax and PyQt6/QML modules.
+python3 -m py_compile /usr/share/44os/welcome/welcome.py
+python3 -c 'import PyQt6.QtCore, PyQt6.QtGui, PyQt6.QtQml, PyQt6.QtQuick, dbus' \
+  || { echo "44OS: 44Welcome dependencies missing" >&2; exit 1; }
+for m in QtQuick/Controls QtQuick/Layouts QtQuick/Window; do
+  [ -d "/usr/lib/x86_64-linux-gnu/qt6/qml/$m" ] || { echo "44OS: QML module $m missing" >&2; exit 1; }
+done
+echo "44OS: 44Welcome dependencies OK"
 
 # KDE's first-run Welcome Center describes the system as plain Debian; keep it
 # available from the menu but do not pop it up on first login. Plasma 6

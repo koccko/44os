@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=44Welcome
+GenericName=Welcome Center
+Comment=Get started with 44OS NOVA: appearance, dock, updates and system information
+Keywords=welcome;tour;first run;44os;nova;settings;
+Exec=44welcome
+Icon=44os-logo
+Terminal=false
+Categories=System;Settings;
+StartupNotify=true
+StartupWMClass=44welcome

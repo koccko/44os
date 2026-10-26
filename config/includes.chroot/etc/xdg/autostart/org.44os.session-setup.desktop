@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=44OS session setup
+Exec=/usr/libexec/44os/session-setup
+NoDisplay=true
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2

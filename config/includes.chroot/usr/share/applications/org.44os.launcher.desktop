@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=44Launcher
+GenericName=Search
+Comment=Search applications, files, settings and calculations (Super+Space)
+Keywords=search;spotlight;krunner;launcher;find;calculator;
+Exec=dbus-send --session --type=method_call --dest=org.kde.krunner /App org.kde.krunner.App.display
+Icon=44os-launcher
+Terminal=false
+Categories=Utility;
+StartupNotify=false

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 260" width="620" height="260">
+  <!-- 44OS NOVA lock-up: wordmark with the release name tracked out below. -->
+  <defs><linearGradient id="g" x1="40" y1="48" x2="216" y2="208" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9AD6FF"/><stop offset="0.5" stop-color="#65A8FF"/><stop offset="1" stop-color="#8B7CFF"/></linearGradient></defs>
+  <g transform="translate(0 -28)"><path d="M104 52 L44 152 H212 M104 52 V204 M188 52 L128 152 M188 52 V204" fill="none" stroke="url(#g)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="246" y="176" font-family="Inter, sans-serif" font-weight="300" font-size="206" fill="#F1F5FF">OS</text>
+  <text x="310" y="246" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="34" letter-spacing="26" fill="#65A8FF">NOVA</text>
+</svg>

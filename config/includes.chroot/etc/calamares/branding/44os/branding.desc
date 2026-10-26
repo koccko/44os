@@ -10,12 +10,12 @@ windowSize: 900px,620px
 windowPlacement: center
 
 strings:
-    productName:         44OS
+    productName:         44OS NOVA
     shortProductName:    44OS
-    version:             0.5 Alpha
-    shortVersion:        0.5
-    versionedName:       44OS 0.5 Alpha
-    shortVersionedName:  44OS 0.5
+    version:             0.6 Alpha
+    shortVersion:        0.6
+    versionedName:       44OS 0.6 Alpha NOVA
+    shortVersionedName:  44OS 0.6
     bootloaderEntryName: Debian
     productUrl:          https://github.com/koccko/44os
     supportUrl:          https://github.com/koccko/44os/issues
@@ -35,7 +35,7 @@ slideshow:               "show.qml"
 slideshowAPI: 2
 
 style:
-   SidebarBackground:        "#0B0E14"
-   SidebarText:              "#C9D1E3"
-   SidebarTextCurrent:       "#FFFFFF"
-   SidebarBackgroundCurrent: "#2B4B85"
+   SidebarBackground:        "#080D18"
+   SidebarText:              "#A7B5CC"
+   SidebarTextCurrent:       "#F1F5FF"
+   SidebarBackgroundCurrent: "#1E3A66"

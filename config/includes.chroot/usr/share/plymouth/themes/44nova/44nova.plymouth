@@ -1,0 +1,47 @@
+[Plymouth Theme]
+Name=44OS NOVA
+Description=44OS NOVA boot splash: the 44 mark with a breathing electric-blue glow.
+ModuleName=two-step
+
+[two-step]
+Font=Inter 12
+TitleFont=Inter Light 24
+ImageDir=/usr/share/plymouth/themes/44nova
+DialogHorizontalAlignment=.5
+DialogVerticalAlignment=.62
+TitleHorizontalAlignment=.5
+TitleVerticalAlignment=.382
+HorizontalAlignment=.5
+VerticalAlignment=.45
+WatermarkHorizontalAlignment=.5
+WatermarkVerticalAlignment=.94
+Transition=none
+TransitionDuration=0.0
+BackgroundStartColor=0x080d18
+BackgroundEndColor=0x080d18
+ProgressBarBackgroundColor=0x18243a
+ProgressBarForegroundColor=0x65a8ff
+MessageBelowAnimation=true
+
+[boot-up]
+UseEndAnimation=false
+
+[shutdown]
+UseEndAnimation=false
+
+[reboot]
+UseEndAnimation=false
+
+[updates]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Installing Updates...
+SubTitle=Do not turn off your computer
+
+[system-upgrade]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Upgrading System...
+SubTitle=Do not turn off your computer

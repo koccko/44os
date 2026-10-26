@@ -1,7 +1,7 @@
 # "About this System" branding. /etc/os-release stays Debian on purpose.
 [General]
-Name=44OS
-Version=0.5 Alpha
+Name=44OS NOVA
+Version=0.6 Alpha
 Variant=Debian 13 (trixie) foundation
 LogoPath=/usr/share/icons/hicolor/256x256/apps/44os-logo.png
 Website=https://github.com/koccko/44os

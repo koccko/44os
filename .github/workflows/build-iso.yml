@@ -1,14 +1,23 @@
 name: Build 44OS Live ISO
 
+# Pipeline:
+#   build          lint (scripts, hooks, QML, packages) → live-build → static ISO verification
+#   boot-test      firmware/bootloader paths: UEFI DVD/USB, Secure Boot, BIOS (QEMU)
+#   desktop-test   live Plasma session: 44Welcome, top bar, 44Dock, 44Launcher, decoration, About
+#   install-test   Calamares install → reboot without ISO → SDDM/TTY login → password change
+#   boot-test-virtualbox   VirtualBox EFI reaches the boot menu (non-blocking: runner support varies)
+# Runtime jobs publish summaries and screenshots as artifacts and, for runs in
+# this repository, to ci-results/<run>-<job> branches.
+
 on:
   workflow_dispatch:
     inputs:
       iso_run_id:
-        description: "Skip the build and boot-test the ISO artifact of this run id"
+        description: "Skip the build and test the ISO artifact of this run id"
         required: false
         default: ""
   pull_request:
-    branches: [main]
+    branches: [main, fix/uefi-boot-desktop-refresh]
 
 permissions:
   contents: read
@@ -19,7 +28,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VERSION: 0.5-alpha
+  VERSION: 0.6-alpha
 
 jobs:
   build:
@@ -50,7 +59,11 @@ jobs:
             mtools \
             dosfstools \
             ca-certificates \
-            file
+            file \
+            python3-pyqt6.qtqml \
+            python3-pyqt6.qtquick \
+            qml6-module-qtquick-controls \
+            qml6-module-qtquick-layouts
 
       - name: Verify Debian environment
         run: |
@@ -58,12 +71,20 @@ jobs:
           lb --version
           df -h
 
-      - name: Lint build scripts and hooks
+      - name: Lint build scripts, hooks and session scripts
         run: |
           bash -n build-44os.sh scripts/*.sh .github/scripts/*.sh
-          for h in config/hooks/live/*.hook.chroot config/includes.chroot/usr/libexec/44os/*; do
+          for h in config/hooks/live/*.hook.chroot config/includes.chroot/usr/libexec/44os/* config/includes.chroot/usr/bin/44welcome; do
             sh -n "$h"
           done
+          python3 -m py_compile config/includes.chroot/usr/share/44os/welcome/welcome.py branding/*.py
+          for j in $(find config -name '*.json'); do python3 -m json.tool "$j" >/dev/null; done
+
+      - name: Parse-check QML (plasmoids, splash, 44Welcome, Calamares slideshow)
+        run: QT_QPA_PLATFORM=offscreen python3 scripts/check-qml.py $(find config -name '*.qml')
+
+      - name: Verify package lists against Debian trixie
+        run: scripts/check-packages.sh
 
       - name: Build 44OS ISO
         run: |
@@ -74,15 +95,16 @@ jobs:
         if: always()
         run: |
           grep -E '^44OS:' build.log > build-notes.txt || true
-          .github/scripts/annotate.sh notice "build notes" build-notes.txt 8000
+          cat build-notes.txt
+          .github/scripts/annotate.sh notice "build notes" build-notes.txt 4000
 
       - name: Report build failure
         if: failure()
         run: |
-          grep -nE '44OS:|E:|ERROR|VERIFY|[Ff]ailed|fatal|Unable to|unknown option|not found' build.log | tail -n 80 > build-errors.txt || true
-          tail -n 150 build.log > build-tail.txt
-          .github/scripts/annotate.sh error "build errors" build-errors.txt 20000
-          .github/scripts/annotate.sh error "build log tail" build-tail.txt 30000
+          grep -nE '44OS:|E:|ERROR|VERIFY|[Ff]ailed|fatal|Unable to|unknown option|not found' build.log | tail -n 40 > build-errors.txt || true
+          tail -n 60 build.log > build-tail.txt
+          .github/scripts/annotate.sh error "build errors" build-errors.txt 4000
+          .github/scripts/annotate.sh error "build log tail" build-tail.txt 4000
 
       - name: Verify ISO
         run: |
@@ -105,90 +127,117 @@ jobs:
     needs: build
     if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
     runs-on: ubuntu-24.04
-    permissions:
-      contents: write
-      actions: read
-    timeout-minutes: 90
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/download-artifact@v4
         with:
           name: 44OS-${{ env.VERSION }}-live-amd64
           path: dist
           run-id: ${{ inputs.iso_run_id || github.run_id }}
           github-token: ${{ github.token }}
-
       - name: Install QEMU, OVMF and OCR tools
-        run: |
-          sudo rm -f /var/lib/man-db/auto-update
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends qemu-system-x86 qemu-utils ovmf xorriso socat tesseract-ocr tesseract-ocr-eng imagemagick
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
-          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
-          ls -l /dev/kvm
-
-      - name: "UEFI (OVMF), DVD: firmware -> GRUB menu (unmodified ISO)"
-        run: |
-          ISO=$(ls dist/*.iso) NAME=uefi-dvd FW=uefi MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/uefi-dvd \
-            .github/scripts/boot-test.sh
-      - name: "UEFI (OVMF), USB stick: firmware -> GRUB menu (unmodified ISO)"
-        run: |
-          ISO=$(ls dist/*.iso) NAME=uefi-usb FW=uefi MEDIA=usb DURATION=60 REQUIRE=grub OUT=out/uefi-usb \
-            .github/scripts/boot-test.sh
-      - name: "UEFI Secure Boot (OVMF, Microsoft keys): shim -> GRUB -> kernel"
-        run: |
-          ISO=$(ls dist/*.iso) NAME=uefi-sb FW=uefi-sb MEDIA=cdrom DURATION=240 REQUIRE=kernel SERIAL_ISO=1 OUT=out/uefi-sb \
-            .github/scripts/boot-test.sh
+        run: .github/scripts/setup-vm-host.sh
+      - name: "UEFI (OVMF), DVD: firmware → GRUB menu (unmodified ISO)"
+        run: ISO=$(ls dist/*.iso) NAME=uefi-dvd FW=uefi MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/uefi-dvd .github/scripts/boot-test.sh
+      - name: "UEFI (OVMF), USB stick: firmware → GRUB menu (unmodified ISO)"
+        run: ISO=$(ls dist/*.iso) NAME=uefi-usb FW=uefi MEDIA=usb DURATION=60 REQUIRE=grub OUT=out/uefi-usb .github/scripts/boot-test.sh
+      - name: "UEFI Secure Boot (OVMF, Microsoft keys): shim → GRUB → kernel"
+        run: ISO=$(ls dist/*.iso) NAME=uefi-sb FW=uefi-sb MEDIA=cdrom DURATION=240 REQUIRE=kernel SERIAL_ISO=1 OUT=out/uefi-sb .github/scripts/boot-test.sh
       - name: "BIOS (SeaBIOS), DVD: isolinux menu"
-        run: |
-          ISO=$(ls dist/*.iso) NAME=bios FW=bios MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/bios \
-            .github/scripts/boot-test.sh
-      - name: "UEFI full boot: GRUB -> kernel -> live system -> graphical.target"
-        env:
-          DEBUG_CMDS: |
-            loginctl list-sessions --no-legend
-            grep -E '^\[|plugin=|location|lengthMode|floating|alignment|Image=|launchers' ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/plasmashellrc 2>&1 | head -n 120
-            journalctl --user -b --no-pager 2>/dev/null | grep -iE 'plasmashell|layout|script|panel|wallpaper|lookandfeel' | grep -viE 'kf\.svg|qml: binding' | tail -n 60
-            ls -la ~/Desktop /etc/xdg/autostart | head -n 40
-            grep -h '^branding' /etc/calamares/settings.conf
-        run: |
-          ISO=$(ls dist/*.iso) NAME=uefi-full VGA=virtio FW=uefi MEDIA=cdrom DURATION=600 REQUIRE=graphical SERIAL_ISO=1 OUT=out/uefi-full \
-            .github/scripts/boot-test.sh
-      - name: Report results
+        run: ISO=$(ls dist/*.iso) NAME=bios FW=bios MEDIA=cdrom DURATION=60 REQUIRE=grub OUT=out/bios .github/scripts/boot-test.sh
+      - name: Report
+        if: always()
+        run: for d in out/*/; do .github/scripts/annotate.sh notice "boot $(basename "$d")" "$d/result.txt" 3500; done
+      - name: Publish results
+        if: always() && github.event.pull_request.head.repo.fork != true
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: .github/scripts/publish-results.sh out boot
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: boot-test-results, path: out/, retention-days: 7 }
+    permissions:
+      contents: write
+      actions: read
+
+  desktop-test:
+    needs: build
+    if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: 44OS-${{ env.VERSION }}-live-amd64
+          path: dist
+          run-id: ${{ inputs.iso_run_id || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Install QEMU, OVMF and OCR tools
+        run: .github/scripts/setup-vm-host.sh
+      - name: "Live desktop: 44Welcome, top bar, 44Dock, 44Launcher, decoration, About"
+        run: ISO=$(ls dist/*.iso) OUT=out/desktop .github/scripts/desktop-test.sh
+      - name: Report
         if: always()
         run: |
-          for d in out/*/; do
-            n=$(basename "$d")
-            .github/scripts/annotate.sh notice "boot $n" "$d/result.txt" 12000
-          done
-          .github/scripts/annotate-image.sh "grub-uefi" "$(ls out/uefi-dvd/shot-*.png 2>/dev/null | sed -n 2p)" 800
-          .github/scripts/annotate-image.sh "desktop" "out/uefi-full/final.png" 1024
-      - name: Publish results to a ci-results branch (manual runs only)
-        if: always() && github.event_name == 'workflow_dispatch'
-        run: |
-          mkdir -p pub
-          for d in out/*/; do
-            n=$(basename "$d"); mkdir -p "pub/$n"
-            cp "$d"/result.txt "$d"/debug.txt "$d"/ocr.txt "pub/$n/" 2>/dev/null || true
-            for p in "$d"/shot-*.png "$d"/final.png; do
-              [ -f "$p" ] && convert "$p" -resize 1280x -quality 80 "pub/$n/$(basename "${p%.png}").jpg"
-            done
-          done
-          cd pub
-          git init -q -b results
-          git config user.name "44os-ci"; git config user.email "44os-ci@users.noreply.github.com"
-          git add -A && git commit -qm "Boot test results for run ${{ github.run_id }}"
-          git push -q "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" "results:refs/heads/ci-results/${{ github.run_id }}"
+          cat out/desktop/summary.txt || true
+          .github/scripts/annotate.sh notice "desktop test summary" out/desktop/summary.txt 3500
+      - name: Publish results
+        if: always() && github.event.pull_request.head.repo.fork != true
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: .github/scripts/publish-results.sh out/desktop desktop
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: boot-test-results
+          name: desktop-test-results
           path: |
-            out/**/result.txt
-            out/**/serial.log
-            out/**/ocr.txt
-            out/**/*.png
+            out/desktop/*.png
+            out/desktop/*.txt
+            out/desktop/*.log
+          retention-days: 7
+
+  install-test:
+    needs: build
+    if: ${{ !cancelled() && (needs.build.result == 'success' || inputs.iso_run_id) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free disk space
+        run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /opt/hostedtoolcache/CodeQL; df -h /
+      - uses: actions/download-artifact@v4
+        with:
+          name: 44OS-${{ env.VERSION }}-live-amd64
+          path: dist
+          run-id: ${{ inputs.iso_run_id || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Install QEMU, OVMF and OCR tools
+        run: .github/scripts/setup-vm-host.sh
+      - name: "Install lifecycle: Calamares → reboot without ISO → SDDM/TTY login → passwd"
+        run: ISO=$(ls dist/*.iso) OUT=out/install .github/scripts/install-test.sh
+      - name: Report
+        if: always()
+        run: |
+          cat out/install/summary.txt || true
+          .github/scripts/annotate.sh notice "install test summary" out/install/summary.txt 3500
+      - name: Publish results
+        if: always() && github.event.pull_request.head.repo.fork != true
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: .github/scripts/publish-results.sh out/install install
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: install-test-results
+          path: |
+            out/install/*.png
+            out/install/*.txt
+            out/install/*.log
           retention-days: 7
 
   boot-test-virtualbox:
@@ -216,7 +265,7 @@ jobs:
           sudo modprobe -r kvm_intel kvm_amd kvm 2>/dev/null || true
           sudo modprobe vboxdrv
           VBoxManage --version
-      - name: "VirtualBox EFI, DVD: firmware -> GRUB menu"
+      - name: "VirtualBox EFI, DVD: firmware → GRUB menu"
         run: |
           sudo -E env ISO=$(ls dist/*.iso) HV=vbox NAME=vbox-efi FW=uefi DURATION=90 REQUIRE=grub OUT=out/vbox-efi \
             .github/scripts/boot-test.sh
@@ -224,5 +273,4 @@ jobs:
         if: always()
         run: |
           sudo chown -R "$USER" out || true
-          .github/scripts/annotate.sh notice "boot vbox-efi" out/vbox-efi/result.txt 12000
-          .github/scripts/annotate-image.sh "vbox-efi" "$(ls out/vbox-efi/shot-*.png 2>/dev/null | tail -n 1)" 800
+          .github/scripts/annotate.sh notice "boot vbox-efi" out/vbox-efi/result.txt 3500

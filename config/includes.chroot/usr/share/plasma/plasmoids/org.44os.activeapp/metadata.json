@@ -1,0 +1,22 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "44OS"
+            }
+        ],
+        "Category": "Windows and Tasks",
+        "Description": "Shows the name of the active application in the 44OS menu bar",
+        "FormFactors": [
+            "desktop"
+        ],
+        "Icon": "44os-logo",
+        "Id": "org.44os.activeapp",
+        "License": "GPL-2.0-or-later",
+        "Name": "Active Application",
+        "Version": "1.0",
+        "Website": "https://github.com/koccko/44os"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

@@ -1,11 +1,11 @@
-// 44OS default Plasma 6 layout.
+// 44OS NOVA default Plasma 6 layout.
 // Plasma runs this once, when a user starts a session without an existing
 // desktop configuration (new users, the live session and fresh installs).
 // Existing user layouts are never touched.
 
-var wallpaper = "file:///usr/share/wallpapers/44OS/contents/images/3840x2160.jpg";
+var wallpaper = "file:///usr/share/wallpapers/44OS-Nova/contents/images/3840x2160.jpg";
 
-// Desktop: 44OS wallpaper on every screen.
+// Desktop: NOVA wallpaper on every screen.
 var desks = desktops();
 for (var i = 0; i < desks.length; ++i) {
     desks[i].wallpaperPlugin = "org.kde.image";
@@ -14,14 +14,16 @@ for (var i = 0; i < desks.length; ++i) {
     desks[i].writeConfig("FillMode", 2);
 }
 
-// Top bar: launcher and global menu on the left, centered clock,
-// system tray on the right. Thin, edge-to-edge, translucent.
+// Menu bar ------------------------------------------------------------------
+// Left: 44OS launcher, active application name, global application menu.
+// Right: system tray (network, Bluetooth, volume, battery/brightness,
+// notifications and the rest of the quick settings) and the clock.
 var top = new Panel;
 top.location = "top";
-top.height = 30;
+top.height = 32;
 top.floating = false;
 top.hiding = "none";
-try { top.opacity = "translucent"; } catch (e) {}
+top.opacity = "translucent";
 
 var kickoff = top.addWidget("org.kde.plasma.kickoff");
 kickoff.currentConfigGroup = ["General"];
@@ -29,8 +31,14 @@ kickoff.writeConfig("icon", "44os-start");
 kickoff.currentConfigGroup = ["Shortcuts"];
 kickoff.writeConfig("global", "Alt+F1");
 
-top.addWidget("org.kde.plasma.appmenu");
+top.addWidget("org.44os.activeapp");
+
+var appmenu = top.addWidget("org.kde.plasma.appmenu");
+appmenu.currentConfigGroup = ["General"];
+appmenu.writeConfig("compactView", false);
+
 top.addWidget("org.kde.plasma.panelspacer");
+top.addWidget("org.kde.plasma.systemtray");
 
 var clock = top.addWidget("org.kde.plasma.digitalclock");
 clock.currentConfigGroup = ["Appearance"];
@@ -39,28 +47,28 @@ clock.writeConfig("dateDisplayFormat", 1);           // beside the time
 clock.writeConfig("dateFormat", "custom");
 clock.writeConfig("customDateFormat", "ddd d MMM");
 
-top.addWidget("org.kde.plasma.panelspacer");
-top.addWidget("org.kde.plasma.systemtray");
-
-// Dock: floating, centered, sized to its content.
+// 44Dock --------------------------------------------------------------------
+// Floating, centred, sized to its content, moves out of the way of windows.
 var dock = new Panel;
 dock.location = "bottom";
-dock.height = 58;
-dock.hiding = "none";
+dock.height = 72;
 dock.floating = true;
-try { dock.lengthMode = "fit"; } catch (e) {}
+dock.lengthMode = "fit";
 dock.alignment = "center";
+dock.hiding = "dodgewindows";
+dock.opacity = "translucent";
 
-var tasks = dock.addWidget("org.kde.plasma.icontasks");
-tasks.currentConfigGroup = ["General"];
-tasks.writeConfig("launchers", [
+var launchers = [
+    "applications:org.44os.launcher.desktop",
     "applications:org.kde.dolphin.desktop",
     "applications:firefox-esr.desktop",
     "applications:org.kde.konsole.desktop",
-    "applications:org.kde.kate.desktop",
+    "applications:org.kde.discover.desktop",
     "applications:systemsettings.desktop"
-].join(","));
-tasks.writeConfig("maxStripes", 1);
-tasks.writeConfig("iconSpacing", 2);
-tasks.writeConfig("showOnlyCurrentDesktop", false);
-tasks.writeConfig("indicateAudioStreams", true);
+];
+
+var tasks = dock.addWidget("org.44os.dock");
+tasks.currentConfigGroup = ["General"];
+tasks.writeConfig("launchers", launchers.join(","));
+tasks.writeConfig("iconSize", 44);
+tasks.writeConfig("magnification", 35);

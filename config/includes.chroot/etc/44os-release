@@ -1,3 +1,4 @@
 NAME="44OS"
-VERSION="0.5 Alpha"
+VERSION="0.6 Alpha"
 BASE="Debian GNU/Linux 13 (trixie)"
+CODENAME="NOVA"

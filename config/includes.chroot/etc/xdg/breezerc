@@ -1,8 +1,0 @@
-# 44OS Breeze window decoration: centered titles, flat title bars, soft shadows.
-[Common]
-OutlineIntensity=OutlineLow
-ShadowSize=ShadowLarge
-
-[Windows]
-TitleAlignment=AlignCenterFullWidth
-DrawTitleBarSeparator=false

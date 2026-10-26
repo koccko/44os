@@ -25,7 +25,7 @@ Presentation
             anchors.horizontalCenter: background1.horizontalCenter
             anchors.top: background1.bottom
             anchors.topMargin: 16
-            text: qsTr("Welcome to 44OS.<br/>"+
+            text: qsTr("Welcome to 44OS NOVA.<br/>"+
                   "The rest of the installation is automated and should complete in a few minutes.")
             wrapMode: Text.WordWrap
             width: 600

@@ -19,3 +19,29 @@ breeze
 breeze-cursor-theme
 breeze-icon-theme
 xdg-user-dirs
+
+# 44OS NOVA desktop: dock/menu bar plasmoids use the Plasma task manager
+# model; quick settings use the native tray applets.
+plasma-workspace
+plasma-discover
+bluedevil
+power-profiles-daemon
+kinfocenter
+milou
+kwin-wayland
+kwin-x11
+
+# Boot splash
+plymouth
+plymouth-themes
+
+# 44Welcome (PyQt6 + QML)
+python3-pyqt6
+python3-pyqt6.qtquick
+python3-pyqt6.qtqml
+python3-dbus
+qml6-module-qtquick-controls
+qml6-module-qtquick-layouts
+qml6-module-qtquick-window
+qml6-module-qtqml-workerscript
+qml6-module-qtquick-templates

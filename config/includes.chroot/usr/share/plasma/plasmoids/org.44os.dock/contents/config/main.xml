@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="launchers" type="StringList">
+      <label>Applications pinned to the dock, in order.</label>
+      <default></default>
+    </entry>
+    <entry name="iconSize" type="Int">
+      <label>Icon size at rest, in pixels. Limited by the panel thickness.</label>
+      <default>44</default>
+    </entry>
+    <entry name="magnification" type="Int">
+      <label>Hover magnification in percent (0 disables). Limited by the panel thickness.</label>
+      <default>35</default>
+    </entry>
+    <entry name="showIndicators" type="Bool">
+      <label>Show running-application indicators.</label>
+      <default>true</default>
+    </entry>
+    <entry name="bounceOnLaunch" type="Bool">
+      <label>Bounce an icon while its application starts.</label>
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>

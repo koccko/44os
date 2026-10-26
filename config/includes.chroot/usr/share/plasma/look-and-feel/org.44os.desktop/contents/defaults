@@ -1,5 +1,5 @@
 [kdeglobals][General]
-ColorScheme=44OS
+ColorScheme=44OSNova
 
 [kdeglobals][Icons]
 Theme=breeze-dark
@@ -14,13 +14,16 @@ name=default
 cursorTheme=breeze_cursors
 
 [kwinrc][WindowSwitcher]
-LayoutName=org.kde.breeze.desktop
+LayoutName=thumbnail_grid
 
 [kwinrc][org.kde.kdecoration2]
-library=org.kde.breeze
-theme=Breeze
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__44NOVA
 ButtonsOnLeft=XIA
 ButtonsOnRight=
 
 [Wallpaper]
-Image=44OS
+Image=44OS-Nova
+
+[KSplash]
+Theme=org.44os.desktop

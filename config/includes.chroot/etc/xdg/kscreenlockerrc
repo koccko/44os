@@ -2,4 +2,4 @@
 WallpaperPlugin=org.kde.image
 
 [Greeter][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/44OS/contents/images/3840x2160.jpg
+Image=file:///usr/share/wallpapers/44OS-Nova/contents/images/3840x2160.jpg

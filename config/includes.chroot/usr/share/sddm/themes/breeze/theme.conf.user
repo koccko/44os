@@ -1,5 +1,6 @@
 [General]
 type=image
-background=/usr/share/wallpapers/44OS/contents/images/3840x2160.jpg
+background=/usr/share/wallpapers/44OS-Nova/contents/images/3840x2160.jpg
 showlogo=shown
-logo=/usr/share/44os/branding/44os-wordmark.png
+logo=/usr/share/44os/branding/44os-nova-wordmark.svg
+showClock=true

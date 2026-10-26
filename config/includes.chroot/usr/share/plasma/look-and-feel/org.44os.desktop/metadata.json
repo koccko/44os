@@ -7,11 +7,11 @@
             }
         ],
         "Category": "",
-        "Description": "44OS: elegant top bar, floating centered dock and the 44OS dark palette",
+        "Description": "44OS NOVA: macOS-inspired menu bar, 44Dock, NOVA Glass palette and window decoration",
         "Id": "org.44os.desktop",
         "License": "GPL-2.0-or-later",
-        "Name": "44OS",
-        "Version": "1.0"
+        "Name": "44OS NOVA",
+        "Version": "0.6"
     },
     "X-Plasma-APIVersion": "2"
 }

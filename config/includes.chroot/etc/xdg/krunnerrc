@@ -1,0 +1,15 @@
+# 44Launcher: KRunner as a centred, Spotlight-style search (Super+Space).
+[General]
+FreeFloating=true
+ActivateWhenTypingOnDesktop=true
+historyBehavior=CompletionSuggestion
+
+[Plugins]
+baloosearchEnabled=true
+calculatorEnabled=true
+krunner_appstreamEnabled=true
+krunner_kwinEnabled=true
+krunner_recentdocumentsEnabled=true
+krunner_servicesEnabled=true
+krunner_systemsettingsEnabled=true
+unitconverterEnabled=true
