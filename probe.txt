@@ -1,0 +1,55 @@
+=== policy
+python3-pyqt6                        6.9.0-2
+python3-pyqt6.qtquick                6.9.0-2
+python3-pyqt6.qtqml                  6.9.0-2
+python3-pyqt6.qtdbus                 
+qml6-module-org-kde-kirigami         6.13.0-2
+qml6-module-qtquick-controls         6.8.2+dfsg-7
+qml6-module-qtquick-layouts          6.8.2+dfsg-7
+qml6-module-qtquick-window           6.8.2+dfsg-7
+qml6-module-qtqml-workerscript       6.8.2+dfsg-7
+qt6-declarative-dev-tools            6.8.2+dfsg-7
+fonts-inter                          4.1+ds-1
+plymouth                             24.004.60-5
+plymouth-themes                      24.004.60-5
+plymouth-label                       24.004.60-5
+mesa-utils                           9.0.0-2+b2
+plasma-discover                      6.3.6-1
+bluedevil                            4:6.3.4-2
+power-profiles-daemon                0.30-1.1
+plasma-welcome                       6.3.4-1
+kde-config-sddm                      4:6.3.4-4
+plasma-session-x11                   
+plasma-workspace-x11                 
+kwin-x11                             4:6.3.6-1
+kwin-wayland                         4:6.3.6-1
+kwin-addons                          4:6.3.5-1
+kwin-common                          4:6.3.6-1
+krunner                              
+milou                                4:6.3.5-1
+plasma-systemmonitor                 6.3.6-1
+kinfocenter                          4:6.3.6-1
+qdbus-qt6                            6.8.2-5
+qt6-tools-dev-tools                  6.8.2-5
+libqt6dbus6                          6.8.2+dfsg-9+deb13u2
+python3-dbus                         1.4.0-1
+accountsservice                      23.13.9-7
+E: Unable to locate package krunner
+=== *.deb
+dpkg-deb: error: failed to read archive '*.deb': No such file or directory
+dpkg-deb: error: failed to read archive 'sddm-theme-breeze*.deb': No such file or directory
+dpkg-deb: error: failed to read archive 'plasma-desktop*.deb': No such file or directory
+dpkg-deb: error: failed to read archive 'plymouth-themes*.deb': No such file or directory
+=== sddm breeze theme.conf
+cat: x/usr/share/sddm/themes/breeze/theme.conf: No such file or directory
+=== sddm Main.qml config refs
+grep: x/usr/share/sddm/themes/breeze/*.qml: No such file or directory
+=== breeze lnf defaults
+cat: x/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/defaults: No such file or directory
+=== plasma-desktop layout.js
+=== defaultPanel
+=== plymouth spinner theme
+cat: x/usr/share/plymouth/themes/spinner/spinner.plymouth: No such file or directory
+ls: cannot access 'x/usr/share/plymouth/themes/spinner': No such file or directory
+=== plymouth bgrt
+cat: x/usr/share/plymouth/themes/bgrt/bgrt.plymouth: No such file or directory
