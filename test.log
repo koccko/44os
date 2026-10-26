@@ -1,0 +1,2 @@
+[10:17:48] QEMU start live fw=uefi cdrom=/home/runner/work/44os/44os/out/install/serial.iso disks=/home/runner/work/44os/44os/out/install/target.qcow2 /home/runner/work/44os/44os/out/install/canary.img
+[10:18:03] screen shows /Live system/

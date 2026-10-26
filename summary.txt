@@ -1,0 +1,2 @@
+PASS  Live ISO: GRUB menu
+PASS  Live ISO: session started
