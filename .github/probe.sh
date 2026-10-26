@@ -1,23 +1,23 @@
 #!/bin/bash
 exec > /out/probe.txt 2>&1
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq; apt-get install -y -qq apt-file binutils >/dev/null; apt-file update -q >/dev/null 2>&1
-echo "=== owners"
-for f in /usr/bin/krunner org/kde/taskmanager/qmldir /usr/bin/plasmashell look-and-feel/org.kde.breeze.desktop/contents/defaults sddm/themes/breeze/theme.conf plymouth/themes/spinner/spinner.plymouth kwin/aurorae aurorae/themes org/kde/plasma/plasmoid/qmldir /usr/bin/plasma-apply-wallpaperimage appmenu-gtk-module gmenudbusmenuproxy plasma-firstsetup; do
-  echo "--- $f"; apt-file search "$f" | head -6; done
+apt-get update -qq
 mkdir -p /tmp/d && cd /tmp/d
-for p in plasma-workspace plasma-desktop sddm-theme-breeze plymouth-themes kwin-common kwin-wayland libtaskmanager6 qml6-module-org-kde-taskmanager plasma-workspace-data kde-style-breeze breeze; do apt-get download -qq "$p" 2>/dev/null || echo "no $p"; done
-ls
+for p in plasma-desktop plasma-workspace libtaskmanager6 kwin-common libplasma6 plasma-workspace-data qml6-module-org-kde-kirigami; do apt-get download -qq "$p" 2>/dev/null || echo "no $p"; done
 mkdir -p x; for f in *.deb; do dpkg-deb -x "$f" x; done
-echo "=== taskmanager qml"; find x -path '*org/kde/taskmanager*' | head
-for q in $(find x -path '*org/kde/taskmanager*' -name '*.qmltypes'); do echo "--- $q"; grep -E 'name: "|Signal|Method|Property' "$q" | grep -oE 'name: "[A-Za-z_]+"' | sort -u | tr '\n' ' ' | head -c 9000; echo; done
-echo "=== sddm breeze"; ls x/usr/share/sddm/themes/breeze; cat x/usr/share/sddm/themes/breeze/theme.conf; grep -ohE 'config\.[a-zA-Z]+' x/usr/share/sddm/themes/breeze/*.qml | sort -u
-echo "=== breeze lnf"; find x -path '*look-and-feel/org.kde.breeze.desktop*' | head -30; cat x/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/defaults; cat x/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/metadata.json
-echo "=== lnf layouts"; for f in $(find x -path '*look-and-feel*layouts*'); do echo "--- $f"; head -80 "$f"; done
-echo "=== shell layout"; for f in $(find x -path '*shells/org.kde.plasma.desktop*' -name '*.js'); do echo "--- $f"; head -60 "$f"; done
-echo "=== plasmashell strings"; strings x/usr/bin/plasmashell 2>/dev/null | grep -E '^(lengthMode|floating|hiding|opacity|alignment|fit|fill|custom|dodgewindows|autohide|windowsgobelow|translucent|adaptive)$' | sort -u
-for l in $(find x -name 'libplasma*shell*.so*' -o -name 'libplasmashell*' | head); do echo "--- $l"; strings "$l" | grep -E 'lengthMode|dodgewindows|windowsgobelow' | head; done
-echo "=== plymouth spinner"; cat x/usr/share/plymouth/themes/spinner/spinner.plymouth; ls x/usr/share/plymouth/themes/spinner | head -60; ls x/usr/share/plymouth/themes
-echo "=== kwin effects"; find x -path '*kwin*effects*' | sed 's|.*/||' | sort -u | head -80
-echo "=== aurorae"; find x -ipath '*aurorae*' | head -30
-echo "=== plasmoids on disk"; find x/usr/share/plasma/plasmoids -maxdepth 1 | head -80
+echo "=== taskmanager applet files"; find x -path '*plasmoids/org.kde.plasma.taskmanager*' -o -path '*plasmoids/org.kde.plasma.icontasks*' | head -40
+echo "=== qmltypes enums"; python3 - <<'PY'
+import re,glob
+for f in glob.glob('x/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/taskmanager/*.qmltypes'):
+    s=open(f).read()
+    for m in re.finditer(r'Enum \{\s*name: "(\w+)"[^}]*?values: \[([^\]]*)\]', s, re.S):
+        print(m.group(1), ':', re.sub(r'\s+',' ',m.group(2))[:1500])
+    for m in re.finditer(r'Component \{[^{]*?name: "([\w:]+)"[^{]*?exports: \[([^\]]*)\]', s, re.S):
+        print('COMPONENT', m.group(1), m.group(2).strip()[:200])
+PY
+echo "=== appmenu"; find x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu | head; for f in $(find x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu -name '*.qml' -o -name 'metadata.json' | head -3); do echo "--- $f"; head -120 "$f"; done
+echo "=== icon applet"; for f in $(find x/usr/share/plasma/plasmoids/org.kde.plasma.icon -type f | head -5); do echo "--- $f"; head -80 "$f"; done
+echo "=== plasmoid qml module"; find x -path '*org/kde/plasma/plasmoid*' | head; find x -path '*org/kde/plasma/core/qmldir' -exec cat {} \;
+echo "=== plasmoid qmltypes"; for q in $(find x -path '*org/kde/plasma/plasmoid*' -name '*.qmltypes'); do grep -oE 'name: "[A-Za-z_]+"' "$q" | sort -u | tr '\n' ' ' | head -c 5000; echo; done
+echo "=== aurorae package structure strings"; strings x/usr/lib/x86_64-linux-gnu/qt6/plugins/kf6/packagestructure/kwin_aurorae.so | grep -iE 'aurorae|svg|rc$' | head -20
+strings x/usr/lib/x86_64-linux-gnu/qt6/plugins/org.kde.kdecoration3/org.kde.kwin.aurorae.so | grep -E '^[A-Z][A-Za-z]+$' | sort -u | head -120
+echo "=== aurorae qml"; find x -path '*aurorae*' | head -40
