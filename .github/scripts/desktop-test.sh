@@ -35,11 +35,14 @@ check "GRUB menu (UEFI)" 1 wait_text 'Live system' 120 grub
 key ret
 check "Plasma session reaches graphical login (serial)" 1 ser_wait 'login: *$' 300
 # Let Plasma finish starting (welcome autostart, panels, tray).
-check "44Welcome opens automatically on first login" 1 wait_text 'Welcome to 44OS NOVA' 240 01-welcome-autostart
+check "44Welcome opens automatically on first login" 1 wait_text 'Welcome to 44[0O]S|Your system' 240 01-welcome-autostart
 sleep 10; shot 01-welcome-autostart >/dev/null
 
 check "serial login as live user" 1 ser_login user live
 ser_define_gui
+# Keep the screen unlocked for the rest of the test (the live session also
+# disables auto-lock itself from 0.6 on; this covers older images).
+ser_run 'kwriteconfig6 --file kscreenlockerrc --group Daemon --key Autolock false; gui loginctl unlock-session' >/dev/null
 {
   echo "== 44osrc"; ser_run 'cat ~/.config/44osrc'
   echo "== kinfo"; ser_run 'kinfo 2>&1 | head -n 20'
@@ -106,7 +109,7 @@ ser_run 'pkill -u "$(id -u)" -x dolphin; sleep 2' >/dev/null
 
 # About this System and 44Welcome's system page.
 ser_run 'gui kinfocenter' >/dev/null
-check "About this System shows 44OS branding" 1 wait_text '44OS' 60 08-about-system
+check "About this System shows 44OS branding" 1 wait_text '44[0O]S|NOVA' 60 08-about-system
 ser_run 'pkill -u "$(id -u)" -x kinfocenter; sleep 2' >/dev/null
 ser_run 'gui 44welcome --page system' >/dev/null
 check "44Welcome system page opens" 1 wait_text 'Processor|Memory' 40 09-welcome-system

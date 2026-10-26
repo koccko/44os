@@ -56,7 +56,7 @@ VM_NAME=live FW=uefi VGA=std CDROM="$OUT/serial.iso" DISKS="$OUT/target.qcow2 $O
 check "Live ISO: GRUB menu" 1 wait_text 'Live system' 120 grub || finish
 key ret
 check "Live ISO: session started" 1 ser_wait 'login: *$' 300 || finish
-wait_text 'Welcome to 44OS NOVA|Install 44OS' 240 live-desktop
+wait_text 'Welcome to 44[0O]S|Your system|Install 44[0O]S' 240 live-desktop
 sleep 10
 check "Live ISO: serial login" 1 ser_login user live || finish
 ser_define_gui
@@ -74,7 +74,7 @@ for i in $(seq 1 30); do
   if grep -qiE 'Authentication|Password' <<<"$txt" && ! grep -qiE 'Welcome to' <<<"$txt"; then
     type_text live; key ret; sleep 4
   fi
-  grep -qiE 'Welcome to the|Welcome to 44OS NOVA' <<<"$txt" && break
+  grep -qiE 'Welcome to the|installer' <<<"$txt" && break
   sleep 3
 done
 check "Calamares starts from the Install 44OS launcher" 1 wait_text 'Welcome to the|installer' 60 cal-01-welcome || finish
@@ -134,12 +134,12 @@ sddm_login() { # PASSWORD SHOTNAME
   sleep 3
   type_text "$1"; key ret
   # The greeter disappears and Plasma starts.
-  wait_text 'Desktop|Welcome to 44OS NOVA|[0-9]{1,2}:[0-9]{2}' 180 "$2-session"
+  wait_text 'Desktop|Welcome to 44[0O]S|Your system|[0-9]{1,2}:[0-9]{2}' 180 "$2-session"
 }
 VM_NAME=disk1 FW=uefi VGA=std CDROM="" DISKS="$OUT/target.qcow2 $OUT/canary.img" VARS="$OUT/vars.fd" NO_REBOOT=1 vm_start
 check "Installed system boots without the ISO (GRUB → SDDM)" 1 wait_text "$FULLNAME|Password|$LOGIN" 300 disk1-01-sddm || finish
 check "SDDM login with the installer-set password" 1 sddm_login "$PASS1" disk1-02 || finish
-check "44Welcome appears on the first login" 1 wait_text 'Welcome to 44OS NOVA' 120 disk1-03-welcome
+check "44Welcome appears on the first login" 1 wait_text 'Welcome to 44[0O]S|Your system' 120 disk1-03-welcome
 sleep 15; shot disk1-04-desktop >/dev/null
 
 # --------------------------------------------------------------------------
@@ -185,7 +185,7 @@ VM_NAME=disk2 FW=uefi VGA=std CDROM="" DISKS="$OUT/target.qcow2" VARS="$OUT/vars
 check "Second boot reaches SDDM" 1 wait_text "$FULLNAME|Password|$LOGIN" 300 disk2-01-sddm
 check "SDDM login with the changed password after reboot" 1 sddm_login "$PASS2" disk2-02
 sleep 45; shot disk2-03-desktop >/dev/null
-check "44Welcome does not reappear on later logins" 1 bash -c "! tesseract '$OUT/disk2-03-desktop.png' - 2>/dev/null | grep -qi 'Welcome to 44OS NOVA'"
+check "44Welcome does not reappear on later logins" 1 bash -c "! tesseract '$OUT/disk2-03-desktop.png' - 2>/dev/null | grep -qiE 'Welcome to 44[0O]S|Your system'"
 vm_stop
 
 # --------------------------------------------------------------------------

@@ -190,7 +190,22 @@ ser_wait() { # RE SECONDS — only output written after the last ser_wait/ser_se
   done
   return 1
 }
-ser_send() { SER_POS=$(stat -c %s "$SERIAL"); printf '%s\r' "$1" | socat -u - UNIX-CONNECT:"$SER" >/dev/null 2>&1 || true; }
+# Write to the serial console slowly: QEMU only takes what the emulated UART
+# FIFO can hold and drops the rest when the client disconnects.
+ser_write() {
+  python3 - "$SER" "$1" <<'PY' || true
+import socket, sys, time
+s = socket.socket(socket.AF_UNIX)
+s.connect(sys.argv[1])
+data = sys.argv[2].encode() + b"\r"
+for i in range(0, len(data), 4):
+    s.sendall(data[i:i + 4])
+    time.sleep(0.03)
+time.sleep(0.5)
+s.close()
+PY
+}
+ser_send() { SER_POS=$(stat -c %s "$SERIAL"); ser_write "$1"; }
 # ser_run CMD [SECONDS]: run a shell command on a logged-in serial console, capture its output
 ser_run() {
   local tag="R$RANDOM$RANDOM" t="${2:-30}"
@@ -225,7 +240,7 @@ ser_login() { # USER PASSWORD
   done
   ser_send "$1"
   ser_wait 'Password: *$' 20 || return 1
-  SER_POS=$(stat -c %s "$SERIAL"); printf '%s\r' "$2" | socat -u - UNIX-CONNECT:"$SER" >/dev/null 2>&1
+  SER_POS=$(stat -c %s "$SERIAL"); ser_write "$2"
   if ser_wait '[$#] *$|Login incorrect' 40; then
     tail -c 400 "$SERIAL" | tr -d '\r' | grep -q 'Login incorrect' && return 1
     ser_send 'stty cols 220 -echo; export PAGER=cat SYSTEMD_PAGER=cat PS1="$ "'
