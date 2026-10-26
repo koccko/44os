@@ -1,0 +1,474 @@
+=== taskmanager applet files
+=== qmltypes enums
+/probe.sh: line 8: python3: command not found
+=== appmenu
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/metadata.json
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui/configGeneral.qml
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui/main.qml
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui/MenuDelegate.qml
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/config
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/config/main.xml
+x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/config/config.qml
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/metadata.json
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "kde@privat.broulik.de",
+                "Name": "Kai Uwe Broulik",
+                "Name[ar]": "كاي أووي بروتيك",
+                "Name[ast]": "Kai Uwe Broulik",
+                "Name[az]": "Kai Uwe Broulik",
+                "Name[be]": "Kai Uwe Broulik",
+                "Name[bg]": "Kai Uwe Broulik",
+                "Name[ca@valencia]": "Kai Uwe Broulik",
+                "Name[ca]": "Kai Uwe Broulik",
+                "Name[cs]": "Kai Uwe Broulik",
+                "Name[da]": "Kai Uwe Broulik",
+                "Name[de]": "Kai Uwe Broulik",
+                "Name[el]": "Kai Uwe Broulik",
+                "Name[en_GB]": "Kai Uwe Broulik",
+                "Name[eo]": "Kai Uwe Broulik",
+                "Name[es]": "Kai Uwe Broulik",
+                "Name[et]": "Kai Uwe Broulik",
+                "Name[eu]": "Kai Uwe Broulik",
+                "Name[fi]": "Kai Uwe Broulik",
+                "Name[fr]": "Kai Uwe Broulik",
+                "Name[gl]": "Kai Uwe Broulik",
+                "Name[he]": "קאי אווה ברוליק",
+                "Name[hi]": "काई उवे ब्रोलिक",
+                "Name[hu]": "Kai Uwe Broulik",
+                "Name[ia]": "Kai Uwe Broulik",
+                "Name[id]": "Kai Uwe Broulik",
+                "Name[is]": "Kai Uwe Broulik",
+                "Name[it]": "Kai Uwe Broulik",
+                "Name[ja]": "Kai Uwe Broulik",
+                "Name[ka]": "კაი უვე ბროულიკი",
+                "Name[ko]": "Kai Uwe Broulik",
+                "Name[lt]": "Kai Uwe Broulik",
+                "Name[lv]": "Kai Uwe Broulik",
+                "Name[nb]": "Kai Uwe Broulik",
+                "Name[nl]": "Kai Uwe Broulik",
+                "Name[nn]": "Kai Uwe Broulik",
+                "Name[pa]": "ਕੋਈ ਉਵੇ ਬਰੋਉਲਿਕ",
+                "Name[pl]": "Kai Uwe Broulik",
+                "Name[pt]": "Kai Uwe Broulik",
+                "Name[pt_BR]": "Kai Uwe Broulik",
+                "Name[ro]": "Kai Uwe Broulik",
+                "Name[ru]": "Kai Uwe Broulik",
+                "Name[sa]": "कै उवे ब्रौलिक्",
+                "Name[sk]": "Kai Uwe Broulik",
+                "Name[sl]": "Kai Uwe Broulik",
+                "Name[sv]": "Kai Uwe Broulik",
+                "Name[ta]": "காய் ஊவே புரோலிக்",
+                "Name[tr]": "Kai Uwe Broulik",
+                "Name[uk]": "Kai Uwe Broulik",
+                "Name[vi]": "Kai Uwe Broulik",
+                "Name[x-test]": "xxKai Uwe Broulikxx",
+                "Name[zh_CN]": "Kai Uwe Broulik",
+                "Name[zh_TW]": "Kai Uwe Broulik"
+            }
+        ],
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=plasmashell&component=Global%20Menu",
+        "Category": "Windows and Tasks",
+        "Description": "Global menubar in your Plasma Desktop",
+        "Description[ar]": "شريط القائمة الشاملة في سطح مكتب بلازما",
+        "Description[az]": "Plasma iş masanızın qlobal menyu zolağı",
+        "Description[be]": "Глабальная панэль меню для Plasma",
+        "Description[bg]": "Глобална лента с менюта във вашия работен плот",
+        "Description[ca@valencia]": "Barra de menús global en l'escriptori Plasma",
+        "Description[ca]": "Barra de menús global a l'escriptori Plasma",
+        "Description[cs]": "Globální nabídka ve vašem prostředí Plasma",
+        "Description[da]": "Global menulinje på dit Plasma-skrivebord",
+        "Description[de]": "Globale Menüleiste auf der Plasma-Arbeitsfläche",
+        "Description[el]": "Καθολική μπάρα μενού στην επιφάνεια εργασίας Plasma",
+        "Description[en_GB]": "Global menubar in your Plasma Desktop",
+        "Description[eo]": "Ĉiea menubreto en via Plasma-Labortablo",
+        "Description[es]": "Barra de menú global para el escritorio Plasma",
+        "Description[et]": "Globaalne menüüriba Plasma töölaual",
+        "Description[eu]": "Zure Plasma mahaigaineko menu-barra orokorra",
+        "Description[fi]": "Työpöydänlaajuinen valikkorivi Plasma-työpöydälle",
+        "Description[fr]": "Barre globale de menus de votre bureau Plasma",
+        "Description[gl]": "Barra de menú global no escritorio de Plasma",
+        "Description[he]": "סרגל תפריטים כללי בשולחן העבודה שלך מסוג פלזמה",
+        "Description[hi]": "आपके प्लाज्मा डेस्कटॉप में वैश्विक मेनूबार",
+        "Description[hu]": "Globális menüsáv a Plasma asztalon",
+        "Description[ia]": "Barra de menu global in tu Scriptorio de Plasma",
+        "Description[id]": "Bilah menu global di Plasma Desktop kamu",
+        "Description[is]": "Altæk valmyndastika á Plasma-skjáborðinu þínu",
+        "Description[it]": "Barra dei menu globale nel tuo desktop Plasma",
+        "Description[ja]": "Plasma デスクトップのグローバルメニューバー",
+        "Description[ka]": "Plasma-ის სამუშაო მაგიდის გლობალური მენიუს ზოლი",
+        "Description[ko]": "Plasma 데스크톱에 전역 메뉴 표시줄 표시",
+        "Description[lt]": "Visuotinė meniu juosta jūsų Plasma darbalaukyje",
+        "Description[lv]": "„Plasma“ darbvirsmas globālā izvēlnes josla",
+        "Description[nb]": "Global menylinje på Plasma-skrivebordet",
+        "Description[nl]": "Globale menubalk in uw Plasma-bureaublad",
+        "Description[nn]": "Global menylinje på Plasma-skrivebordet",
+        "Description[pa]": "ਤੁਹਾਡੇ ਪਲਾਜ਼ਮਾ ਡੈਸਕਟਾਪ ਵਿੱਚ ਗਲੋਬਲ ਮੇਨੂ-ਪੱਟੀ",
+        "Description[pl]": "Globalny pasek menu na pulpicie Plazmy",
+        "Description[pt]": "Menu global na sua área de trabalho do Plasma",
+        "Description[pt_BR]": "Barra de menu global na sua área de trabalho Plasma",
+        "Description[ro]": "Bară de meniu globală în biroul Plasma",
+        "Description[ru]": "Строка меню приложения на рабочем столе Plasma",
+        "Description[sa]": "भवतः प्लाज्मा कार्यमुख् मध्ये वैश्विक विकल्पसूचि पट्टिका",
+        "Description[sk]": "Globálna ponuka na vašej Ploche Plasma",
+        "Description[sl]": "Splošna menijska vrstica na vašem namizju Plasma",
+        "Description[sv]": "Global menyrad på Plasmaskrivbordet",
+        "Description[ta]": "பணிமேடையிலேயே செயலிகளின் பட்டிகளை காட்டும்",
+        "Description[tr]": "Plasma Masaüstü’nüzde global menü çubuğu",
+        "Description[uk]": "Загальна панель меню у вашій стільниці Плазми",
+        "Description[vi]": "Thanh trình đơn toàn cục ở bàn làm việc Plasma của bạn",
+        "Description[x-test]": "xxGlobal menubar in your Plasma Desktopxx",
+        "Description[zh_CN]": "Plasma 桌面上的全局菜单",
+        "Description[zh_TW]": "您的 Plasma 桌面用的全域選單列",
+        "FormFactors": [
+            "desktop"
+        ],
+        "Icon": "show-menu",
+        "Id": "org.kde.plasma.appmenu",
+        "License": "GPL-2.0+",
+        "Name": "Global Menu",
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui/configGeneral.qml
+/*
+    SPDX-FileCopyrightText: 2016 Chinmoy Ranjan Pradhan <chinmoyrp65@gmail.com>
+
+    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+*/
+
+import QtQuick 2.0
+import QtQuick.Controls 2.5
+
+import org.kde.kirigami 2.5 as Kirigami
+import org.kde.plasma.plasmoid 2.0
+import org.kde.kcmutils as KCM
+
+KCM.SimpleKCM {
+    property alias cfg_compactView: compactViewRadioButton.checked
+
+    Kirigami.FormLayout {
+        RadioButton {
+            id: compactViewRadioButton
+            text: i18n("Use single button for application menu")
+        }
+
+        RadioButton {
+            id: fullViewRadioButton
+            checked: !compactViewRadioButton.checked
+            text: i18n("Show full application menu")
+        }
+    }
+}
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.appmenu/contents/ui/main.qml
+/*
+    SPDX-FileCopyrightText: 2013 Heena Mahour <heena393@gmail.com>
+    SPDX-FileCopyrightText: 2013 Sebastian Kügler <sebas@kde.org>
+    SPDX-FileCopyrightText: 2016 Kai Uwe Broulik <kde@privat.broulik.de>
+
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+// Deliberately imported after QtQuick to avoid missing restoreMode property in Binding. Fix in Qt 6.
+import QtQml 2.15
+
+import org.kde.plasma.plasmoid 2.0
+import org.kde.kquickcontrolsaddons 2.0 // For KCMShell
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.private.keyboardindicator as KeyboardIndicator
+import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.plasma.private.appmenu 1.0 as AppMenuPrivate
+import org.kde.kirigami 2.5 as Kirigami
+
+PlasmoidItem {
+    id: root
+
+    readonly property bool vertical: Plasmoid.formFactor === PlasmaCore.Types.Vertical
+    readonly property bool view: Plasmoid.configuration.compactView
+
+    onViewChanged: {
+        Plasmoid.view = view;
+    }
+
+    Plasmoid.constraintHints: Plasmoid.CanFillArea
+    preferredRepresentation: Plasmoid.configuration.compactView ? compactRepresentation : fullRepresentation
+
+    // Only exists because the default CompactRepresentation doesn't expose a
+    // way to mark its icon as disabled.
+    // TODO remove once it gains that feature.
+    compactRepresentation: PlasmaComponents3.ToolButton {
+        readonly property int fakeIndex: 0
+        Layout.fillWidth: false
+        Layout.fillHeight: false
+        Layout.minimumWidth: implicitWidth
+        Layout.maximumWidth: implicitWidth
+        enabled: appMenuModel.menuAvailable
+        checkable: appMenuModel.menuAvailable && Plasmoid.currentIndex === fakeIndex
+        checked: checkable
+        icon.name: "application-menu"
+
+        display: PlasmaComponents3.AbstractButton.IconOnly
+        text: Plasmoid.title
+        Accessible.description: toolTipSubText
+
+        onClicked: Plasmoid.trigger(this, 0);
+    }
+
+    fullRepresentation: GridLayout {
+        id: buttonGrid
+
+        Plasmoid.status: {
+            if (appMenuModel.menuAvailable && Plasmoid.currentIndex > -1 && buttonRepeater.count > 0) {
+                return PlasmaCore.Types.NeedsAttentionStatus;
+            } else {
+                return buttonRepeater.count > 0 || Plasmoid.configuration.compactView ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus;
+            }
+        }
+
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        Layout.minimumWidth: implicitWidth
+        Layout.minimumHeight: implicitHeight
+
+        flow: root.vertical ? GridLayout.TopToBottom : GridLayout.LeftToRight
+        rowSpacing: 0
+        columnSpacing: 0
+
+        Binding {
+            target: plasmoid
+            property: "buttonGrid"
+            value: buttonGrid
+            restoreMode: Binding.RestoreNone
+        }
+
+        Connections {
+            target: Plasmoid
+            function onRequestActivateIndex(index: int) {
+                const button = buttonRepeater.itemAt(index);
+                if (button) {
+                    button.activated();
+                }
+            }
+        }
+
+        Connections {
+            target: Plasmoid
+            function onActivated() {
+                const button = buttonRepeater.itemAt(0);
+                if (button) {
+                    button.activated();
+                }
+            }
+        }
+
+        PlasmaComponents3.ToolButton {
+            id: noMenuPlaceholder
+            visible: buttonRepeater.count === 0
+            text: Plasmoid.title
+            Layout.fillWidth: root.vertical
+            Layout.fillHeight: !root.vertical
+        }
+
+        Repeater {
+            id: buttonRepeater
+            model: appMenuModel.visible ? appMenuModel : null
+
+            MenuDelegate {
+                readonly property int buttonIndex: index
+
+                Layout.fillWidth: root.vertical
+                Layout.fillHeight: !root.vertical
+                text: activeMenu
+                Kirigami.MnemonicData.active: altState.pressed
+=== icon applet
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.icon/metadata.json
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "plasma-devel@kde.org",
+                "Name": "The Plasma Team",
+                "Name[ar]": "فريق بلازما",
+                "Name[ast]": "L'equipu de Plasma",
+                "Name[az]": "Plasma komandası",
+                "Name[be]": "Каманда Plasma",
+                "Name[bg]": "Екипът на Plasma",
+                "Name[ca@valencia]": "L'equip de Plasma",
+                "Name[ca]": "L'equip del Plasma",
+                "Name[cs]": "Team Plasma",
+                "Name[da]": "Plasma-holdet",
+                "Name[de]": "Das Plasma-Team",
+                "Name[el]": "Η ομάδα Plasma",
+                "Name[en_GB]": "The Plasma Team",
+                "Name[eo]": "La Plasma-Teamo",
+                "Name[es]": "El equipo de Plasma",
+                "Name[et]": "Plasma meeskond",
+                "Name[eu]": "Plasma taldea",
+                "Name[fi]": "Plasma-työryhmä",
+                "Name[fr]": "L'équipe de Plasma",
+                "Name[gl]": "O equipo de Plasma",
+                "Name[he]": "צוות פלזמה",
+                "Name[hi]": "प्लाज़्मा दल",
+                "Name[hu]": "A Plasma fejlesztői",
+                "Name[ia]": "Le equipa de Plasma",
+                "Name[id]": "Tim Plasma",
+                "Name[is]": "Plasma-þróunarhópurinn",
+                "Name[it]": "La squadra di Plasma",
+                "Name[ja]": "Plasma チーム",
+                "Name[ka]": "Plasma-ის გუნდი",
+                "Name[ko]": "Plasma 팀",
+                "Name[lt]": "Plasma komanda",
+                "Name[lv]": "„Plasma“ komanda",
+                "Name[nb]": "Utviklingslaget for Plasma",
+                "Name[nl]": "Het team van Plasma",
+                "Name[nn]": "Utviklingslaget for Plasma",
+                "Name[pa]": "ਪਲਾਜ਼ਮਾ ਟੀਮ",
+                "Name[pl]": "Zespół Plazmy",
+                "Name[pt]": "A Equipa do Plasma",
+                "Name[pt_BR]": "Temas do Plasma",
+                "Name[ro]": "Echipa Plasma",
+                "Name[ru]": "Команда разработчиков Plasma",
+                "Name[sa]": "प्लाज्मा दलम्",
+                "Name[sk]": "Plasma Tím",
+                "Name[sl]": "Ekipa Plasme",
+                "Name[sv]": "Plasma-gruppen",
+                "Name[ta]": "பிளாஸ்மா குழு",
+                "Name[tr]": "Plasma Takımı",
+                "Name[uk]": "Команда розробників Плазми",
+                "Name[vi]": "Đội Plasma",
+                "Name[x-test]": "xxThe Plasma Teamxx",
+                "Name[zh_CN]": "Plasma 开发团队",
+                "Name[zh_TW]": "Plasma 團隊"
+            }
+        ],
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=plasmashell&component=Icon",
+        "Category": "File System",
+        "Description": "A generic icon",
+        "Description[ar]": "أيقونة عامّة",
+        "Description[ast]": "Un iconu xenéricu",
+        "Description[az]": "Ümumi nişan",
+        "Description[be]": "Агульны значок",
+        "Description[bg]": "Обикновена икона",
+        "Description[ca@valencia]": "Una icona genèrica",
+        "Description[ca]": "Una icona genèrica",
+        "Description[cs]": "Obecná ikona",
+        "Description[da]": "Et generisk ikon",
+        "Description[de]": "Ein allgemeines Symbol",
+        "Description[el]": "Ένα γενικό εικονίδιο",
+        "Description[en_GB]": "A generic icon",
+        "Description[eo]": "Ĝenerala piktogramo",
+        "Description[es]": "Un icono genérico",
+        "Description[et]": "Üldine ikoon",
+        "Description[eu]": "Ikono generiko bat",
+        "Description[fi]": "Yleiskuvake",
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.icon/contents/ui/main.qml
+/*
+    SPDX-FileCopyrightText: 2013 Bhushan Shah <bhush94@gmail.com>
+    SPDX-FileCopyrightText: 2016 Kai Uwe Broulik <kde@privat.broulik.de>
+    SPDX-FileCopyrightText: 2022 ivan tkachenko <me@ratijas.tk>
+    SPDX-FileCopyrightText: 2023 Mike Noe <noeerover@gmail.com>
+
+    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+*/
+
+import QtQuick
+
+import org.kde.draganddrop 2.0 as DragDrop
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.extras as PlasmaExtras
+import org.kde.plasma.plasmoid 2.0
+import org.kde.kirigami 2.20 as Kirigami
+
+PlasmoidItem {
+    id: root
+
+    readonly property bool constrained: [PlasmaCore.Types.Vertical, PlasmaCore.Types.Horizontal]
+        .includes(Plasmoid.formFactor)
+    property bool containsAcceptableDrag: false
+
+    preferredRepresentation: fullRepresentation
+
+    enabled: Plasmoid.valid
+
+    Plasmoid.icon: Plasmoid.iconName
+    Plasmoid.title: Plasmoid.name
+
+    Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
+
+    Plasmoid.onActivated: Plasmoid.run()
+
+    Plasmoid.contextualActions: Plasmoid.extraActions
+
+    PlasmaCore.Action {
+        id: configureAction
+        text: i18n("Properties")
+        icon.name: "document-properties"
+        visible: Plasmoid.valid && Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable
+        onTriggered: Plasmoid.configure()
+    }
+    
+    Component.onCompleted: {
+        Plasmoid.setInternalAction("configure", configureAction);
+    }
+
+    onExternalData: (mimetype, data) => {
+        root.Plasmoid.url = data;
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        activeFocusOnTab: true
+        
+        Keys.onPressed: event => {
+            switch (event.key) {
+            case Qt.Key_Space:
+            case Qt.Key_Enter:
+            case Qt.Key_Return:
+            case Qt.Key_Select:
+                Plasmoid.run()
+                break;
+            }
+        }
+        
+        Accessible.name: Plasmoid.title
+        Accessible.description: toolTip.subText
+        Accessible.role: Accessible.Button
+
+        hoverEnabled: true
+        enabled: Plasmoid.valid
+
+        onClicked: Plasmoid.run()
+
+        DragDrop.DropArea {
+            anchors.fill: parent
+--- x/usr/share/plasma/plasmoids/org.kde.plasma.icon/contents/config/main.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="url" type="String">
+    </entry>
+    <entry name="localPath" type="String">
+    </entry>
+  </group>
+
+</kcfg>
+=== plasmoid qml module
+=== plasmoid qmltypes
+=== aurorae package structure strings
+/probe.sh: line 21: strings: command not found
+/probe.sh: line 22: strings: command not found
+=== aurorae qml
+x/usr/lib/x86_64-linux-gnu/qt6/plugins/org.kde.kdecoration3/org.kde.kwin.aurorae.so
+x/usr/lib/x86_64-linux-gnu/qt6/plugins/kf6/packagestructure/kwin_aurorae.so
+x/usr/lib/x86_64-linux-gnu/qt6/plugins/org.kde.kdecoration3.kcm/kcm_auroraedecoration.so
