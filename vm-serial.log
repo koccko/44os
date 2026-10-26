@@ -1,0 +1,324 @@
+[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01HBdsDxe: loading Boot0001 "UEFI QEMU DVD-ROM QM00011 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x5,0xFFFF,0x0)
+BdsDxe: starting Boot0001 "UEFI QEMU DVD-ROM QM00011 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x5,0xFFFF,0x0)
+[0;21;33mSpeculative Return Stack Overflow: IBPB-extending microcode not applied![0m
+[0;21;33mSpeculative Return Stack Overflow: WARNING: See https://kernel.org/doc/html/latest/admin-guide/hw-vuln/srso.html for mitigation options.[0m
+[0;21;33mamd_pstate: The CPPC feature is supported but currently disabled by the BIOS.[0m
+[0;21;33mPlease enable it if your BIOS has the CPPC option.[0m
+[0;21;33mamd_pstate: the _CPC object is not present in SBIOS or ACPI disabled[0m
+[0;21;33mata6.00: LPM support broken, forcing max_power[0m
+[0;21;33mata6.00: LPM support broken, forcing max_power[0m
+[!p]104[?7h[[0;32m  OK  [0m] Finished [0;1;39mplymouth-read-write.servi…[0mPlymouth To Write Out Runtime Data.
+         Mounting [0;1;39mproc-sys-fs-binfmt_misc.m…[0mcutable File Formats File System...
+[[0;32m  OK  [0m] Mounted [0;1;39mproc-sys-fs-binfmt_misc.mo…[0mxecutable File Formats File System.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup.se…[0mreate System Files and Directories.
+         Starting [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache...
+         Starting [0;1;39mlive-config.service[0m - liv…e boot process (late userspace)....
+         Starting [0;1;39msystemd-journal-catalog-u…ervice[0m - Rebuild Journal Catalog...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-catalog-u….service[0m - Rebuild Journal Catalog.
+[[0;32m  OK  [0m] Finished [0;1;39mnetworking.service[0m - Raise network interfaces.
+[[0;32m  OK  [0m] Finished [0;1;39mlive-config.service[0m - liv…the boot process (late userspace)..
+[[0;32m  OK  [0m] Finished [0;1;39mldconfig.service[0m - Rebuild Dynamic Linker Cache.
+         Starting [0;1;39msystemd-update-done.service[0m - Update is Completed...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-update-done.service[0m - Update is Completed.
+[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Started [0;1;39mcups.path[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Started [0;1;39manacron.timer[0m - Trigger anacron every hour.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Started [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Started [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Started [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Started [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Started [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Started [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Listening on [0;1;39mavahi-daemon.socket[0m -…DNS/DNS-SD Stack Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mcups.socket[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Listening on [0;1;39mdbus.socket[0m - D-Bus System Message Bus Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-hostnamed.socket[0m - Hostname Service Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39muuidd.socket[0m - UUID daemon activation socket.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+         Starting [0;1;39maccounts-daemon.service[0m - Accounts Service...
+[[0;32m  OK  [0m] Started [0;1;39manacron.service[0m - Run anacron jobs.
+         Starting [0;1;39mavahi-daemon.service[0m - Avahi mDNS/DNS-SD Stack...
+[[0;32m  OK  [0m] Started [0;1;39mcron.service[0m - Regular background program processing daemon.
+         Starting [0;1;39mdbus.service[0m - D-Bus System Message Bus...
+         Starting [0;1;39me2scrub_reap.service[0m - Re…ne ext4 Metadata Check Snapshots...
+         Starting [0;1;39mpolkit.service[0m - Authorization Manager...
+         Starting [0;1;39mswitcheroo-control.servic…[0mSwitcheroo Control Proxy service...
+         Starting [0;1;39msystemd-logind.service[0m - User Login Management...
+         Starting [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Started [0;1;39mdbus.service[0m - D-Bus System Message Bus.
+         Starting [0;1;39mNetworkManager.service[0m - Network Manager...
+         Starting [0;1;39mwpa_supplicant.service[0m - WPA supplicant...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_reap.service[0m - Re…line ext4 Metadata Check Snapshots.
+[[0;32m  OK  [0m] Started [0;1;39mavahi-daemon.service[0m - Avahi mDNS/DNS-SD Stack.
+[[0;32m  OK  [0m] Started [0;1;39mswitcheroo-control.service[0m - Switcheroo Control Proxy service.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Started [0;1;39mwpa_supplicant.service[0m - WPA supplicant.
+[[0;32m  OK  [0m] Started [0;1;39mpolkit.service[0m - Authorization Manager.
+         Starting [0;1;39mModemManager.service[0m - Modem Manager...
+[[0;32m  OK  [0m] Started [0;1;39maccounts-daemon.service[0m - Accounts Service.
+[[0;32m  OK  [0m] Started [0;1;39mudisks2.service[0m - Disk Manager.
+         Starting [0;1;39msystemd-hostnamed.service[0m - Hostname Service...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-hostnamed.service[0m - Hostname Service.
+[[0;32m  OK  [0m] Started [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-rfkill.socket[0m…ll Switch Status /dev/rfkill Watch.
+         Starting [0;1;39mNetworkManager-dispatcher…[0manager Script Dispatcher Service...
+[[0;32m  OK  [0m] Started [0;1;39mNetworkManager.service[0m - Network Manager.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
+         Starting [0;1;39mNetworkManager-wait-onlin…ce[0m - Network Manager Wait Online...
+         Starting [0;1;39mcups.service[0m - CUPS Scheduler...
+         Starting [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+[[0;32m  OK  [0m] Started [0;1;39mNetworkManager-dispatcher.…[0m Manager Script Dispatcher Service.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+         Starting [0;1;39mplymouth-quit-wait.servic…[0md until boot process finishes up...
+         Starting [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen...
+[[0;32m  OK  [0m] Started [0;1;39msddm.service[0m - Simple Desktop Display Manager.
+[[0;32m  OK  [0m] Started [0;1;39mcups.service[0m - CUPS Scheduler.
+[[0;32m  OK  [0m] Reached target [0;1;39mprinter.target[0m - Printer Support.
+[!p]104[?7h[6n[32766;32766H[6n[!p]104[?7h[6n[32766;32766H[6n
+Debian GNU/Linux 13 44os ttyS0
+
+44os login: 
+44os login: user
+Password: 
+Linux 44os 6.12.113+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/ccopyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+[?2004huser@44os:~$ stty cols 220 -echo; export PAGER=cat SYSTEMD_PAGER=cat PS1="$ "
+[?2004l[?2004h$ [?2004l
+[?2004h$ [?2004l
+R92975869B
+R92975869E
+[?2004h$ [?2004l
+R2681723946B
+[Effects]
+Applied=reduced
+LastRenderer=llvmpipe (LLVM 19.1.7, 256 bits)
+
+[Welcome]
+Completed=true
+FirstShown=true
+Version=0.6 Alpha
+R2681723946E
+[?2004h$ [?2004l
+R2654317408B
+Operating System: 44OS NOVA 0.6 Alpha
+KDE Plasma Version: 6.3.6
+KDE Frameworks Version: 6.13.0
+Qt Version: 6.8.2
+Kernel Version: 6.12.113+deb13-amd64 (64-bit)
+Graphics Platform: offscreen
+Processors: 2 × AMD EPYC 9V45 96-Core Processor
+Memory: 4  GiB of RAM (3.8 GiB usable)
+R2654317408E
+[?2004h$ [?2004l
+R2998419674B
+[ActionPlugins][0]
+[ActionPlugins][1]
+[Containments][1]
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+[Containments][1][General]
+[Containments][1][Wallpaper][org.kde.image][General]
+[Containments][2]
+plugin=org.kde.panel
+wallpaperpllugin=org.kde.image
+[Containments][2][Applets][21]
+plugin=org.kde.plasma.digitalclock
+[Containments][2][Applets][21][Configuration]
+[Containments][2][Applets][21][Configuration][Appearance]
+[Containments][2][Applets][3]
+plugin=org.kde.plasma.kickoff
+[Containments][2][Applets][3][Configuration]
+[Containments][2][Applets][3][Configuration][General]
+[Containments][2][Applets][3][Configuration][Shortcuts]
+[Containments][2][Applets][4]
+plugin=org.44os.activeapp
+[Containments][2][Applets][5]
+plugin=org.kde.plasma.appmenu
+[Containments][2][Applets][5][Configuration][General]
+[Containments][2][Applets][6]
+plugin=org.kde.plasma.panelspacer
+[Containments][2][Applets][7]
+plugin=org.kde.plasma.systemtray
+[Containments][2][Applets][7][Configuration]
+[Containments][2][General]
+[Containments][22]
+plugin=org.kde.panel
+wallpaperplugin=org.kde.image
+[Containments][22][Applets][23]
+plugin=org.44os.dock
+[Containments][22][Applets][23][Configuration][General]
+iconSize=44
+launchers=applications:org.44os.launcher.desktop,applications:org.kde.dolphin.desktop,applications:firefox-esr.desktop,applications:org.kde.konsole.desktop,applications:org.kde.discover.desktop,applications:systemsettings.desktop
+magnification=35
+[Containments][22][General]
+[Containments][8]
+plugin=org.kde.plasma.private.systemtray
+wallpaperplugin=org.kde.image
+[Containments][8][Applets][10]
+plugin=org.kde.kscreen
+[Containments][8][Applets][11]
+plugin=org.kde.plasma.cameraindicator
+[Containments][8][Applets][12]
+plugin=org.kde.plasma.clipboard
+[Containments][8][Applets][13]
+plugin=org.kde.plasma.devicenotifier
+[Containments][8][Applets][14]
+plugin=org.kde.plasma.keyboardindicator
+[Containments][8][Applets][15]
+plugin=org.kde.plasma.keyboardlayout
+[Containments][8][Applets][16]
+plugin=org.kde.plasma.manage-inputmethod
+[Containments][8][Applets][17]
+plugin=org.kde.plasma.notifications
+[Containments][8][Applets][18]
+plugin=org.kde.plasma.printmanager
+[Containments][8][Applets][19]
+plugin=org.kde.plasma.vault
+[Containments][8][Applets][20]
+plugin=org.kde.plasma.volume
+[Containments][8][Applets][20][Configuration][General]
+[Containments][8][Applets][24]
+plugin=org.kde.plasma.networkmanagement
+[Containments][8][Applets][25]
+plugin=org.kde.plasma.brightness
+[Containments][8][Applets][26]
+plugin=org.kde.plasma.battery
+[Containments][8][Applets][9]
+plugin=org.kde.kdeconnect
+[Containments][8][General]
+[ScreenMapping]
+R2998419674E
+[?2004h$ [?2004l
+R159255483B
+R159255483E
+[?2004h$ [?2004l
+R1437018469B
+__aurorae__svg__44NOVA
+false
+[Effects]
+Applied=reduced
+LastRenderer=llvmpipe (LLVM 19.1.7, 256 bits)
+
+R1437018469E
+[?2004h$ [?2004l
+R2533625388B
+-bash: plymouth-set-default-theme: command not found
+BOOT_IMAGE=/live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 components quiet splash hostname=44os findiso=
+R2533625388E
+[?2004h$ [?2004l
+R2883828270B
+Oct 26 10:25:26 44os plasma-fallback-session-restore[1531]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os plasma-fallback-session-restore[1531]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os kdeconnectdd[1499]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os kdeconnectd[1499]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os DiscoverNotifier[1525]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os DiscoverNotifier[1525]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: kup.daemon: "Kup is not enabled, enable it from the system settings module. You can do that by running kcmshell5 kup"
+Oct 26 10:25:27 44os plasmashell[1331]: This plugin does not support setting window opacity
+Oct 26 10:25:27 44os kwin_wayland_wrapper[1214]: kf.windowsystem: static bool KX11Extras::mapViewport() may only be used on X11
+Oct 26 10:25:29 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+Oct 26 10:25:29 44os systemd[1142]: Started xdg-desktop-portal-gtk.service - Portal service (GTK/GNOME implementation).
+Oct 26 10:25:29 44os plasmashell[1331]: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/main.qml:310:13: QML Image: Cannot open: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/start-here-kde-symbolic
+Oct 26 10:25:29 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.freedesktop.impl.portal.desktop.kde' unit='plasma-xdg-desktop-portal-kde.service' requested by ':1.16' (uid=1000 pid=1222 comm="/usr/libexec/xdg-desktop-portal")
+Oct 26 10:25:29 44os systemd[1142]: Starting plasma-xdg-desktop-portal-kde.service - Xdg Desktop Portal For KDE...
+Oct 26 10:25:29 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc00df310
+Oct 26 10:25:29 44os plasmashell[1331]: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/main.qml:310:13: QML Image: Cannot open: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/44os-start
+Oct 26 10:25:30 44os xdg-desktop-portal-kde[1653]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:30 44os xdg-desktop-portal-kde[1653]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:30 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.kde'
+Oct 26 10:25:30 44os systemd[1142]: Started plasma-xdg-desktop-portal-kde.service - Xdg Desktop Portal For KDE.
+Oct 26 10:25:30 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+Oct 26 10:25:30 44os systemd[1142]: Started xdg-desktop-portal.service - Portal service.
+Oct 26 10:25:31 44os kalendarac[1547]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os kalendarac[1547]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os 44welcome[1523]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os 44welcome[1523]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:32 44os kded6[1439]: kf.config.kconf_update: /usr/share/kconf_update/webenginepart.upd defined Version=5 but Version=6 was expected
+Oct 26 10:25:32 44os kded6[1314]: qt.dbus.integration: QDBusConnection: name 'org.freedesktop.UPower' had owner '' but we thought it was ':1.34'
+Oct 26 10:25:32 44os kded6[1314]: Known activities: QList("09efc5d2-7610-4874-9d47-41b47bef5ff7")
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Loaded 14 settings from /home/user/.config/xsettingsd/xsettingsd.conf
+Oct 26 10:25:32 44os kded6[1314]: Known activities: QList("09efc5d2-7610-4874-9d47-41b47bef5ff7")
+Oct 26 10:25:32 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.bluez.obex' unit='obex.service' requested by ':1.23' (uid=1000 pid=1314 comm="/usr/bin/kded6")
+Oct 26 10:25:32 44os systemd[1142]: Starting obex.service - Bluetooth OBEX service...
+Oct 26 10:25:32 44os kded6[1314]: Registering ":1.53/StatusNotifierItem" to system tray
+Oct 26 10:25:32 44os kded6[1314]: org.kde.pulseaudio: No object for name "auto_null.monitor"
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Created window 0x1400001 on screen 0 with timestamp 30066
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Selection _XSETTINGS_S0 is owned by 0x0
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Took ownership of selection _XSETTINGS_S0
+Oct 26 10:25:33 44os obexd[1716]: OBEX daemon 5.82
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.bluez.obex'
+Oct 26 10:25:33 44os systemd[1142]: Started obex.service - Bluetooth OBEX service.
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.Sources5' unit='evolution-source-registry.service' requested by ':1.65' (uid=1000 pid=1716 comm="/usr/libexec/bluetooth/obexd")
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activation via systemd failed for unit 'evolution-source-registry.service': Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os obexd[1716]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.Sources5' unit='evolution-source-registry.service' requested by ':1.65' (uid=1000 pid=1716 comm="/usr/libexec/bluetooth/obexd")
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activation via systemd failed for unit 'evolution-source-registry.service': Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os obexd[1716]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.
+Oct 26 10:25:35 44os plasmashell[1331]: This plugin does not support setting window opacity
+Oct 26 10:25:36 44os plasmashell[1331]: kde.plasmashell: Activity added twice "09efc5d2-7610-4874-9d47-41b47bef5ff7"
+Oct 26 10:25:39 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc335b6c0
+Oct 26 10:25:39 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc335b6c0
+Oct 26 10:25:40 44os systemd[1142]: Finished plasma-ksplash.service - Splash screen shown during boot.
+Oct 26 10:25:40 44os systemd[1142]: plasma-ksplash.service: Consumed 4.263s CPU time, 123.1M memory peak.
+Oct 26 10:25:41 44os plasmashell[1331]: org.kde.pulseaudio: No object for name "auto_null.monitor"
+Oct 26 10:25:42 44os kwin_wayland_wrapper[1214]: Module 'org.kde.kwin.decoration' does not contain a module identifier directive - it cannot be protected from external registrations.
+Oct 26 10:25:55 44os kdeconnectd[1499]: 2026-10-26T10:25:55 default: Cannot find a compatible running Bluez. Please check the Bluez installation. QtBluetooth requires at least BlueZ version 5.
+Oct 26 10:25:56 44os kded6[1314]: kf.bluezqt: PendingCall Error: "Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)"
+Oct 26 10:25:56 44os kdeconnectd[1499]: 2026-10-26T10:25:56 kdeconnect.core: No local bluetooth adapter found
+R2883828270E
+[?2004h$ [?2004l
+R243920218B
+44os-live-installer-icon.desktop
+org.44os.session-setup.desktop
+org.44os.welcome-autostart.desktop
+R243920218E
+[?2004h$ [?2004l
+R121614355B
+R121614355E
+[?2004h$ [?2004l
+R927022722B
+1886 konsole
+R927022722E
+[?2004h$ [?2004l
+R3020822812B
+R3020822812E
+[?2004h$ [?2004l
+R86511600B
+R86511600E
+[?2004h$ [?2004l
+R1291519841B
+R1291519841E
+[?2004h$ [?2004l
+R1823031471B
+R1823031471E
+[?2004h$ [?2004l
+R244106527B
+R244106527E
+[?2004h$ [?2004l
+R200022243B
+R200022243E
+[?2004h$ [?2004l
+R292806780B
+R292806780E
+[?2004h$ [?2004l
+R1367922898B
+R1367922898E
+[?2004h$ [?2004l
+R260631911B
+R260631911E
+[?2004h$ 

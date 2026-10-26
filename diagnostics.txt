@@ -1,0 +1,174 @@
+== 44osrc
+[Effects]
+Applied=reduced
+LastRenderer=llvmpipe (LLVM 19.1.7, 256 bits)
+
+[Welcome]
+Completed=true
+FirstShown=true
+Version=0.6 Alpha
+== kinfo
+Operating System: 44OS NOVA 0.6 Alpha
+KDE Plasma Version: 6.3.6
+KDE Frameworks Version: 6.13.0
+Qt Version: 6.8.2
+Kernel Version: 6.12.113+deb13-amd64 (64-bit)
+Graphics Platform: offscreen
+Processors: 2 × AMD EPYC 9V45 96-Core Processor
+Memory: 4  GiB of RAM (3.8 GiB usable)
+== panels
+[ActionPlugins][0]
+[ActionPlugins][1]
+[Containments][1]
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+[Containments][1][General]
+[Containments][1][Wallpaper][org.kde.image][General]
+[Containments][2]
+plugin=org.kde.panel
+wallpaperpllugin=org.kde.image
+[Containments][2][Applets][21]
+plugin=org.kde.plasma.digitalclock
+[Containments][2][Applets][21][Configuration]
+[Containments][2][Applets][21][Configuration][Appearance]
+[Containments][2][Applets][3]
+plugin=org.kde.plasma.kickoff
+[Containments][2][Applets][3][Configuration]
+[Containments][2][Applets][3][Configuration][General]
+[Containments][2][Applets][3][Configuration][Shortcuts]
+[Containments][2][Applets][4]
+plugin=org.44os.activeapp
+[Containments][2][Applets][5]
+plugin=org.kde.plasma.appmenu
+[Containments][2][Applets][5][Configuration][General]
+[Containments][2][Applets][6]
+plugin=org.kde.plasma.panelspacer
+[Containments][2][Applets][7]
+plugin=org.kde.plasma.systemtray
+[Containments][2][Applets][7][Configuration]
+[Containments][2][General]
+[Containments][22]
+plugin=org.kde.panel
+wallpaperplugin=org.kde.image
+[Containments][22][Applets][23]
+plugin=org.44os.dock
+[Containments][22][Applets][23][Configuration][General]
+iconSize=44
+launchers=applications:org.44os.launcher.desktop,applications:org.kde.dolphin.desktop,applications:firefox-esr.desktop,applications:org.kde.konsole.desktop,applications:org.kde.discover.desktop,applications:systemsettings.desktop
+magnification=35
+[Containments][22][General]
+[Containments][8]
+plugin=org.kde.plasma.private.systemtray
+wallpaperplugin=org.kde.image
+[Containments][8][Applets][10]
+plugin=org.kde.kscreen
+[Containments][8][Applets][11]
+plugin=org.kde.plasma.cameraindicator
+[Containments][8][Applets][12]
+plugin=org.kde.plasma.clipboard
+[Containments][8][Applets][13]
+plugin=org.kde.plasma.devicenotifier
+[Containments][8][Applets][14]
+plugin=org.kde.plasma.keyboardindicator
+[Containments][8][Applets][15]
+plugin=org.kde.plasma.keyboardlayout
+[Containments][8][Applets][16]
+plugin=org.kde.plasma.manage-inputmethod
+[Containments][8][Applets][17]
+plugin=org.kde.plasma.notifications
+[Containments][8][Applets][18]
+plugin=org.kde.plasma.printmanager
+[Containments][8][Applets][19]
+plugin=org.kde.plasma.vault
+[Containments][8][Applets][20]
+plugin=org.kde.plasma.volume
+[Containments][8][Applets][20][Configuration][General]
+[Containments][8][Applets][24]
+plugin=org.kde.plasma.networkmanagement
+[Containments][8][Applets][25]
+plugin=org.kde.plasma.brightness
+[Containments][8][Applets][26]
+plugin=org.kde.plasma.battery
+[Containments][8][Applets][9]
+plugin=org.kde.kdeconnect
+[Containments][8][General]
+[ScreenMapping]
+== plasmashell panel geometry
+== kwin decoration
+__aurorae__svg__44NOVA
+false
+[Effects]
+Applied=reduced
+LastRenderer=llvmpipe (LLVM 19.1.7, 256 bits)
+
+== plymouth
+-bash: plymouth-set-default-theme: command not found
+BOOT_IMAGE=/live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 components quiet splash hostname=44os findiso=
+== QML / plasmoid errors
+Oct 26 10:25:26 44os plasma-fallback-session-restore[1531]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os plasma-fallback-session-restore[1531]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os kdeconnectdd[1499]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os kdeconnectd[1499]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os DiscoverNotifier[1525]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:26 44os DiscoverNotifier[1525]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:27 44os kup-daemon[1553]: kup.daemon: "Kup is not enabled, enable it from the system settings module. You can do that by running kcmshell5 kup"
+Oct 26 10:25:27 44os plasmashell[1331]: This plugin does not support setting window opacity
+Oct 26 10:25:27 44os kwin_wayland_wrapper[1214]: kf.windowsystem: static bool KX11Extras::mapViewport() may only be used on X11
+Oct 26 10:25:29 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+Oct 26 10:25:29 44os systemd[1142]: Started xdg-desktop-portal-gtk.service - Portal service (GTK/GNOME implementation).
+Oct 26 10:25:29 44os plasmashell[1331]: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/main.qml:310:13: QML Image: Cannot open: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/start-here-kde-symbolic
+Oct 26 10:25:29 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.freedesktop.impl.portal.desktop.kde' unit='plasma-xdg-desktop-portal-kde.service' requested by ':1.16' (uid=1000 pid=1222 comm="/usr/libexec/xdg-desktop-portal")
+Oct 26 10:25:29 44os systemd[1142]: Starting plasma-xdg-desktop-portal-kde.service - Xdg Desktop Portal For KDE...
+Oct 26 10:25:29 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc00df310
+Oct 26 10:25:29 44os plasmashell[1331]: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/main.qml:310:13: QML Image: Cannot open: file:///usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/ui/44os-start
+Oct 26 10:25:30 44os xdg-desktop-portal-kde[1653]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:30 44os xdg-desktop-portal-kde[1653]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:30 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.kde'
+Oct 26 10:25:30 44os systemd[1142]: Started plasma-xdg-desktop-portal-kde.service - Xdg Desktop Portal For KDE.
+Oct 26 10:25:30 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+Oct 26 10:25:30 44os systemd[1142]: Started xdg-desktop-portal.service - Portal service.
+Oct 26 10:25:31 44os kalendarac[1547]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os kalendarac[1547]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os 44welcome[1523]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:31 44os 44welcome[1523]: libEGL warning: egl: failed to create dri2 screen
+Oct 26 10:25:32 44os kded6[1439]: kf.config.kconf_update: /usr/share/kconf_update/webenginepart.upd defined Version=5 but Version=6 was expected
+Oct 26 10:25:32 44os kded6[1314]: qt.dbus.integration: QDBusConnection: name 'org.freedesktop.UPower' had owner '' but we thought it was ':1.34'
+Oct 26 10:25:32 44os kded6[1314]: Known activities: QList("09efc5d2-7610-4874-9d47-41b47bef5ff7")
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Loaded 14 settings from /home/user/.config/xsettingsd/xsettingsd.conf
+Oct 26 10:25:32 44os kded6[1314]: Known activities: QList("09efc5d2-7610-4874-9d47-41b47bef5ff7")
+Oct 26 10:25:32 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.bluez.obex' unit='obex.service' requested by ':1.23' (uid=1000 pid=1314 comm="/usr/bin/kded6")
+Oct 26 10:25:32 44os systemd[1142]: Starting obex.service - Bluetooth OBEX service...
+Oct 26 10:25:32 44os kded6[1314]: Registering ":1.53/StatusNotifierItem" to system tray
+Oct 26 10:25:32 44os kded6[1314]: org.kde.pulseaudio: No object for name "auto_null.monitor"
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Created window 0x1400001 on screen 0 with timestamp 30066
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Selection _XSETTINGS_S0 is owned by 0x0
+Oct 26 10:25:32 44os kded6[1715]: xsettingsd: Took ownership of selection _XSETTINGS_S0
+Oct 26 10:25:33 44os obexd[1716]: OBEX daemon 5.82
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Successfully activated service 'org.bluez.obex'
+Oct 26 10:25:33 44os systemd[1142]: Started obex.service - Bluetooth OBEX service.
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.Sources5' unit='evolution-source-registry.service' requested by ':1.65' (uid=1000 pid=1716 comm="/usr/libexec/bluetooth/obexd")
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activation via systemd failed for unit 'evolution-source-registry.service': Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os obexd[1716]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.Sources5' unit='evolution-source-registry.service' requested by ':1.65' (uid=1000 pid=1716 comm="/usr/libexec/bluetooth/obexd")
+Oct 26 10:25:33 44os dbus-daemon[1162]: [session uid=1000 pid=1162 pidfd=5] Activation via systemd failed for unit 'evolution-source-registry.service': Unit evolution-source-registry.service not found.
+Oct 26 10:25:33 44os obexd[1716]: Unable to acquire registry: Error calling StartServiceByName for org.gnome.evolution.dataserver.Sources5: Unit evolution-source-registry.service not found.
+Oct 26 10:25:35 44os plasmashell[1331]: This plugin does not support setting window opacity
+Oct 26 10:25:36 44os plasmashell[1331]: kde.plasmashell: Activity added twice "09efc5d2-7610-4874-9d47-41b47bef5ff7"
+Oct 26 10:25:39 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc335b6c0
+Oct 26 10:25:39 44os plasmashell[1331]: org.kde.plasma.kicker: Entry is not valid "org.kde.kontact.desktop" 0x55ecc335b6c0
+Oct 26 10:25:40 44os systemd[1142]: Finished plasma-ksplash.service - Splash screen shown during boot.
+Oct 26 10:25:40 44os systemd[1142]: plasma-ksplash.service: Consumed 4.263s CPU time, 123.1M memory peak.
+Oct 26 10:25:41 44os plasmashell[1331]: org.kde.pulseaudio: No object for name "auto_null.monitor"
+Oct 26 10:25:42 44os kwin_wayland_wrapper[1214]: Module 'org.kde.kwin.decoration' does not contain a module identifier directive - it cannot be protected from external registrations.
+Oct 26 10:25:55 44os kdeconnectd[1499]: 2026-10-26T10:25:55 default: Cannot find a compatible running Bluez. Please check the Bluez installation. QtBluetooth requires at least BlueZ version 5.
+Oct 26 10:25:56 44os kded6[1314]: kf.bluezqt: PendingCall Error: "Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)"
+Oct 26 10:25:56 44os kdeconnectd[1499]: 2026-10-26T10:25:56 kdeconnect.core: No local bluetooth adapter found
+== autostart
+44os-live-installer-icon.desktop
+org.44os.session-setup.desktop
+org.44os.welcome-autostart.desktop
+dock tooltip under pointer: none
+== processes after dock click
+1886 konsole
