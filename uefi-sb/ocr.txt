@@ -1,0 +1,310 @@
+--- t=8s
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-26 09:40:21 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+Built: 2026-10-26 09:40:21 UTC
+linux: 6.12.113-1
+live-build: 20250505+deb13ul
+live-boot: 1:20250815~deb13ul
+live-config: 11.0.5
+live-tools: 1:20240525
+Live system (amd64)
+Live system (amd64 fail-safe mode)
+Utilities...
+enter: boot, “e': options, ‘c': cmd-line
+--- t=15s
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+Debian GNU/Linux 13 (trixie)
+amd64
+enter: boot, “e': options, ‘c': cmd-line
+--- t=25s
++ELFUTICS +r 1d #1DR2 “TAF 1FIC nu FLIBCKYPISETUP +L 1BURYPTSETUP” PLUGINS “FL bf DISK FPUREZ* +PUQUALITY +P11KIT *QKERCOVDE +TPM2Z +B2Z1P2 +L24 +X2Z +ZL1B +ZsTy +
+a---4---36F41-
+systemd[1]:
+nist
+susteud[1J:.bostyane..set_tn_<localbast., Incaldawain>.. V..
+sustendlij: Ivitializiog macbine IQ. from. random genepatgr....
+bpf-restrict-fs: LSM BPF program attached
+[ 5.986120] systemd-gpt—auto-generator [3671]:
+systemd[1]:
+Detected architecture x86-64.
+[ 5.667712] systemd[1]:
+Mlalenma tm Nohisn CNIIZT ines
+Hostname set to <localhost.localdomain>.
+ae AD F4mninri nde
+EFI loader partition unknown, exiting.
+ructendogptseutaqggennu foe! aked VERL. deadesuvart if ACM uokreunucerd tite, see ak Vu cee aeMuun veV tL UL Luu?
+1 SRO QV AD omctomArd ie
+systemd[1]: Created slice
+[ 6.364281] systemd[1]:
+[ 6.366751] systemd[1]:
+sustemd[1]: Created slice
+[ 6.326129] systemd[1]:
+6.384838] systemd[1]:
+OK
+OK
+OK
+[
+[
+[
+[
+[
+[
+Sys echuP?54*ercavedicst itd
+[
+c
+‘ot 8 ERpcltiny*avorce
+[ OK
+[ OK
+C
+[ 6. 4387811 systemd[1]:
+[ 6.441554] systemd[11]:
+Susteha-dBtad toraéneraterso¢4:_
+systemd[1]:
+SYSTEMaL LI:
+SystemaTiit™
+Lreatea siice
+Cf¥eated siicé
+[ 6.371081] systemd[1]:
+systemd[1]: Created slice
+[ 6.376179] systemd[1]:
+6.383085] systemd[1]:
+OK
+OK
+OK
+6.393792] systemd[1]:
+ystemd[1]: Created slice
+--& 4158971 cugtemalat:
+OK
+eye cae
+PucatodA S1IiFG GuictomimnAnnAnSa circa Nice shcram thoanmonse
+system-getty.slice - Slice /system/getty.
+Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Created slice user.slice - User and Session Slice.
+sustem-modprobe.slice,- Slice /sustem/modprobe.
+Sreft_uv_aytawouvt nrorc-sys-fs=bivfmt misc..automnunt — Arhitrarn Executahle File Formats File Sustem A@utamnunt Point
+Reached target nss-user-lookup.target - User and Group Name Lookups.
+] Created slice system-modprobe.slice - Slice /system/modprobe.
+] Created slice system-serial\x2dgetmslice - Slice /system/serial-getty.
+] Created slice user.slice - User and Session Slice.
+6.391867] systemd[1]:
+6.393702] systemd[1]:
+Reached target remote-fs.target - Remote File Systems.
+Reached target slices.target - Slice Units.
+‘uBertbticé-~~oscr‘anutdesstun Srice.
+6.405886] systemd[1]:
+6.415852] systemd[1]:
+Listening on systemd-coredump.socket - Process Core Dump Socket.
+Listening on systemd-creds.socket - Credential Encryption/Decryption.
+BEOS LTYSy7Acd 1TEW BF NAG? LEGS. et tet woe
+] Reached target nss-user-lookun.tarqget - User and Groun Name Lookups.
+] Reached target slices.target - Slice Units.
+“6.4291b9] systemdL1I?
+Listening on systemd-journald.socket — Journal Sockets.
+ragte ereeen prere wren eres o rererarer we ee pp eee a wawree wraetreres
+systemd-pcr lock.socket - Make TPM PCR Policy skipped, unmet condition check Condit ionSecur ity=measured-uki
+Listening on systemd- -udeud-control .socket — udev Control Socket .
+Eri 1oaaer‘ partition tnKknotm. exiting.
+Were a waar 2 ey He eee
+Queued start job for default target graphical .target.
+[ 6.357821] systemd[1]:
+Created slice system-mefficslise.cuS lice. geurten corms iuaps vor.
+SYyStem-getty.siice — d11ce /system/getty.
+sGstenh-noaprobe.siice’- Silicé /systém7moapropé: *
+Started systemd-ask-password-wall.path -— Forward Password Requests to Wall Directory Watch.
+system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+Expecting device dev-ttyS0.device - /dev/ttyS0...
+[
+[ ] Created slice system-modprobe.slice - Slice /system/modprobe.
+[ ] Created slice system-serial\x2dgetmslice - Slice /system/serial-getty.
+[ ] Created slice user.slice - User and Session Slice.
+[ 6.391867] systemd[1]:
+[
+SI
+c
+[
+Reached target remote-fs.target - Remote File Systems.
+Reached target sdbapttatget~* owisse7 i t-
+user.slice - User and Session Slice.
+Tictonine an cuctomA_initears chetor' 2 ahardAts*s Amnsr thine mamoh eine
+eS Sn US ROS A SE SS SSS eS SSS
+] Reached target slices.farget -‘Slice Units.”
+Systémari1]: staftéa syStemd—aSk-paSsuofd-wall.path — Forward Passuord Kequests to Wall Directory Watch.
++ELFUTILCS +8 1d #1DR2 “TAF 1FIC +Kmuy FLIBCKYPISETUP +L 1BURYPTSETUP” PLUGINS ¥L ibfDISR FPUREZ* +PUQUALITY +P11KIT *QKERCOVE +TPMZ +B2Z1P2 +024 +X2 +ZL1B +ZsTy +
+a---4---3F41-
+systemd[1]:
+nist
+susteud[1J:.Yostyane..set_tn_<localbast., Incaldawain>.. V..
+sustendlij: Ivitializiog macpine IQ. from. random genepatgr...
+bpf-restrict-fs: LSM BPF program attached
+[ 5.986120] systemd-gpt—auto-generator [3671]:
+systemd[1]:
+Detected architecture x86-64.
+[ 5.667712] systemd[1]:
+Mlalenma tm Nohisan CNIIZT ines
+Hostname set to <localhost.localdomain>.
+ae 4D F4mninri nde
+EFI loader partition unknown, exiting.
+ructendogptseutaqggerna foe! aked VERL. deadesuvart if ACM uakreunucerd tities see ak Vuk ame sMuuE EV LU uk Luu 2
+1 SRO QIN A LD omctomAld ie
+systemd[1]: Created slice
+[ 6.364281] systemd[1]:
+[ 6.366751] systemd[1]:
+sustemd[1]: Created slice
+[ 6.326129] systemd[1]:
+6.384838] systemd[1]:
+OK
+OK
+OK
+c
+c
+c
+c
+c
+c
+fys uchuP?54 *ercavedi-st itd
+c
+c
+‘ot * ERpcltiny*avorce
+[ OK
+[ OK
+ii
+[ 6. 4387811 systemd[1]:
+[ 6.441554] systemd[11]:
+Susteha-dBtad tosaénerater .s6¢4:_
+systemd[1]:
+SYSTEMaL LI:
+SystemaTiit™
+Lreatea siice
+C¥eated siicé
+[ 6.371081] systemd[1]:
+systemd[1]: Created slice
+[ 6.376179] systemd[1]:
+6.383085] systemd[1]:
+OK
+OK
+OK
+6.393792] systemd[1]:
+ystemd[1]: Created slice
+--& 4158971 cugtemalat:
+OK
+ge coe eee
+PucatodA S1IFG GuictomimnAnnARSA ciiee Nice shcram thoanMonse
+system-getty.slice - Slice /system/getty.
+Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Created slice user.slice - User and Session Slice.
+sustem-modprobe.slice,- Slice /sustem/modprobe.
+Sreft_uv_aytawouvt nrorc-sys-fs=bivfmt misc..automnunt — Arhitrarn Executahle File Formats File Sustem A@utamnunt Point
+Reached target nss-user-lookup.target - User and Group Name Lookups.
+] Created slice system-modprobe.slice -— Slice /system/modprobe.
+] Created slice system-serial\x2dgetmslice - Slice /system/serial-getty.
+] Created slice user.slice - User and Session Slice.
+6.391867] systemd[1]:
+6.393702] systemd[1]:
+Reached target remote-fs.target - Remote File Systems.
+Reached target slices.target - Slice Units.
+‘uBerthticé-~~oscr‘anutdesstun Srice.
+6.405886] systemd[1]:
+6.415852] systemd[1]:
+Listening on systemd-coredump.socket - Process Core Dump Socket.
+Listening on systemd-creds.socket - Credential Encryption/Decryption.
+BEOS LTYSy7Acd 1TEW BF NAG? LEGS. et tet woe
+] Reached target nss-user-lookun.tarqget - User and Group Name Lookups.
+] Reached target slices.target - Slice Units.
+“6.4291b9] systemdL1J=
+Listening on systemd-journald.socket — Journal Sockets.
+age aren prere wree arenes erereraeer we ee p eeee a wawree wraetreres
+systemd-pcr lock.socket - Make TPM PCR Policy skipped, unmet condition check Condit ionSecur ity=measured-uki
+Listening on systemd- -udeud-control.socket — udev Control Socket .
+Eri 1oaaer‘ partition tnknolm. exiting.
+Weer eenn a wearers 2 ey He re eee
+Queued start job for default target graphical .target.
+[ 6.357821] systemd[1]:
+Created slice system-mefficslise.cuS lice. geurten corms huaps or.
+SYyStem-getty.siice — d11ce /system/getty.
+sGstenh-noaprobe.siice”- S1icé /systém7moapropé: *
+Started systemd-ask-password-wall.path — Forward Password Requests to Wall Directory Watch.
+system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+Expecting device dev-ttyS0.device - /dev/ttyS0...
+[
+[ ] Created slice system-modprobe.slice -— Slice /system/modprobe.
+[ ] Created slice system-serial\x2dgetmslice - Slice /system/serial-getty.
+[ ] Created slice user.slice - User and Session Slice.
+[ 6.391867] systemd[1]:
+[
+SI
+c
+[
+Reached target remote-fs.target - Remote File Systems.
+Reached target sdbapttatget~* owisse7 tte
+user.slice - User and Session Slice.
+Tictonine an cuctomA_initears chetor' 2 ahardAts*s AmnsrrAisarh mamoh eine
+eS Sn US ROS A SS SS SSS eS SSE
+] Reached target slices.farget -‘Slice Units.”
+Systémai1T: staftéa syStemd—aSk-pasSsuofd-wall.path — Forward Passuord Kequests to Wall Directory Watch.
+--- final
+44 44Welcome
+4A e@e0e
+“~~ 44OS
+NOVA
+| + Welcome
+© Appearance
+= Dock
+G Updates
+B System
+@ About 440S
+Reopen 44Welcome any time from
+the application menu.
+% 3% © @ VY Mon 26 Oct | 10:03 AM
+44Welcome
+Welcome to 440S NOVA. /
+Your system. Your rules. * Ps
+Version 0.6 Alpha - Debian GNU/Linux 13 (trixie)
+b
+440S pairs a calm, macOS-inspired layout with the freedom of Debian and KDE Plasma. Take a minute to
+make it yours: pick a look, tune the dock and check for updates.
+Install 440S About 440S
+44Launcher 44Dock Quick settings
+Press Super+Space to search Pinned apps and open windows. Network, sound, Bluetooth,
+apps, files and settings, or to Right-click an icon to keep it in the brightness and notifications live in
+calculate. dock. the top-right corner.
+44 44Welcome
+44 e@oe0e
+~~ 4408
+NOVA
+| + Welcome
+© Appearance
+= Dock
+® Updates
+B System
+@ About 440S
+Reopen 44Welcome any time from
+the application menu.
+% 3% © GY Mon 26 Oct | 10:03 AM
+44Welcome
+Welcome to 440S NOVA. /
+Your system. Your rules. > Pd
+Version 0.6 Alpha - Debian GNU/Linux 13 (trixie)
+b
+440S pairs a calm, macOS-inspired layout with the freedom of Debian and KDE Plasma. Take a minute to
+make it yours: pick a look, tune the dock and check for updates.
+Install 440S About 440S
+44Launcher 44Dock Quick settings
+Press Super+Space to search Pinned apps and open windows. Network, sound, Bluetooth,
+apps, files and settings, or to Right-click an icon to keep it in the brightness and notifications live in
+calculate. dock. the top-right corner.

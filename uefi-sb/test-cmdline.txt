@@ -1,0 +1,5 @@
+	linux	/live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 systemd.show_status=1 components hostname=44os findiso=${iso_path}
+	linux	/live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 systemd.show_status=1 components memtest noapic noapm nodma nomce nosmp nosplash vga=788
+# linux /live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 systemd.show_status=1 components hostname=44os findiso=${iso_path} custom options here
+			linux	/live/vmlinuz-6.12.113+deb13-amd64 boot=live console=tty0 console=ttyS0,115200n8 systemd.show_status=1 components   hostname=44os findiso=${iso_path} verify-checksums
+	append boot=live console=tty0 console=ttyS0,115200n8 systemd.show_status=1 components hostname=44os

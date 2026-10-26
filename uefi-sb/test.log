@@ -1,0 +1,3 @@
+[10:01:49] remastering serial test ISO (9 map args)
+[10:01:57] starting QEMU fw=uefi-sb media=cdrom accel=-enable-kvm -cpu host
+[10:02:11] GRUB menu detected at 8s: pressing Enter

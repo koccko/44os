@@ -1,0 +1,109 @@
+name=uefi-sb hv=qemu fw=uefi-sb media=cdrom serial_iso=1 elapsed=120s
+stage_grub=1 stage_kernel=1 stage_graphical=1
+--- serial (key lines)
+[    0.000000] Linux version 6.12.113+deb13-amd64 (debian-kernel@lists.debian.org) (x86_64-linux-gnu-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15)
+Begin: Running /scripts/init-premount ... [0;21;32mLinux version 6.12.113+deb13-amd64 (debian-kernel@lists.debian.org) (x86_64-linux-gnu-gcc-14 (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Debian 6.12.113-1 (2026-10-15)[0m
+[0;1;39mWelcome to [0m[1mDebian[    5.667712] systemd[1]: Hostname set to <localhost.localdomain>.
+[    6.384838] systemd[1]: Reached target nss-user-lookup.target - User and Group Name Lookups.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.[0;21;39msystemd[1]: Created slice user.slice - User and Session Slice.[0m[    6.391867] systemd[1]: Reached target remote-fs.target - Remote File Systems.
+[    6.393702] systemd[1]: Reached target slices.target - Slice Units.
+[    6.395413] systemd[1]: Reached target swap.target - Swaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mnss-user-lookup.target[0m - User and Group Name Lookups.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mslices.target[0m - Slice Units.[    6.415852] systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
+[[0;32m  OK  [0m] Reached target [0;1;39mswap.target[0m - Swaps.[    6.419637] systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+[0;21;39msystemd[1]: Reached target nss-user-lookup.target - User and Group Name Lookups.[0m
+[0;21;39msystemd[1]: Reached target remote-fs.target - Remote File Systems.[0m
+[0;21;39msystemd[1]: Reached target slices.target - Slice Units.[0m
+[0;21;39msystemd[1]: Reached target swap.target - Swaps.[0m
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Started [0;1;39msddm.service[0m - Simple Desktop Display Manager.
+44os login: [   50.640787] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+--- OCR
+systemd-pcr lock.socket - Make TPM PCR Policy skipped, unmet condition check Condit ionSecur ity=measured-uki
+Listening on systemd- -udeud-control.socket — udev Control Socket .
+Eri 1oaaer‘ partition tnknolm. exiting.
+Weer eenn a wearers 2 ey He re eee
+Queued start job for default target graphical .target.
+[ 6.357821] systemd[1]:
+Created slice system-mefficslise.cuS lice. geurten corms huaps or.
+SYyStem-getty.siice — d11ce /system/getty.
+sGstenh-noaprobe.siice”- S1icé /systém7moapropé: *
+Started systemd-ask-password-wall.path — Forward Password Requests to Wall Directory Watch.
+system-serial\x2dgetty.slice - Slice /system/serial-getty.
+Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+Expecting device dev-ttyS0.device - /dev/ttyS0...
+[
+[ ] Created slice system-modprobe.slice -— Slice /system/modprobe.
+[ ] Created slice system-serial\x2dgetmslice - Slice /system/serial-getty.
+[ ] Created slice user.slice - User and Session Slice.
+[ 6.391867] systemd[1]:
+[
+SI
+c
+[
+Reached target remote-fs.target - Remote File Systems.
+Reached target sdbapttatget~* owisse7 tte
+user.slice - User and Session Slice.
+Tictonine an cuctomA_initears chetor' 2 ahardAts*s AmnsrrAisarh mamoh eine
+eS Sn US ROS A SS SS SSS eS SSE
+] Reached target slices.farget -‘Slice Units.”
+Systémai1T: staftéa syStemd—aSk-pasSsuofd-wall.path — Forward Passuord Kequests to Wall Directory Watch.
+--- final
+44 44Welcome
+4A e@e0e
+“~~ 44OS
+NOVA
+| + Welcome
+© Appearance
+= Dock
+G Updates
+B System
+@ About 440S
+Reopen 44Welcome any time from
+the application menu.
+% 3% © @ VY Mon 26 Oct | 10:03 AM
+44Welcome
+Welcome to 440S NOVA. /
+Your system. Your rules. * Ps
+Version 0.6 Alpha - Debian GNU/Linux 13 (trixie)
+b
+440S pairs a calm, macOS-inspired layout with the freedom of Debian and KDE Plasma. Take a minute to
+make it yours: pick a look, tune the dock and check for updates.
+Install 440S About 440S
+44Launcher 44Dock Quick settings
+Press Super+Space to search Pinned apps and open windows. Network, sound, Bluetooth,
+apps, files and settings, or to Right-click an icon to keep it in the brightness and notifications live in
+calculate. dock. the top-right corner.
+44 44Welcome
+44 e@oe0e
+~~ 4408
+NOVA
+| + Welcome
+© Appearance
+= Dock
+® Updates
+B System
+@ About 440S
+Reopen 44Welcome any time from
+the application menu.
+% 3% © GY Mon 26 Oct | 10:03 AM
+44Welcome
+Welcome to 440S NOVA. /
+Your system. Your rules. > Pd
+Version 0.6 Alpha - Debian GNU/Linux 13 (trixie)
+b
+440S pairs a calm, macOS-inspired layout with the freedom of Debian and KDE Plasma. Take a minute to
+make it yours: pick a look, tune the dock and check for updates.
+Install 440S About 440S
+44Launcher 44Dock Quick settings
+Press Super+Space to search Pinned apps and open windows. Network, sound, Bluetooth,
+apps, files and settings, or to Right-click an icon to keep it in the brightness and notifications live in
+calculate. dock. the top-right corner.

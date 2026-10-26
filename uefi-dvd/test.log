@@ -1,0 +1,1 @@
+[10:00:25] starting QEMU fw=uefi media=cdrom accel=-enable-kvm -cpu host
